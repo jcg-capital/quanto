@@ -75,6 +75,8 @@ Router.map(function() {
   this.route('main')
   this.route('charts')
   this.route('texteditor')
+  this.route('buttonRow')
+  this.route('modalTrigger')
   // Users
 
   this.route('login');
