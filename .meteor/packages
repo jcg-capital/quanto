@@ -8,8 +8,8 @@ meteor-platform
 autopublish
 insecure
 maazalik:highcharts
-accounts-ui
 twbs:bootstrap
 iron:router
 arch:ace-editor
 accounts-google
+ian:accounts-ui-bootstrap-3

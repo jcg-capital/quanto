@@ -1,12 +1,18 @@
 if (Meteor.isClient) {
 
-  Router.route('/', function () {
-  this.render('Home', {
-    data: function () { return Items.findOne({_id: this.params._id}); }
-  });
+
+Router.route('/', {
+  path: '/',
+  layoutTemplate: 'homeLayout',
+  yieldTemplates: {
+    'navbar': {to: 'header'},
+    'chart': {to: 'yieldBody'},
+    'buttonRow': {to: 'yieldButtonRow'},
+    'brand': {to: 'footer'},
+  }
 });
 
-  
+
   /*
  * Function to draw the area chart
  */
@@ -96,10 +102,11 @@ function builtArea() {
 /*
  * Call the function to built the chart when the template is rendered
  */
-Template.areaDemo.rendered = function() {    
+Template.chart.rendered = function() {    
     builtArea();
 }
 
+// Variable to declare Ace Editor.
 
 var ace = AceEditor.instance("archy",{
     theme:"twilight", 
