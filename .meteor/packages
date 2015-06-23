@@ -12,3 +12,4 @@ accounts-ui
 twbs:bootstrap
 iron:router
 arch:ace-editor
+accounts-google
