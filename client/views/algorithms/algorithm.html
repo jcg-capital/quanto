@@ -1,0 +1,10 @@
+<template name="algorithm">
+  <a href="{{pathFor 'algorithms'}}">← Back</a>
+  {{#with algorithm}}
+    <div class="algorithm">
+      <h3>{{title}}</h3>
+      <p>{{body}}</p>
+      <h5><a href="#" class="delete">Delete</a></h5>
+    </div>
+  {{/with}}
+</template>

@@ -1,18 +1,10 @@
-if (Meteor.isClient) {
+/* ---------------------------------------------------- +/
 
+## Charts ##
 
-Router.route('/', {
-  path: '/',
-  layoutTemplate: 'homeLayout',
-  yieldTemplates: {
-    'navbar': {to: 'header'},
-    'chart': {to: 'yieldBody'},
-    'buttonRow': {to: 'yieldButtonRow'},
-    'brand': {to: 'footer'},
-  }
-});
+Code related to the charts template
 
-
+/+ ---------------------------------------------------- */
   /*
  * Function to draw the area chart
  */
@@ -102,22 +94,28 @@ function builtArea() {
 /*
  * Call the function to built the chart when the template is rendered
  */
-Template.chart.rendered = function() {    
+
+Template.charts.created = function () {
+  //
+};
+
+Template.charts.rendered = function() {    
     builtArea();
 }
 
-// Variable to declare Ace Editor.
+Template.charts.helpers({
+  
+  myHelper: function () {
+    //
+  }
 
-var ace = AceEditor.instance("archy",{
-    theme:"twilight", 
-    mode:"html"
 });
 
 
-}
+Template.charts.events({
 
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
-}
+  'click': function(e, instance){
+
+  }
+
+});
