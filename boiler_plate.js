@@ -1,4 +1,11 @@
 if (Meteor.isClient) {
+
+  Router.route('/', function () {
+  this.render('Home', {
+    data: function () { return Items.findOne({_id: this.params._id}); }
+  });
+});
+
   
   /*
  * Function to draw the area chart
@@ -93,6 +100,11 @@ Template.areaDemo.rendered = function() {
     builtArea();
 }
 
+
+var ace = AceEditor.instance("archy",{
+    theme:"twilight", 
+    mode:"html"
+});
 
 
 }
