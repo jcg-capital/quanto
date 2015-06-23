@@ -1,0 +1,8 @@
+<template name="algorithms">
+  <h3>Algorithms: </h3>
+  <ul>
+    {{#each algorithms}}
+      <li><a href="{{pathFor "algorithm"}}">{{title}}</a></li>
+    {{/each}}
+  </ul>
+</template>
