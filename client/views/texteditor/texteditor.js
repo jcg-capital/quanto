@@ -2,18 +2,18 @@
 
 ##  ##
 
-Code related to the texteditor template
+Code related to the textEditor template
 
 /+ ---------------------------------------------------- */
 
-Template.texteditor.created = function () {
+Template.textEditor.created = function () {
 	var ace = AceEditor.instance("archy",{
 	    theme:"twilight", 
 	    mode:"html"
 	});
 };
 
-Template.texteditor.helpers({
+Template.textEditor.helpers({
   
   myHelper: function () {
     //
@@ -21,11 +21,11 @@ Template.texteditor.helpers({
 
 });
 
-Template.texteditor.rendered = function () {
+Template.textEditor.rendered = function () {
 
 };
 
-Template.texteditor.events({
+Template.textEditor.events({
 
   'click': function(e, instance){
 

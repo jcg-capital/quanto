@@ -66,11 +66,9 @@ Router.map(function() {
 
   // Pages
 
-   this.route('landingPage', {
+  this.route('landingPage', {
     path: '/'
   });
-
-
 
   this.route('siteMap', {
     path: 'siteMap'
@@ -78,10 +76,8 @@ Router.map(function() {
 
   this.route('content');
 
-  this.route('main');
-
   this.route('charts');
-  this.route('texteditor');
+  this.route('textEditor');
   this.route('buttonRow');
   this.route('modalTrigger');
   this.route('brand');
