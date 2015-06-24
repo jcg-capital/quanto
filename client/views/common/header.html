@@ -1,4 +1,13 @@
 <template name="header">
+
+<style>
+
+.header {
+  color: #30ACAC;
+}
+
+</style>
+
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -31,7 +40,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Algorithms <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="{{pathFor 'algorithms'}}">Public Algorithms</a></li>
-              <li><a href="{{pathFor 'texteditor'}}">Editor</a></li>
+              <li><a href="{{pathFor 'textEditor'}}">Editor</a></li>
 <!--               <li><a href="{{pathFor 'modalTrigger'}}">modalTrigger</a></li>
               <li><a href="{{pathFor 'buttonRow'}}">buttonRow</a></li>
               <li><a href="/404">404 Link</a></li>
@@ -70,7 +79,6 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-  <hr/>
   <div class="messages">
     {{#each messages}}
       <p class="message message-{{type}}">{{message}}</p>
