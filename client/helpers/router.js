@@ -66,13 +66,20 @@ Router.map(function() {
 
   // Pages
 
-  this.route('homepage', {
+   this.route('landingPage', {
     path: '/'
+  });
+
+
+
+  this.route('siteMap', {
+    path: 'siteMap'
   });
 
   this.route('content');
 
   this.route('main');
+
   this.route('charts');
   this.route('texteditor');
   this.route('buttonRow');
