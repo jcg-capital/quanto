@@ -1,5 +1,10 @@
-if (Meteor.isClient) {
-  
+/* ---------------------------------------------------- +/
+
+## Charts ##
+
+Code related to the charts template
+
+/+ ---------------------------------------------------- */
   /*
  * Function to draw the area chart
  */
@@ -89,16 +94,28 @@ function builtArea() {
 /*
  * Call the function to built the chart when the template is rendered
  */
-Template.areaDemo.rendered = function() {    
+
+Template.charts.created = function () {
+  //
+};
+
+Template.charts.rendered = function() {    
     builtArea();
 }
 
+Template.charts.helpers({
+  
+  myHelper: function () {
+    //
+  }
+
+});
 
 
-}
+Template.charts.events({
 
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
-}
+  'click': function(e, instance){
+
+  }
+
+});
