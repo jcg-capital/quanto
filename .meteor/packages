@@ -12,3 +12,5 @@ iron:router
 arch:ace-editor
 accounts-google
 ian:accounts-ui-bootstrap-3
+simple:highlight.js
+markdown

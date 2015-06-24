@@ -10,11 +10,14 @@ Template.algorithm.created = function () {
   //
 };
 
+Template.registerHelper('rowMaker',function(){
+    console.log('rowmaker:',arguments);
+});
+
 Template.algorithm.helpers({
-  
   myHelper: function () {
     //
-  }
+  },
 
 });
 
