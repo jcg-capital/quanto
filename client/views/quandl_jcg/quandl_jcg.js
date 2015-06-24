@@ -1,8 +1,8 @@
-Template.quandl_jcg.created = function () {
+Template.quandlJcg.created = function () {
   //
 };
 
-Template.quandl_jcg.helpers({
+Template.quandlJcg.helpers({
   
   myHelper: function () {
     //
@@ -10,14 +10,18 @@ Template.quandl_jcg.helpers({
 
 });
 
-Template.quandl_jcg.rendered = function () {
+Template.quandlJcg.rendered = function () {
   //
 };
 
-Template.quandl_jcg.events({
+Template.quandlJcg.events({
 
   'click': function(e, instance){
 
   }
 
 });
+
+
+
+

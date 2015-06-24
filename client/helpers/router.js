@@ -37,8 +37,9 @@ Router.onBeforeAction(filters.myFilter, {only: ['algorithms']});
 // Routes
 
 Router.map(function() {
-
+  //****************************************//
   // Algorithms
+  //****************************************//
 
   this.route('algorithms', {
     waitOn: function () {
@@ -62,9 +63,20 @@ Router.map(function() {
       };
     }
   });
+  //****************************************//
+  // Quandl
+  //****************************************//
+  this.route('server', {
+    data: function() {
+      return {
+        query: HTTP.post('server',{'hoodee':'hoo'})
+      }
+    }
+  })
 
-
+  //****************************************//
   // Pages
+  //****************************************//
 
   this.route('landingPage', {
     path: '/'
@@ -81,6 +93,7 @@ Router.map(function() {
   this.route('buttonRow');
   this.route('modalTrigger');
   this.route('brand');
+  this.route('quandlJcg')
   // Users
 
   this.route('login');
