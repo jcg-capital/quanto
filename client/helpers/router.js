@@ -47,7 +47,7 @@ Router.map(function() {
     data: function () {
       return {
         algorithms: Algorithms.find()
-      }
+      };
     }
   });
 
@@ -59,7 +59,7 @@ Router.map(function() {
     data: function () {
       return {
         algorithm: Algorithms.findOne(this.params._id)
-      }
+      };
     }
   });
 
@@ -72,11 +72,12 @@ Router.map(function() {
 
   this.route('content');
 
-  this.route('main')
-  this.route('charts')
-  this.route('texteditor')
-  this.route('buttonRow')
-  this.route('modalTrigger')
+  this.route('main');
+  this.route('charts');
+  this.route('texteditor');
+  this.route('buttonRow');
+  this.route('modalTrigger');
+  this.route('brand');
   // Users
 
   this.route('login');
