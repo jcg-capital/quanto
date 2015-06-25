@@ -1,10 +1,3 @@
- <!-- need inner template to respond to click events for some reason -->
-<template name="inner">
-
-  <img src="logo.png">
-
-</template>
-
 <template name="landingPage">
 
 <style>
@@ -18,8 +11,7 @@ body {
      margin-left: auto;
      margin-right: auto;
 .tealBg {
-	background: #30ACAC;
-  color: #BC6916;
+  text-align:center;
 }
 </style>
 
@@ -39,6 +31,20 @@ body {
   </div>
   <div class="col-md-2"></div>
 </div>
+{{#Scene}}
+  {{#Node size=nodeSize align=nodeAlign mountPoint=nodeMountPoint rotation=reactiveRotation origin=nodeOrigin}}
+    {{#DOMElement class="tealBg" dir="rtl"}}
+      {{>inner}}
+    {{/DOMElement}}
+  {{/Node}}
+{{/Scene}}
 
- </template>
+</template>
 
+
+<!-- need inner template to respond to click events for some reason -->
+<template name="inner">
+
+  <img src="logo.png">
+
+</template>
