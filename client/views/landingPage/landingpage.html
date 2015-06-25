@@ -6,23 +6,25 @@ body {
   background-image: url("lowResBlackBckgrnd.jpg");
 }
 .tealBg {
-	background: #30ACAC;
-  color: #BC6916;
+  text-align:center;
 }
-
 
 </style>
 
-
-
 {{#Scene}}
-  {{#Node size=nodeSize align=nodeAlign mountPoint=nodeMountPoint rotation=nodeRotation origin=nodeOrigin}}
+  {{#Node size=nodeSize align=nodeAlign mountPoint=nodeMountPoint rotation=reactiveRotation origin=nodeOrigin}}
     {{#DOMElement class="tealBg" dir="rtl"}}
-      MONEY TORNADO IS COMIN' BITCHES
+      {{>inner}}
     {{/DOMElement}}
   {{/Node}}
 {{/Scene}}
 
+</template>
 
 
- </template>
+<!-- need inner template to respond to click events for some reason -->
+<template name="inner">
+
+  <img src="logo.png">
+
+</template>
