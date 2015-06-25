@@ -69,10 +69,30 @@ Router.map(function() {
   this.route('server', {
     data: function() {
       return {
-        query: HTTP.post('server',{'hoodee':'hoo'})
-      }
+        query: HTTP.call("POST", "quandlquery",
+          {data: {
+                    code : {
+                      'source': 'WIKI',
+                      'table': 'AAPL'
+                    },
+                    options : { 
+                      column:'4',
+                      sort_order:'asc',
+                      collapse:'quarterly',
+                      trim_start:'2012-01-01',
+                      trim_end:'2013-12-31'
+                    }
+                } 
+          },
+          function (error, result) {
+            if (!error) {
+              console.log('WE GOT SOMETHiNG HEREsfsfsafee3',result);
+            }
+          }
+        )
+      };
     }
-  })
+  });
 
   //****************************************//
   // Pages
