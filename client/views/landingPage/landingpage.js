@@ -64,7 +64,7 @@ Template.landingPage.helpers({
       value: ROTATIONS[Session.get('rotation')],
       // value1: ROTATIONS[0],
       // value2: ROTATIONS[1],
-      transition: { duration: 3500, curve: 'inOutSine' }
+      transition: { duration: 3500, curve: 'inOutElastic' }
     }
   },
   nodeSize: "P:0.5; P:0.5; P:0.5",
