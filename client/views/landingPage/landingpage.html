@@ -5,30 +5,26 @@
 body {
   background-image: url("lowResBlackBckgrnd.jpg");
 }
-.searchbar {
-	margin-top: 150px;
-     float: none;
-     margin-left: auto;
-     margin-right: auto;
+.tealBg {
+  text-align:center;
 }
 
 </style>
 
+{{#Scene}}
+  {{#Node size=nodeSize align=nodeAlign mountPoint=nodeMountPoint rotation=reactiveRotation origin=nodeOrigin}}
+    {{#DOMElement class="tealBg" dir="rtl"}}
+      {{>inner}}
+    {{/DOMElement}}
+  {{/Node}}
+{{/Scene}}
 
-<div class="searchbar">
+</template>
 
-  <div class="col-md-offset-5">
 
-    <div class="text-center">
+<!-- need inner template to respond to click events for some reason -->
+<template name="inner">
 
-      <form role="form" class="search">
-        <input type="search" placeholder="search" class="form-control">
-        <button class="btn" type="button">Search</button>
-      </form>
-      
-      <!-- /.max-width on this form -->
-    </div>
-  </div>
-</div>
+  <img src="logo.png">
 
- </template>
+</template>
