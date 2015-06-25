@@ -1,9 +1,17 @@
+ <!-- need inner template to respond to click events for some reason -->
+<template name="inner">
+
+  <img src="logo.png">
+
+</template>
+
 <template name="landingPage">
 
 <style>
 
 body {
   background-image: url("lowResBlackBckgrnd.jpg");
+  z-index: -10;
 }
 .searchbar {
 	margin-top: 150px;
@@ -11,9 +19,7 @@ body {
      margin-left: auto;
      margin-right: auto;
 }
-
 </style>
-
 
 <div class="searchbar">
 
@@ -21,14 +27,16 @@ body {
 
   <div class="col-md-8">
     <div class="text-center">
-      <form role="form" class="search">
+      <form role="form" class="search" style='display: inline;'>
         <input type="search" placeholder="search" name='searchQuery' class="form-control">
-        <button class="btn" type="button">Search</button>
+        <!-- <button class="btn" type="button">Search</button> -->
       </form>
       <!-- /.max-width on this form -->
+      <div id='search-results'></div>
     </div>
   </div>
   <div class="col-md-2"></div>
 </div>
 
  </template>
+
