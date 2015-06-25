@@ -114,8 +114,152 @@ Template.charts.helpers({
 
 Template.charts.events({
 
-  'click': function(e, instance){
+  'submit': function(e, instance){
+    e.preventDefault()
+    var chartSettings = {
+        
+        chart: {
+            type: 'area'
+        },
+        
+        title: {
+            text: '' // title
+        },
+        
+        credits: {
+            enabled: false
+        },
 
+        subtitle: {
+            text: '' // Source information
+        },
+        
+        xAxis: {
+            labels: {
+                formatter: function () {
+                  // Convert UTC epoch seconds to local time
+                  //var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
+                  //console.log(d.setUTCSeconds(this.value))
+                  console.log(new Date(this.value))
+                  return new Date(this.value)
+                }
+            },
+            // dateTimeLabelFormats: {
+            //               month: '%b \'%y',
+            //               year: '%Y'
+            //             }
+        },
+        
+        yAxis: {
+            type: 'datetime',
+            title: {
+                text: ''
+            },
+            labels: {
+                formatter: function () {
+                    return this.value;
+                }
+            }
+        },
+        
+        tooltip: {
+            pointFormat: '{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
+        },
+        
+        plotOptions: {
+            area: {
+                pointStart: 1940,
+                pointInterval: 24 * 3600 * 1000, // one day
+                marker: {
+                    enabled: false,
+                    symbol: 'circle',
+                    radius: 2,
+                    states: {
+                        hover: {
+                            enabled: true
+                        }
+                    }
+                }
+            }
+        },        
+        series: []
+        // {
+        //     name: 'USA',
+        //     data: [] // null or integer
+        // }, {
+        //     name: 'USSR/Russia',
+        //     data: [] // null or integer
+        // }
+    };
+    console.log('Inside the function');
+    var tickerSymbol = e.target.searchText.value;
+    var query = {
+                  data: {
+                    code : {
+                      'source': 'WIKI',
+                      'table': tickerSymbol
+                    },
+                    options : { 
+                      column:'4',
+                      sort_order:'asc',
+                      collapse:'quarterly',
+                      trim_start:'2012-01-01',
+                      trim_end:'2013-12-31'
+                    }
+                  } 
+                };
+    HTTP.call("POST", "quandlquery", query,
+      function (error, result) {
+        if (!error) {
+          console.log('WE GOT SOMETHiNG HEREsfsfsafee3',result);
+            var r = JSON.parse(result.content);
+            //debugger;
+            chartSettings.title.text = r.source_name;
+            chartSettings.subtitle.text = r.display_url;
+            chartSettings.yAxis.title.text = r.column_names[1] + ' Price';
+            // chartSettings.xAxis.title.text = r.column_names[1] // ["Date", "Close"]
+            // for each push to chartSettings.series {name:String, data: Array} 
+            chartSettings.series.push({
+                                        name: r.code,
+                                        data: r.data.map(function(c,i,a){
+                                          return c[1]; //example: 0: "2012-03-31" 1: 599.55
+                                        })
+                                      });
+            chartSettings.plotOptions.area.pointInterval = 2628000; // one month approx
+            var splitDate = query.data.options.trim_start.split('-');
+            var parseDate = {
+                              year: parseInt(splitDate[0]),
+                              month: parseInt(splitDate[1]),
+                              day: parseInt(splitDate[2])
+                            }
+            chartSettings.plotOptions.area.pointStart = Date.UTC(parseDate.year, parseDate.month, parseDate.day); // Y, M, d
+            $('#container-area').highcharts(chartSettings);
+        }
+      }
+    );
   }
 
 });
+
+// r.code
+// "AAPL"
+// r.column_names
+// ["Date", "Close"]
+// r.code
+// "AAPL"
+// r.from_date
+// "1980-12-12"
+// r.frequency
+// "daily"
+// r.display_url
+// "http://www.quandl.com/WIKI/AAPL"
+// r.source_name
+// "Wiki EOD Stock Prices"
+// r.source_code
+// "WIKI"
+// r.private
+// false
+// r.type
+// null
+// r.data
+// [Array[2]0: "2012-03-31"1: 599.55

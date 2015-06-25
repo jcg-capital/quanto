@@ -37,8 +37,9 @@ Router.onBeforeAction(filters.myFilter, {only: ['algorithms']});
 // Routes
 
 Router.map(function() {
-
+  //****************************************//
   // Algorithms
+  //****************************************//
 
   this.route('algorithms', {
     waitOn: function () {
@@ -62,9 +63,40 @@ Router.map(function() {
       };
     }
   });
+  //****************************************//
+  // Quandl
+  //****************************************//
+  this.route('server', {
+    data: function() {
+      return {
+        query: HTTP.call("POST", "quandlquery",
+          {data: {
+                    code : {
+                      'source': 'WIKI',
+                      'table': 'AAPL'
+                    },
+                    options : { 
+                      column:'4',
+                      sort_order:'asc',
+                      collapse:'quarterly',
+                      trim_start:'2012-01-01',
+                      trim_end:'2013-12-31'
+                    }
+                } 
+          },
+          function (error, result) {
+            if (!error) {
+              console.log('WE GOT SOMETHiNG HEREsfsfsafee3',result);
+            }
+          }
+        )
+      };
+    }
+  });
 
-
+  //****************************************//
   // Pages
+  //****************************************//
 
   this.route('landingPage', {
     path: '/'
@@ -81,6 +113,7 @@ Router.map(function() {
   this.route('buttonRow');
   this.route('modalTrigger');
   this.route('brand');
+  this.route('quandlJcg')
   // Users
 
   this.route('login');

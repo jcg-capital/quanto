@@ -16,4 +16,6 @@ Meteor.publish('allAlgorithms', function() {
 
 Meteor.publish('singleAlgorithm', function(id) {
   return Algorithms.find(id);
-})
+});
+
+

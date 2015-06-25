@@ -14,3 +14,10 @@ accounts-google
 ian:accounts-ui-bootstrap-3
 simple:highlight.js
 markdown
+meteorhacks:npm
+
+
+npm-container
+http
+mjn:famous
+gadicohen:famous-views
