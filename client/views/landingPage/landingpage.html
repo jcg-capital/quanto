@@ -5,30 +5,24 @@
 body {
   background-image: url("lowResBlackBckgrnd.jpg");
 }
-.searchbar {
-	margin-top: 150px;
-     float: none;
-     margin-left: auto;
-     margin-right: auto;
+.tealBg {
+	background: #30ACAC;
+  color: #BC6916;
 }
+
 
 </style>
 
 
-<div class="searchbar">
 
-  <div class="col-md-offset-5">
+{{#Scene}}
+  {{#Node size=nodeSize align=nodeAlign mountPoint=nodeMountPoint rotation=nodeRotation origin=nodeOrigin}}
+    {{#DOMElement class="tealBg" dir="rtl"}}
+      MONEY TORNADO IS COMIN' BITCHES
+    {{/DOMElement}}
+  {{/Node}}
+{{/Scene}}
 
-    <div class="text-center">
 
-      <form role="form" class="search">
-        <input type="search" placeholder="search" class="form-control">
-        <button class="btn" type="button">Search</button>
-      </form>
-      
-      <!-- /.max-width on this form -->
-    </div>
-  </div>
-</div>
 
  </template>
