@@ -34,6 +34,12 @@ Template.algorithm.events({
       alert('Algorithm deleted.');
       Router.go('/algorithms');
     });
-  }
+  },
+  'click #clone-algo': function(e, instance){
+    var algorithm = this;
+    e.preventDefault();
+    Session.set('clonedAlgo', algorithm.body)
+    Router.go('textEditor')
+  }  
 
 });
