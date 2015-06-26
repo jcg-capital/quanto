@@ -7,10 +7,7 @@ Code related to the textEditor template
 /+ ---------------------------------------------------- */
 
 Template.textEditor.created = function () {
-	var ace = AceEditor.instance("archy",{
-	    theme:"twilight", 
-	    mode:"html"
-	});
+
 };
 
 Template.textEditor.helpers({
@@ -22,7 +19,17 @@ Template.textEditor.helpers({
 });
 
 Template.textEditor.rendered = function () {
-
+  var algo = Session.get('clonedAlgo');
+  var options = {
+      theme:"twilight", 
+      mode:"javascript",
+  };
+  
+  var ace = AceEditor.instance("archy", options, function(editor){
+    console.log(editor);
+    editor.insert(algo);
+  });
+  
 };
 
 Template.textEditor.events({
