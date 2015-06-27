@@ -42,28 +42,24 @@ Router.map(function() {
     });
 
 
-    this.route('quandlsearch', {
-        where: 'server',
-        action: function() {
-          // GET, POST, PUT, DELETE
-          var requestMethod = this.request.method;
-          // Data from a POST request
-          var requestData = this.request.body;
-          var response = this.response
-          // Setup Quandl api connection
-          var Quandl = Meteor.npmRequire('quandl');
-          var quandl = new Quandl({
-              auth_token: 'vtyjDff63Y15eQuxnSGK',
-              api_version: 1,
-          });
-          quandl.search(requestData.query, requestData.formatObject, function(err, data){
-            if(err){
-              console.log('quandlStock : ERROR',err);
+this.route('yahooQuery', {
+  where: 'server',
+  action: function() {
+      var requestMethod = this.request.method;
+      // Data from a POST request
+      var requestData = this.request.body;
+      var response = this.response;
+      var symbolLookup = 'http://d.yimg.com/autoc.finance.yahoo.com/autoc?query=' + '' + requestData.query + '' + '&callback=YAHOO.Finance.SymbolSuggest.ssCallback'
+    HTTP.call("POST", symbolLookup, null,
+          function (error, result) {
+            if (!error) {
+              console.log('SEARCH RESULTS', result);
+              response.end(JSON.stringify(result.content));
             }
-            response.end(data);
-          });
-        }
-    });
+          }
+      );
+  }
+});
 
     this.route('quandlquery', {
         where: 'server',
@@ -88,3 +84,4 @@ Router.map(function() {
         }
     });
 });
+
