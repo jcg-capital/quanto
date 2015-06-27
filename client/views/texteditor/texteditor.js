@@ -21,7 +21,7 @@ Template.textEditor.helpers({
 Template.textEditor.rendered = function () {
   var algo = Session.get('clonedAlgo');
   var options = {
-      theme:"twilight", 
+      theme:"monokai",
       mode:"javascript",
   };
   
@@ -34,8 +34,10 @@ Template.textEditor.rendered = function () {
 
 Template.textEditor.events({
 
-  'click': function(e, instance){
-
+  'click #algo-tab': function(e, instance){
+    e.preventDefault();
+    console.log(e)
+    Template.textEditor.rendered()
   }
 
 });

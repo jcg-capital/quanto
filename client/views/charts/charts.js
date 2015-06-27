@@ -9,8 +9,7 @@ Code related to the charts template
  * Function to draw the area chart
  */
 function builtArea() {
-
-    $('#container-area').highcharts({
+    Session.set('dataStore',{
         
         chart: {
             type: 'area'
@@ -88,7 +87,8 @@ function builtArea() {
                 35000, 33000, 31000, 29000, 27000, 25000, 24000, 23000, 22000,
                 21000, 20000, 19000, 18000, 18000, 17000, 16000]
         }]
-    });
+    })
+    $('#container-area').highcharts(Session.get('dataStore'));
 }
 
 /*
