@@ -12,12 +12,16 @@ Template.landingPage.rendered = function () {
 
   Template.landingPage.events({
 
-    'click ': function(e){
+    'click div': function(e){
+
+      // click must render layout
+      // make quandl query, store it in session variable
+      // pass it to graph
 
     },
 
     'keyup': function(e, instance){
-      e.preventDefault()
+      e.preventDefault();
       var queryString = e.currentTarget.value;
       console.log(queryString);
 
@@ -32,27 +36,21 @@ Template.landingPage.rendered = function () {
       HTTP.call("POST", 'yahooQuery', query,
         function (error, result) {
           if (!error) {
-
-          
             var r = JSON.parse(result.content.replace('YAHOO.Finance.SymbolSuggest.ssCallback(','').replace(')',''));
-            r = JSON.parse(r)
-            debugger
-
+            r = JSON.parse(r);
             // exch: "NYQ"exchDisp: "NYSE"name: "Agilent Technologies Inc."symbol: "A"type: "S"typeDisp: "Equity"
-
-
             $('#search-results').html('');
             r.ResultSet.Result.forEach(function(c,i,a){
-              console.log(c)
-              var $result = $('<div style="background-color: #999;color: #EEE;margin: 3px;">')
+              console.log(c);
+              var $result = $('<div style="background-color: #999;color: #EEE;margin: 3px;">');
                var $c = $('<div>').text(c.name);
               var $a = $('<div>').text(c.symbol);
-              $result.append([$c, $a])
+              $result.append([$c, $a]);
               $('#search-results').append($result);
             });
           }
         }
-      )
+      );
     }
   });
 
@@ -85,7 +83,7 @@ Template.landingPage.rendered = function () {
 var ROTATIONS = [
   [ Math.PI/8 , Math.PI/4 ],
   [ -1 * Math.PI/10 , 7 * Math.PI + Math.PI/4]
-]
+];
 
 Session.setDefault('rotation', 0);
 
@@ -96,19 +94,19 @@ Template.landingPage.helpers({
       // value1: ROTATIONS[0],
       // value2: ROTATIONS[1],
       transition: { duration: 3500, curve: 'inOutElastic' }
-    }
+    };
   },
   nodeSize: "P:0.5; P:0.5; P:0.5",
   nodeAlign: [0.5, 0.5],
   nodeMountPoint: [0.5, 0.5],
   nodeOrigin: [0.55, 0.5]
-})
+});
 
 Template.inner.events({
   'click': function(event, tpl) {
-    console.log("CLICKED")
+    console.log("CLICKED");
     var current = Session.get('rotation');
     // logic to alternate between first and second position in ROTATIONS array
     Session.set('rotation', (current+1) % 2 );
   }
-})
+});
