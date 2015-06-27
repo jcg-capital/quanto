@@ -1,11 +1,98 @@
 <template name="textEditor">
-	<div style='display: inline;'>
-		<div class='col-md-6' id='ace-editor-div' style='height: 400px;width: 42.75em'>
-			<pre id='archy' style='height: 400px;width: 42.75em'></pre>
-		</div>
-		<div class='col-md-6'>
-			{{> charts}}
+	<style>
+/*	.navbar-default {
+	  display: none;
+	}*/
+	</style>
+	<div class='col-md-5' style='display: block'>
+
+		<ul class="nav nav-tabs nav-justified" role="tablist">
+			<li role="presentation"><a href='#Forge' role="tab" data-toggle="tab" id='algo-tab'>Forge</a></li>
+			<li role="presentation"><a href='#Data' role="tab" data-toggle="tab">Data</a></li>
+			<li role="presentation"><a href='#Query' role="tab" data-toggle="tab">Query</a></li>
+			<li role="presentation"><a href='#Algorithms' role="tab" data-toggle="tab" id='algo-tab'>Algos</a></li>
+		</ul>
+	  <!-- Tab panes -->
+		<div class="tab-content">
+		    <div role="tabpanel" class="tab-pane active" id="Forge">
+		    	<div class='col-md-12' id='ace-editor-div'>
+					<pre id='archy' style='height: 400px'></pre>
+					<div class='col-md-5' style='font'>
+						<span id='clone-algo' class='col-md-4 btn-md btn-primary'>Save</span>
+						<span id='clone-algo' class='col-md-4 btn-md btn-primary'>Run</span>
+						<span id='clone-algo' class='col-md-4 btn-md btn-primary'>Test</span>
+					</div>
+				</div>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="Data">
+				<div style='height: 400px'>DATADATA</div>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="Query">
+				<div style='height: 400px'>QUERY</div>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="Algorithms">
+				<div style='height: 400px'>{{> algorithms}}</div>
+			</div>
 		</div>
 	</div>
-	<br>
+<!-- 	<div class='col-md-7'></div>
+ -->
+
+	<div class='col-md-7'>
+		{{> charts}}
+	</div>
+
+</template>
+
+
+<template name="algorithms">
+  <h3>Algorithms: </h3>
+  <style>
+  	.algo-card {
+  		background-color: #EEE;
+		margin:1.2em 1.2em 1.2em 1.2em;
+		width: 200px;
+		height: 200px;
+		display: inline-block;
+		overflow-y: scroll;
+		overflow-x: hidden;
+  	}
+  	.hljs {
+  		background-color:#EEE;
+      overflow-x: hidden;
+  		opacity: .5;
+  	}
+  	.hljs:hover {
+  		background-color: #DDD;
+  		opacity: 1.0;   
+  	}
+   	.algo-card:hover {
+  		background-color:#DDD;
+
+		transform: scale(1.4); 
+  	}
+	.grow { transition: all .03s ease-in; }
+	.grow:hover {
+ 		-webkit-transform: scale(1.2);
+		-moz-transform: scale(1.2);
+		-ms-transform: scale(1.2);
+		-o-transform: scale(1.2); 
+		transform: scale(1.2); 
+	}
+  </style>
+  <div class='row-fluid' style='display:inline;'>
+    	<!-- {{rowMaker title}} -->
+    {{#each algorithms}}
+      <a href="{{pathFor 'algorithm'}}">
+	      <div class='algo-card grow'>
+	      	<a href="{{pathFor 'algorithm'}}">{{title}}</a>
+	      {{#markdown}}
+```js
+{{body}}
+```
+	      {{/markdown}}
+	      </div>
+      </a>
+    {{/each}}
+   </div>
 </template>
