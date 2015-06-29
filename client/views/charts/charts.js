@@ -36,9 +36,6 @@ Code related to the charts template
 // }
 
 
-//  function sendData(session, data) {
-    
-// }
 
 function builtArea() {
             $(function () {
@@ -46,9 +43,14 @@ function builtArea() {
 
          var dataObject = Session.get('dataStore');
 
-     
-         var data = dataObject['data'];
-         var columnNames = dataObject['column_names'];
+         if (!dataObject) {
+            dataObject = {};
+            dataObject.data = 0;
+         }
+
+         var data = dataObject.data;
+         console.log('THIS IS DA DATA', data);
+         var columnNames = dataObject.column_names;
 
         
             // split the data set into ohlc and volume
@@ -57,45 +59,79 @@ function builtArea() {
                 dataLength = data.length,
                 // set the allowed units for data grouping
                 groupingUnits = [[
-                    'week',                         // unit name
-                    [1]                             // allowed multiples
-                ], [
-                    'month',
-                    [1, 2, 3, 4, 6]
-                ]],
+                        'millisecond', // unit name
+                        [1, 2, 5, 10, 20, 25, 50, 100, 200, 500] // allowed multiples
+                    ], [
+                        'second',
+                        [1, 2, 5, 10, 15, 30]
+                    ], [
+                        'minute',
+                        [1, 2, 5, 10, 15, 30]
+                    ], [
+                        'hour',
+                        [1, 2, 3, 4, 6, 8, 12]
+                    ], [
+                        'day',
+                        [1]
+                    ], [
+                        'week',
+                        [1]
+                    ], [
+                        'month',
+                        [1, 3, 6]
+                    ], [
+                        'year',
+                        null
+                    ]];
 
                 i = 0;
 
             for (i; i < dataLength; i += 1) {
+
+                    var newDate = new Date(data[i][0]); // the date
+                    var dateInMil = newDate.getTime();
+            
+
                 ohlc.push([
-                    data[i][0], // the date
+
+                    dateInMil,
                     data[i][1], // open
                     data[i][2], // high
                     data[i][3], // low
                     data[i][4] // close
                 ]);
 
-              
-              console.log('ohlc', ohlc)
-
                 volume.push([
-                    data[i][0], // the date
+                    dateInMil, // the date
                     data[i][5] // the volume
                 ]);
 
             }
 
-        console.log('volume', volume)
+            console.log('OHLC', ohlc)
+
+            // frequency of data - daily, monthly, 
+
+            var frequency = dataObject.frequency;
+            if (frequency === 'daily') {
+            }
+
+            // start of data in milliseconds
+            var date = new Date(dataObject.from_date);
+            var pointStartTime = date.getTime();
+                
+      
             // create the chart
             $('div#container-area').highcharts('StockChart', {
 
 
                 rangeSelector: {
-                    selected: 1
+                allButtonsEnabled: true,
+                selected: 2
                 },
 
                 title: {
-                    text: 'AAPL Historical'
+                    text: dataObject.name
                 },
 
                 yAxis: [{
@@ -121,18 +157,26 @@ function builtArea() {
                     offset: 0,
                     lineWidth: 2
                 }],
-
-                series: [{
-                    type: 'candlestick',
-                    name: 'AAPL',
-                    data: ohlc,
-                    dataGrouping: {
-                        units: groupingUnits
-                    }
+               series: [{
+                type: 'candlestick',
+                // name: 'AAPL',
+                data: ohlc,
+                // pointStart: pointStartTime,
+                // pointInterval: 86400000,
+                dataGrouping: {
+                    units: groupingUnits
+                }
+            }, {
+                type: 'column',
+                name: 'Volume',
+                data: volume,
+                yAxis: 1,
+                // dataGrouping: {
+                //     units: groupingUnits
+                // }
                 }]
-            });
         });
- console.log('inside stock build function');
+    });
 }
 
 

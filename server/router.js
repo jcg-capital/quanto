@@ -52,6 +52,9 @@ this.route('yahooQuery', {
       var symbolLookup = 'http://d.yimg.com/autoc.finance.yahoo.com/autoc?query=' + '' + requestData.query + '' + '&callback=YAHOO.Finance.SymbolSuggest.ssCallback'
     HTTP.call("POST", symbolLookup, null,
           function (error, result) {
+            if (error) {
+              console.log('ERROR', error);
+            }
             if (!error) {
               console.log('SEARCH RESULTS', result);
               response.end(JSON.stringify(result.content));
