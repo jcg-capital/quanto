@@ -193,6 +193,42 @@ Template.quandlJcg.rendered = function () {
         backgroundColor: 'hsl(' + (i * 360 / NUM_SURFACES) + ', 100%, 50%)'
       }
     });
+    surface.on('dragenter', function(evt) {
+      console.log('dragenter', evt);
+      evt.preventDefault();
+      return false;
+    });
+
+    surface.on('dragleave', function(evt) {
+      console.log('dragleave', evt);
+      surface.setProperties({
+        border: 'none'
+      });
+      evt.preventDefault();
+      return false;
+    });
+
+    surface.on('dragover', function(evt) {
+      console.log('dragover', evt);
+      surface.setProperties({
+        border: '4px dashed black'
+      });
+      evt.preventDefault();
+      return false;
+    });
+
+    surface.on('drop', function(evt) {
+      console.log('drop', evt);
+
+      evt.preventDefault();
+      evt.stopPropagation();
+
+      surface.setProperties({
+        border: '4px solid red'
+      });
+      // files = evt.dataTransfer.files;
+      // console.log(files);
+    });
     surfaces.push(surface);
   }
 
