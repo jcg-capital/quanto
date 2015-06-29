@@ -121,7 +121,7 @@ Template.landingPage.rendered = function () {
         } else if (!error) {
           console.log('WE GOT SOMETHiNG HEREsfsfsafee3',result);
             var r = JSON.parse(result.content);
-            console.log(r)
+            console.log(r);
             chartSettings.title.text = r.source_name;
             chartSettings.subtitle.text = r.display_url;
             chartSettings.yAxis.title.text = r.column_names[1] + ' Price';
@@ -134,7 +134,7 @@ Template.landingPage.rendered = function () {
                                         })
                                       });
 
-                Session.set('dataStore', r)
+                Session.set('dataStore', r);
             // chartSettings.plotOptions.area.pointInterval = 2628000; // one month approx
             // // var splitDate = query.data.options.trim_start.split('-');
             // // var parseDate = {
@@ -145,7 +145,7 @@ Template.landingPage.rendered = function () {
             // chartSettings.plotOptions.area.pointStart = Date.UTC(parseDate.year, parseDate.month, parseDate.day); // Y, M, d
             // // $('#container-area').highcharts(chartSettings);
                
-      console.log('Current datastore:', Session.get('dataStore'));
+       
         }
       });
 
