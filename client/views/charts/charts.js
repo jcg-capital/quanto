@@ -49,6 +49,7 @@ function builtArea() {
      
          var data = dataObject['data'];
          var columnNames = dataObject['column_names'];
+
         
             // split the data set into ohlc and volume
             var ohlc = [],
@@ -85,7 +86,6 @@ function builtArea() {
             }
 
         console.log('volume', volume)
-
             // create the chart
             $('div#container-area').highcharts('StockChart', {
 
@@ -126,14 +126,6 @@ function builtArea() {
                     type: 'candlestick',
                     name: 'AAPL',
                     data: ohlc,
-                    dataGrouping: {
-                        units: groupingUnits
-                    }
-                }, {
-                    type: 'column',
-                    name: 'Volume',
-                    data: volume,
-                    yAxis: 1,
                     dataGrouping: {
                         units: groupingUnits
                     }
