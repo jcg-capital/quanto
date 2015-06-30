@@ -38,6 +38,16 @@ Template.textEditor.events({
     e.preventDefault();
     console.log(e)
     Template.textEditor.rendered()
+  },
+
+  'click #graph-data': function(e, instance){
+    e.preventDefault();
+    console.log(e);
+    var t = AceEditor.instance('#archy')
+    var code = t.getSession().getValue().replace(/\'/g, '\"')
+    eval(code)
+    // eval()
+    // $('#chart-container').addSeries(Session.get('currentDataStore'))
   }
 
 });

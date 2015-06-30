@@ -113,7 +113,16 @@ Router.map(function() {
   this.route('buttonRow');
   this.route('modalTrigger');
   this.route('brand');
-  this.route('quandlJcg')
+  this.route('quandlJcg',{
+    waitOn: function () {
+      return Meteor.subscribe('allAlgorithms');
+    },
+    data: function () {
+      return {
+        algorithms: Algorithms.find()
+      };
+    }
+  });
   // Users
 
   this.route('login');
