@@ -109,11 +109,7 @@ Router.map(function() {
   this.route('content');
 
   this.route('charts');
-  this.route('textEditor');
-  this.route('buttonRow');
-  this.route('modalTrigger');
-  this.route('brand');
-  this.route('quandlJcg',{
+  this.route('textEditor', {
     waitOn: function () {
       return Meteor.subscribe('allAlgorithms');
     },
@@ -123,6 +119,20 @@ Router.map(function() {
       };
     }
   });
+  this.route('buttonRow');
+  this.route('modalTrigger');
+  this.route('brand');
+
+  this.route('combinedViews',{
+    waitOn: function () {
+      return Meteor.subscribe('allAlgorithms');
+    },
+    data: function () {
+      return {
+        algorithms: Algorithms.find()
+      };
+    }
+  })
   // Users
 
   this.route('login');

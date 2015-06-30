@@ -1,50 +1,38 @@
 
 <template name="inner">
-
   <img src="logo.png">
-
 </template>
 
 <template name="searchBar">
-
-<style>
-
-body {
-  background-image: url("lowResBlackBckgrnd.jpg");
-  z-index: -10;
-}
-.searchbar {
-  margin-top: 0px;
-  float: none;
-  margin-left: auto;
-  margin-right: auto;
-}
-.tealBg {
-  text-align:center;
-}
-
-</style>
-
-<div class="searchbar">
-
-  <div class="col-md-2"></div>
-
-  <div class="col-md-8">
-    <div class="text-center">
-      <form role="form" class="search" style='display: inline;'>
-        <input type="search" placeholder="search" name='searchQuery' class="form-control">
-        <!-- <button class="btn" type="button">Search</button> -->
-      </form>
-      <!-- /.max-width on this form -->
-      <div id='search-results'></div>
+  <style>
+    body {
+      background-image: url("lowResBlackBckgrnd.jpg");
+      z-index: -10;
+    }
+    .searchbar {
+      margin-top: 0px;
+      float: none;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .tealBg {
+      text-align:center;
+    }
+  </style>
+  <div class="searchbar">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div class="text-center">
+        <form role="form" class="search" style='display: inline;'>
+          <input type="search" placeholder="search" name='searchQuery' class="form-control">
+        </form>
+        <div id='search-results'></div>
+      </div>
     </div>
+    <div class="col-md-2"></div>
   </div>
-  <div class="col-md-2"></div>
-</div>
-
- <button type="button" class="btn-xlarge" aria-label="Center Align">
-      <span class="glyphicon glyphicon-th" aria-hidden="true" data-toggle="modal" data-target="#myModal"> </span>
-        </button>
-
+  <button type="button" class="btn-xlarge" aria-label="Center Align">
+        <span class="glyphicon glyphicon-th" aria-hidden="true" data-toggle="modal" data-target="#myModal"> </span>
+  </button>
  </template>
 
