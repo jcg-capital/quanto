@@ -18,10 +18,10 @@ Template.landingPage.rendered = function () {
       // make quandl query, store it in session variable
       // pass it to graph
 
-      console.log(e)
+      console.log('event', e);
 
-    var tickerSymbol = e.target.innerText
-    console.log(tickerSymbol)
+    var tickerSymbol = e.target.innerText;
+    console.log(tickerSymbol);
 
     var query = {
                   data: {
@@ -62,8 +62,8 @@ Template.landingPage.rendered = function () {
                   // Convert UTC epoch seconds to local time
                   //var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
                   //console.log(d.setUTCSeconds(this.value))
-                  console.log(new Date(this.value))
-                  return new Date(this.value)
+                  console.log(new Date(this.value));
+                  return new Date(this.value);
                 }
             },
             // dateTimeLabelFormats: {
@@ -133,8 +133,9 @@ Template.landingPage.rendered = function () {
                                           return c[1]; //example: 0: "2012-03-31" 1: 599.55
                                         })
                                       });
-
                 Session.set('dataStore', r);
+                renderChart();
+
             // chartSettings.plotOptions.area.pointInterval = 2628000; // one month approx
             // // var splitDate = query.data.options.trim_start.split('-');
             // // var parseDate = {
@@ -172,11 +173,11 @@ Template.landingPage.rendered = function () {
             // exch: "NYQ"exchDisp: "NYSE"name: "Agilent Technologies Inc."symbol: "A"type: "S"typeDisp: "Equity"
             $('#search-results').html('');
             r.ResultSet.Result.forEach(function(c,i,a){
-              console.log(c);
+              console.log('results from Yahoo', c);
               var $result = $('<div class="search-result" style="background-color: #999;color: #EEE;margin: 3px">');
               //  var $c = $('<div>').text(c.name);
               // var $a = $('<div>').text(c.symbol);
-              var $c = $('<div>').text(c.name).append("<p>" + c.symbol + "</p>")
+              var $c = $('<div>').text(c.name).append("<p class=" + "symbol" +">" + c.symbol + "</p>");
               $result.append([$c]);
               $('#search-results').append($result);
             });

@@ -36,8 +36,7 @@ Code related to the charts template
 // }
 
 
-
-function builtArea() {
+renderChart = function() {
             $(function () {
            
 
@@ -49,7 +48,7 @@ function builtArea() {
          }
 
          var data = dataObject.data;
-         console.log('THIS IS DA DATA', data);
+         console.log('Data Object:', data);
          var columnNames = dataObject.column_names;
 
         
@@ -88,10 +87,11 @@ function builtArea() {
 
             for (i; i < dataLength; i += 1) {
 
+                          // start of data in milliseconds
+
                     var newDate = new Date(data[i][0]); // the date
                     var dateInMil = newDate.getTime();
             
-
                 ohlc.push([
 
                     dateInMil,
@@ -108,18 +108,13 @@ function builtArea() {
 
             }
 
-            console.log('OHLC', ohlc)
-
             // frequency of data - daily, monthly, 
 
             var frequency = dataObject.frequency;
             if (frequency === 'daily') {
             }
 
-            // start of data in milliseconds
-            var date = new Date(dataObject.from_date);
-            var pointStartTime = date.getTime();
-                
+  
       
             // create the chart
             $('div#container-area').highcharts('StockChart', {
@@ -186,8 +181,9 @@ function builtArea() {
  */
 
 Template.charts.events({
-    'click p': function (event) {
-        builtArea();
+    'click p.symbol': function (event) {
+        console.log('triggered Built Area');
+        // if old Session datastore
     }
 });
 
@@ -197,7 +193,7 @@ Template.charts.created = function () {
 };
 
 Template.charts.rendered = function() { 
-    builtArea();
+    renderChart();
 };
 
 

@@ -56,7 +56,7 @@ this.route('yahooQuery', {
               console.log('ERROR', error);
             }
             if (!error) {
-              console.log('SEARCH RESULTS', result);
+              console.log('Yahoo SYMBOL LookUp RESULTS', result);
               response.end(JSON.stringify(result.content));
             }
           }
