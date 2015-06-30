@@ -7,6 +7,8 @@ Code related to the textEditor template
 /+ ---------------------------------------------------- */
 
 Template.textEditor.created = function () {
+    debugger
+    renderChart();
 
 };
 
@@ -29,7 +31,7 @@ Template.textEditor.rendered = function () {
     console.log(editor);
     editor.insert(algo);
   });
-  
+
 };
 
 Template.textEditor.events({
