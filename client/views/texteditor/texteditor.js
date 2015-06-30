@@ -48,8 +48,6 @@ Template.textEditor.events({
     eval(code)
     // eval()
     // $('#chart-container').addSeries(Session.get('currentDataStore'))
-
-    debugger;
   }
 
 });
