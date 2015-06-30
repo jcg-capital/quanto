@@ -6,7 +6,6 @@
 
 meteor-platform
 insecure
-maazalik:highcharts
 twbs:bootstrap
 iron:router
 arch:ace-editor
@@ -21,4 +20,5 @@ npm-container
 http
 mjn:famous
 gadicohen:famous-views
+jhuenges:highstock
 mrt:handsontable
