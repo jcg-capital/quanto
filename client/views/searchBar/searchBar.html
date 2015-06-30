@@ -1,4 +1,4 @@
- <!-- need inner template to respond to click events for some reason -->
+
 <template name="inner">
 
   <img src="logo.png">
@@ -14,7 +14,7 @@ body {
   z-index: -10;
 }
 .searchbar {
-  margin-top: 150px;
+  margin-top: 0px;
   float: none;
   margin-left: auto;
   margin-right: auto;
@@ -41,13 +41,10 @@ body {
   </div>
   <div class="col-md-2"></div>
 </div>
-{{#Scene}}
-  {{#Node size=nodeSize align=nodeAlign mountPoint=nodeMountPoint rotation=reactiveRotation origin=nodeOrigin}}
-    {{#DOMElement class="tealBg" dir="rtl"}}
-      {{>inner}}
-    {{/DOMElement}}
-  {{/Node}}
-{{/Scene}}
+
+ <button type="button" class="btn-xlarge" aria-label="Center Align">
+      <span class="glyphicon glyphicon-th" aria-hidden="true" data-toggle="modal" data-target="#myModal"> </span>
+        </button>
 
  </template>
 

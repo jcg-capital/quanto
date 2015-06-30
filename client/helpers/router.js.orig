@@ -113,6 +113,7 @@ Router.map(function() {
   this.route('buttonRow');
   this.route('modalTrigger');
   this.route('brand');
+<<<<<<< HEAD
   this.route('quandlJcg',{
     waitOn: function () {
       return Meteor.subscribe('allAlgorithms');
@@ -123,6 +124,11 @@ Router.map(function() {
       };
     }
   });
+||||||| merged common ancestors
+  this.route('quandlJcg')
+=======
+  this.route('quandlJcg');
+>>>>>>> searchBar complete
   // Users
 
   this.route('login');
