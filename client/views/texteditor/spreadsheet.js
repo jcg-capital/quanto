@@ -18,20 +18,20 @@ Template.spreadsheet.helpers({
 });
 
 Template.spreadsheet.rendered = function () {
-  var tmp = [
-      ['', 'Kia', 'Nissan', 'Toyota', 'Honda', 'Mazda', 'Ford', 'Kia', 'Nissan', 'Toyota', 'Honda', 'Mazda', 'Ford'],
-      ['2012', 10, 11, 12, 13, 15, 16, 10, 11, 12, 13, 15, 16],
-      ['2012', 10, 11, 12, 13, 15, 16, 10, 11, 12, 13, 15, 16],
-      ['2012', 10, 11, 12, 13, 15, 16, 10, 11, 12, 13, 15, 16],
-      ['2012', 10, 11, 12, 13, 15, 16, 10, 11, 12, 13, 15, 16],
-      ['2012', 10, 11, 12, 13, 15, 16, 10, 11, 12, 13, 15, 16],
-      ['2013', 10, 11, 12, 13, 15, 16],
-      ['2014', 10, 11, 12, 13, 15, 16],
-      ['2015', 10, 11, 12, 13, 15, 16],
-      ['2016', 10, 11, 12, 13, 15, 16]
-    ];
-  var data = Session.set('dataStore', tmp);
-  var data = Session.get('dataStore')
+  // var tmp = [
+  //     ['', 'Kia', 'Nissan', 'Toyota', 'Honda', 'Mazda', 'Ford', 'Kia', 'Nissan', 'Toyota', 'Honda', 'Mazda', 'Ford'],
+  //     ['2012', 10, 11, 12, 13, 15, 16, 10, 11, 12, 13, 15, 16],
+  //     ['2012', 10, 11, 12, 13, 15, 16, 10, 11, 12, 13, 15, 16],
+  //     ['2012', 10, 11, 12, 13, 15, 16, 10, 11, 12, 13, 15, 16],
+  //     ['2012', 10, 11, 12, 13, 15, 16, 10, 11, 12, 13, 15, 16],
+  //     ['2012', 10, 11, 12, 13, 15, 16, 10, 11, 12, 13, 15, 16],
+  //     ['2013', 10, 11, 12, 13, 15, 16],
+  //     ['2014', 10, 11, 12, 13, 15, 16],
+  //     ['2015', 10, 11, 12, 13, 15, 16],
+  //     ['2016', 10, 11, 12, 13, 15, 16]
+  //   ];
+  // var data = Session.set('dataStore', tmp);
+  // var data = Session.get('dataStore')
 
   // Instead of creating a new Handsontable instance
   // with the container element passed as an argument,

@@ -7,9 +7,6 @@ Code related to the textEditor template
 /+ ---------------------------------------------------- */
 
 Template.textEditor.created = function () {
-    debugger
-    renderChart();
-
 };
 
 Template.textEditor.helpers({
