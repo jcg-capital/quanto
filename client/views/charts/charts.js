@@ -299,23 +299,12 @@ Template.charts.events({
         
         // if old Session datastore
     },
-    'click button.btn-xlarge': function (event) {
-        console.log('triggered Live Data');
-
-    },
 });
 
 Template.charts.created = function () {
   //
   console.log('ran created')
 };
-
-Template.charts.rendered = function() { 
-    console.log('ran rendered')
-    renderChart();
-};
-
-
 
 Template.charts.helpers({
   

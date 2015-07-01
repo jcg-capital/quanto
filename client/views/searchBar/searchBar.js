@@ -128,8 +128,18 @@ Template.searchBar.events({
         });
       }
     });
+  },
+  'click .glyphicon-th': function (event) {
+    console.log('triggered Live Data');
+    HTTP.call("GET", "liveQuery", null, function (error, result) {
+      if (error) {
+       console.log('ERROR client/searchBar', error);
+      }
+      if (!error) {
+       console.log('Live Query Result', result);
+      }
+    });
   }
-
 });
 
 Template.searchBar.helpers({});
