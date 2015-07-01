@@ -11,11 +11,35 @@ Code related to the charts template
 
 //  function builtStockLocal() {
 
+
+
+//     $('div#container-area').highcharts('StockChart', {
+
+
+//         rangeSelector: {
+//             selected: 1
+//         },
+
+//         title: {
+//             text: 'AAPL Stock Price'
+//         },
+
+//         series: [{
+//             name: 'AAPL',
+//             data: data,
+//             tooltip: {
+//                 valueDecimals: 2
+//             }
+//             }]
+//     });
+
+// }
+
 Streamy.on('hello', function(d) {
     console.log('data');
   console.log(d.data); // Will print 'world!'
 
-  // On the server side only, the parameter 's' is the socket which sends the message, you can use it to reply to the client, see below
+
 });
 
 Template.charts.rendered = function() { 
