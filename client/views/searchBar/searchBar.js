@@ -57,6 +57,10 @@ Template.searchBar.created = function () {
   //
 };
 
+// Here is the positioning data for the node in the searchBar template
+
+
+
 Template.searchBar.rendered = function () {
   //
 };
@@ -125,6 +129,7 @@ Template.searchBar.events({
       }
     });
   }
+
 });
 
 Template.searchBar.helpers({});

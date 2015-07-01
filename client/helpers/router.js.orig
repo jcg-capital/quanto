@@ -122,6 +122,7 @@ Router.map(function() {
   this.route('buttonRow');
   this.route('modalTrigger');
   this.route('brand');
+
   this.route('combinedViews',{
     waitOn: function () {
       return Meteor.subscribe('allAlgorithms');

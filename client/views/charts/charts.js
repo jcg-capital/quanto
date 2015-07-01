@@ -264,6 +264,30 @@ var makeCallRequest = function(ticker, cb) {
     });
 }
 
+
+
+/*
+ * Call the function to built the chart when the template is rendered
+ */
+
+Template.charts.events({
+    'click p.symbol': function (event) {
+        console.log('triggered Built Area');
+        // if old Session datastore
+    }
+});
+
+Template.charts.created = function () {
+  //
+
+};
+
+Template.charts.rendered = function() { 
+    renderChart();
+};
+
+
+
 Template.charts.helpers({
   
   myHelper: function () {

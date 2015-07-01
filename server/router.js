@@ -21,7 +21,7 @@ Router.map(function() {
           var requestMethod = this.request.method;
           // Data from a POST request
           var requestData = this.request.body;
-          var response = this.response
+          var response = this.response;
           // Setup Quandl api connection
           var Quandl = Meteor.npmRequire('quandl');
           var quandl = new Quandl({
@@ -49,7 +49,7 @@ this.route('yahooQuery', {
       // Data from a POST request
       var requestData = this.request.body;
       var response = this.response;
-      var symbolLookup = 'http://d.yimg.com/autoc.finance.yahoo.com/autoc?query=' + '' + requestData.query + '' + '&callback=YAHOO.Finance.SymbolSuggest.ssCallback'
+      var symbolLookup = 'http://d.yimg.com/autoc.finance.yahoo.com/autoc?query=' + '' + requestData.query + '' + '&callback=YAHOO.Finance.SymbolSuggest.ssCallback';
     HTTP.call("POST", symbolLookup, null,
           function (error, result) {
             if (error) {
@@ -71,7 +71,7 @@ this.route('yahooQuery', {
           var requestMethod = this.request.method;
           // Data from a POST request
           var requestData = this.request.body;
-          var response = this.response
+          var response = this.response;
           // Setup Quandl api connection
           var Quandl = Meteor.npmRequire('quandl');
           var quandl = new Quandl({
@@ -82,9 +82,117 @@ this.route('yahooQuery', {
             if(err){
               console.log('quandlStock : ERROR',err);
             }
+            console.log('DATA IS HERE', data);
             response.end(data);
           });
         }
     });
+
+
+var OAuth = Meteor.npmRequire('oauth').OAuth;
+
+
+//             // Consumer Key:  inpVE8MyjzoBIXJggdJzQFUrxhF1chCuB3jKdmVV  
+//             // Consumer Secret:  Vu1hXwpw2bJYiVF0hEUrNqbNRkJPDXRm00ePV5E8  
+//             // OAuth Token:  QveHaer95pgNTlwG3kGxLVEZwAobPH3LbN06sUWW  
+//             // OAuth Token Secret: y4KmDsJOWpYTOYk3xHT5YEfeevOOJxw6ui54DLUa 
+
+// var credentials = {
+//     consumer_key: "inpVE8MyjzoBIXJggdJzQFUrxhF1chCuB3jKdmVV",
+//     consumer_secret: "Vu1hXwpw2bJYiVF0hEUrNqbNRkJPDXRm00ePV5E8",
+//     access_token: "QveHaer95pgNTlwG3kGxLVEZwAobPH3LbN06sUWW",
+//     access_secret: "y4KmDsJOWpYTOYk3xHT5YEfeevOOJxw6ui54DLUa"
+// };
+
+// var request = oa.get("https://stream.tradeking.com/v1/market/quotes?symbols=AAPL", 
+// credentials.access_token, 
+// credentials.access_secret);
+
+// request.on('response', function (response) {
+//   console.log('streaming has begun');
+//     response.setEncoding('utf8');
+//     response.on('data', function(data) {
+//         console.log(data);
+//     });
+// });
+// request.end();
+
+
+
+        this.route('liveQuery', {
+          where: 'server',
+          action: function() {
+              var credentials = {
+                    consumer_key: "inpVE8MyjzoBIXJggdJzQFUrxhF1chCuB3jKdmVV",
+                    consumer_secret: "Vu1hXwpw2bJYiVF0hEUrNqbNRkJPDXRm00ePV5E8",
+                    access_token: "QveHaer95pgNTlwG3kGxLVEZwAobPH3LbN06sUWW",
+                    access_secret: "y4KmDsJOWpYTOYk3xHT5YEfeevOOJxw6ui54DLUa"
+                };
+
+                var oa = new OAuth(null, null, credentials.consumer_key, credentials.consumer_secret, "1.0", null, "HMAC-SHA1");
+
+              var clientRequestMethod = this.request.method;
+              // Data from a POST request
+              var clientRequestData = this.request.body;
+              var clientResponse = this.response;
+              // var liveDataURI = 'https://stream.tradeking.com/v1/market/quotes.json??symbols=AAPL';
+
+           
+              var TKrequestObject = oa.get("https://stream.tradeking.com/v1/market/quotes?symbols=AAPL", 
+                  credentials.access_token, 
+                  credentials.access_secret);
+
+              // var TKrequestObject = "https://stream.tradeking.com/v1/market/quotes?symbols=AAPL";
+
+              console.log('tk', TKrequestObject);
+
+
+// request.on('response', function (response) {
+//   console.log('streaming has begun');
+//     response.setEncoding('utf8');
+//     response.on('data', function(data) {
+//         console.log(data);
+//     });
+// });
+// request.end();
+
+
+                      TKrequestObject.on('response', function (response) {
+                          console.log('streaming has begun');
+                          response.setEncoding('utf8');
+                          response.on('data', function(data) {
+                            // socketConnection.pipe(data)
+                            console.log(data);
+                            Session.set('stockprice', data)
+                            });
+                        });
+                      console.log('ending');
+                      TKrequestObject.end();
+                  }
+
+      });
+
+
+            // HTTP.call("GET", TKrequestObject, null,
+            //       function (error, result, TKrequestObject) {
+            //          console.log('tk', TKrequestObject);
+            //         if (error) {
+            //           console.log('ERROR - server/router', error);
+            //         }
+            //         if (!error) {
+
+            //           console.log('liveQueryResult', result);
+
+
+
+            //           response.end(JSON.stringify(result.content));
+            //         }
+            //       }
+            //   );
+            // clientResponse.end();
+    
+
 });
 
+
+  

@@ -1,5 +1,8 @@
 {
   "dependencies": {
+    "oauth": {
+      "version": "0.9.13"
+    },
     "quandl": {
       "version": "0.0.4",
       "dependencies": {
