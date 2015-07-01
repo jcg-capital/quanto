@@ -11,7 +11,12 @@ Code related to the charts template
 
 //  function builtStockLocal() {
 
+Streamy.on('hello', function(d) {
+    console.log('data');
+  console.log(d.data); // Will print 'world!'
 
+  // On the server side only, the parameter 's' is the socket which sends the message, you can use it to reply to the client, see below
+});
 
 Template.charts.rendered = function() { 
   var dataObject = Session.get('dataStore');
@@ -260,20 +265,25 @@ var makeCallRequest = function(ticker, cb) {
 
 
 
-/*
+/* 
  * Call the function to built the chart when the template is rendered
  */
 
 Template.charts.events({
     'click p.symbol': function (event) {
-        console.log('triggered Built Area');
+        // console.log('triggered renderChart()');
+        
         // if old Session datastore
-    }
+    },
+    'click button.btn-xlarge': function (event) {
+        console.log('triggered Live Data');
+
+    },
 });
 
 Template.charts.created = function () {
   //
-
+  console.log('ran created')
 };
 
 Template.charts.rendered = function() { 
@@ -286,14 +296,8 @@ Template.charts.rendered = function() {
 Template.charts.helpers({
   
   myHelper: function () {
-  //
+    //
   }
 
-});
-
-Template.charts.events({
-  'click p.symbol': function (event) {
-    console.log('triggered Built Area');
-  }
 });
 

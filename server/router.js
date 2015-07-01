@@ -150,7 +150,7 @@ var OAuth = Meteor.npmRequire('oauth').OAuth;
 
               // var TKrequestObject = "https://stream.tradeking.com/v1/market/quotes?symbols=AAPL";
 
-              console.log('tk', TKrequestObject);
+              // console.log('tk', TKrequestObject);
 
 
 
@@ -169,7 +169,7 @@ var OAuth = Meteor.npmRequire('oauth').OAuth;
                           response.setEncoding('utf8');
                           response.on('data', function(data) {
                             // socketConnection.pipe(data)
-                            Streamy.broadcast('hello', {'price': data});
+                            Streamy.broadcast('hello', {'data' : data} );
                             console.log(data);
                             });
                         });
