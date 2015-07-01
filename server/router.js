@@ -13,7 +13,11 @@ Server-side Router.
 
 
 
+
 Router.map(function() {
+
+
+
     this.route('quandlmetadata', {
         where: 'server',
         action: function() {
@@ -88,7 +92,6 @@ this.route('yahooQuery', {
         }
     });
 
-
 var OAuth = Meteor.npmRequire('oauth').OAuth;
 
 
@@ -134,17 +137,21 @@ var OAuth = Meteor.npmRequire('oauth').OAuth;
               var clientRequestMethod = this.request.method;
               // Data from a POST request
               var clientRequestData = this.request.body;
+              console.log('clientrequestdata', clientRequestData);
               var clientResponse = this.response;
               // var liveDataURI = 'https://stream.tradeking.com/v1/market/quotes.json??symbols=AAPL';
 
+              var symbolRequested;
+
            
-              var TKrequestObject = oa.get("https://stream.tradeking.com/v1/market/quotes?symbols=AAPL", 
+              var TKrequestObject = oa.get("https://stream.tradeking.com/v1/market/quotes.json?symbols=AAPL",
                   credentials.access_token, 
                   credentials.access_secret);
 
               // var TKrequestObject = "https://stream.tradeking.com/v1/market/quotes?symbols=AAPL";
 
               console.log('tk', TKrequestObject);
+
 
 
 // request.on('response', function (response) {
@@ -162,8 +169,8 @@ var OAuth = Meteor.npmRequire('oauth').OAuth;
                           response.setEncoding('utf8');
                           response.on('data', function(data) {
                             // socketConnection.pipe(data)
+                            Streamy.broadcast('hello', {'price': data});
                             console.log(data);
-                            Session.set('stockprice', data)
                             });
                         });
                       console.log('ending');

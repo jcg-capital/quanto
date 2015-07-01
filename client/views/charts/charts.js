@@ -9,15 +9,9 @@ Code related to the charts template
  * Function to draw the area chart
  */
 
+//  function builtStockLocal() {
 
-/*
- * Call the function to built the chart when the template is rendered
- */
 
-Template.charts.created = function () {
-  //
-  
-};
 
 Template.charts.rendered = function() { 
   var dataObject = Session.get('dataStore');
@@ -283,6 +277,7 @@ Template.charts.created = function () {
 };
 
 Template.charts.rendered = function() { 
+    console.log('ran rendered')
     renderChart();
 };
 
