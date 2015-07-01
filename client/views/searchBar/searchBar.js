@@ -65,6 +65,7 @@ Template.searchBar.events({
 
   'click .search-result': function(e){
     var tickerSymbol = e.target.innerText;
+    console.log("LOL THISIS THETHING", tickerSymbol);
     var query = {
       data: {
         code : {
