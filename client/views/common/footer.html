@@ -13,6 +13,13 @@
 		  			<div class='col-xs-4'></div>
 		  			<div class='col-xs-4'>
 		  				<center>
+		  					{{#Scene}}
+      {{#Node size=nodeSize align=nodeAlign mountPoint=nodeMountPoint rotation=reactiveRotation origin=nodeOrigin}}
+        {{#DOMElement class="tealBg" dir="rtl"}}
+          {{>innerNado}}
+        {{/DOMElement}}
+      {{/Node}}
+    {{/Scene}}
 			  				<a class="footer-brand" href="{{pathFor 'siteMap'}}"> SiteMap </a>
 				  			<a class="footer-brand" href="{{pathFor 'searchBar'}}"> Home </a>
 				  			<a class="footer-brand" href="{{pathFor 'siteMap'}}"> About </a>
