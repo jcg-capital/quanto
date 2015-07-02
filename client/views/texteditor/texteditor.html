@@ -7,6 +7,12 @@
     #archy {
       height: 400px;
     }
+    .glyphicon {
+      background-color: #000;
+      cursor: pointer;
+      height:20px;
+      padding-top: 3px;
+    }
     .tab-pane {
       height: 400px;
     }
@@ -15,7 +21,6 @@
 	<ul class="nav nav-tabs nav-justified" role="tablist">
 		<li role="presentation"><a href='#Forge' role="tab" data-toggle="tab" id='algo-tab'>Forge</a></li>
 		<li role="presentation"><a href='#Data' role="tab" data-toggle="tab">Data</a></li>
-		<li role="presentation"><a href='#Query' role="tab" data-toggle="tab">Query</a></li>
 		<li role="presentation"><a href='#Algorithms' role="tab" data-toggle="tab" id='algo-tab'>Algos</a></li>
 	</ul>
   <!-- Tab panes -->
@@ -23,29 +28,17 @@
 	    <div role="tabpanel" class="tab-pane active" id="Forge">
 	    	<div class='col-md-12' id='ace-editor-div'>
 				<pre id='archy'></pre>
-				<div class='col-md-5' style='font'>
-					<span id='save-algo' class='col-md-4 btn-md btn-primary'>Save</span>
-					<span id='graph-data' class='col-md-4 btn-md btn-primary'>Graph DATA</span>
-					<span id='test-algo' class='col-md-4 btn-md btn-primary'>Test</span>
+				<div class='col-md-6' style='font'>
+					<div id='save-algo' class='col-md-4 glyphicon glyphicon-floppy-disk btn-primary'></div>
+					<div id='graph-data' class='col-md-4 glyphicon glyphicon-stats btn-primary'></div>
 				</div>
 			</div>
 		</div>
 		<div role="tabpanel" class="tab-pane" id="Data">
 				{{> spreadsheet}}
 		</div>
-		<div role="tabpanel" class="tab-pane" id="Query">
-			<div>QUERY</div>
-		</div>
 		<div role="tabpanel" class="tab-pane" id="Algorithms">
 			<div>{{> algorithms}}</div>
 		</div>
 	</div>
-
-<!-- 	<div class='col-md-7'></div>
- -->
-
-<!-- 	<div class='col-md-7'>
-		{{> charts}}
-	</div> -->
-
 </template>

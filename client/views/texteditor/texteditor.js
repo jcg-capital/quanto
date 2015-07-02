@@ -47,6 +47,14 @@ Template.textEditor.events({
     eval(code)
     // eval()
     // $('#chart-container').addSeries(Session.get('currentDataStore'))
+  },
+  'click #save-algo': function(e, instance){
+    e.preventDefault();
+    console.log(e)
+    var title = prompt('Name of new algo')
+    var t = AceEditor.instance('#archy')
+    var code = t.getSession().getValue().replace(/\'/g, '\"')
+    Algorithms.insert({title: title, body: code })
+    alert('Saved code: '+code)
   }
-
 });
