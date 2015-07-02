@@ -39,7 +39,7 @@ Template.algorithm.events({
     var algorithm = this;
     e.preventDefault();
     Session.set('clonedAlgo', algorithm.body)
-    Router.go('textEditor')
+    Router.go('combinedViews')
   }  
 
 });
