@@ -9,15 +9,38 @@ Code related to the charts template
  * Function to draw the area chart
  */
 
+//  function builtStockLocal() {
 
-/*
- * Call the function to built the chart when the template is rendered
- */
 
-Template.charts.created = function () {
-  //
-  
-};
+
+//     $('div#container-area').highcharts('StockChart', {
+
+
+//         rangeSelector: {
+//             selected: 1
+//         },
+
+//         title: {
+//             text: 'AAPL Stock Price'
+//         },
+
+//         series: [{
+//             name: 'AAPL',
+//             data: data,
+//             tooltip: {
+//                 valueDecimals: 2
+//             }
+//             }]
+//     });
+
+// }
+
+Streamy.on('hello', function(d) {
+    console.log('data');
+  console.log(d.data); // Will print 'world!'
+
+
+});
 
 Template.charts.rendered = function() { 
   var dataObject = Session.get('dataStore');
@@ -264,17 +287,30 @@ var makeCallRequest = function(ticker, cb) {
     });
 }
 
+
+
+/* 
+ * Call the function to built the chart when the template is rendered
+ */
+
+Template.charts.events({
+    'click p.symbol': function (event) {
+        // console.log('triggered renderChart()');
+        
+        // if old Session datastore
+    },
+});
+
+Template.charts.created = function () {
+  //
+  console.log('ran created')
+};
+
 Template.charts.helpers({
   
   myHelper: function () {
-  //
+    //
   }
 
-});
-
-Template.charts.events({
-  'click p.symbol': function (event) {
-    console.log('triggered Built Area');
-  }
 });
 

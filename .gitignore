@@ -2,3 +2,4 @@
 *.sublime-project
 *.sublime-workspace
 .meteor/.id
+packages/npm-container
