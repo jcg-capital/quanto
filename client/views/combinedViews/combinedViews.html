@@ -1,13 +1,39 @@
 <template name='combinedViews'>
+  <style type="text/css">
+    .searchBar{
+      text-align: right;
+      margin: 20px;
+    }
+    .chart{
+      margin-top: 40px;
+    }
+  </style>
+  <div class='searchBar'>
+    {{> searchBar}}
+  </div>
   <div class='col-md-12'>
     <div class='col-md-5' style='display: block'>
       {{> textEditor}}
     </div>
-    <div class='col-md-7'>
+    <div class='col-md-7 chart'>
       {{> charts}}
     </div>
   </div>
   <div>
-    {{> searchBar}}
+
+    {{#Scene}}
+      {{#Node size=nodeSize align=nodeAlign mountPoint=nodeMountPoint rotation=reactiveRotation origin=nodeOrigin}}
+        {{#DOMElement class="tealBg" dir="rtl"}}
+          {{>innerNado}}
+        {{/DOMElement}}
+      {{/Node}}
+    {{/Scene}}
+    
   </div>
+</template>
+
+<template name="innerNado">
+
+  <img src="logo.png">
+
 </template>
