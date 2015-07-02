@@ -261,7 +261,7 @@ Template.charts.rendered = function() {
   $('div#container-area').highcharts('StockChart', options);
 };
 
-var makeCallRequest = function(ticker, cb) {
+makeCallRequest = function(ticker, cb) {
   var query = {
       data: {
         code : {
