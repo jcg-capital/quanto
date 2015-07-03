@@ -35,17 +35,151 @@ Code related to the charts template
 
 // }
 
-Streamy.on('hello', function(d) {
-    console.log('data');
-  console.log(d.data); // Will print 'world!'
+live = false;
 
+// Streamy.on('hello', function(d) {
+//     console.log('data');
+//   var data = JSON.parse(d.data); // Will print 'world!'
+  
+//   if (data.trade) {
+//     console.log('trade occured');
+//      var trade = data.trade;
+//      var lastPrice = data.trade.last;
+//      var volume = data.trade.cvol;
+//      var timestamp = data.trade.timestamp;
 
-});
+//      var tradeData = {
+//           'lastPrice': lastPrice,
+//           'timestamp': timestamp
+//      };
+
+//      Session.set('tradeData', tradeData);
+//      console.log('this is tradeData session:', Session.get('tradeData'));
+      
+//   }
+ 
+//     if (data.quote) {
+//     console.log('quote occured');
+//        var quote = data.quote;
+//        var bid = data.quote.bid;
+//        var ask = data.quote.ask;
+//        var timestamp1 = data.quote.timestamp;
+
+//     }
+ 
+ 
+
+//     //call rendered charts
+
+// });
+
+setInterval(function() {
+  console.log('interval running')
+  live = true;
+  Template.charts.rendered();
+}, 4000);
+
+// Streamy.on('hello', function(){
+//   console.log('streamy2');
+//   live = true;
+//   Template.charts.rendered();
+// });
 
 Template.charts.rendered = function() { 
   var dataObject = Session.get('dataStore');
   // ticker of initial data to query
   var tickerSymbol = 'GOOG';
+
+
+  if (live) {
+        $(function () {
+
+          //need to pass in if symbol is currently choosen
+
+        Highcharts.setOptions({
+            global : {
+                useUTC : false
+            }
+        });
+
+        // Create the chart
+        $('#container').highcharts('StockChart', {
+            chart : {
+                events : {
+                    load : function () {
+                          //  Streamy.on('hello', function(d) {
+                          //   console.log('data');
+                          //   var data = JSON.parse(d.data); // Will print 'world!'
+                            
+                          //   if (data.trade) {
+                          //     console.log('trade occured');
+                          //      var trade = data.trade;
+                          //      var lastPrice = data.trade.last;
+                          //      var volume = data.trade.cvol;
+                          //      var timestamp = data.trade.timestamp;
+
+                          //      var tradeData = {
+                          //           'lastPrice': lastPrice,
+                          //           'timestamp': timestamp
+                          //      };
+
+                          //      Session.set('tradeData', tradeData);
+                          //      console.log('this is tradeData session:', Session.get('tradeData'));
+                                
+                          //   }
+                           
+                          //     if (data.quote) {
+                          //     console.log('quote occured');
+                          //        var quote = data.quote;
+                          //        var bid = data.quote.bid;
+                          //        var ask = data.quote.ask;
+                          //        var timestamp1 = data.quote.timestamp;
+
+                          //     }
+                          // });
+
+                          //   var series = this.series[0];
+                          //   series.addPoint([timestamp, lastPrice], true, true);
+
+                       
+                     
+                    }
+                }
+            },
+
+            rangeSelector: {
+                buttons: [{
+                    count: 1,
+                    type: 'minute',
+                    text: '1M'
+                }, {
+                    count: 5,
+                    type: 'minute',
+                    text: '5M'
+                }, {
+                    type: 'all',
+                    text: 'All'
+                }],
+                inputEnabled: false,
+                selected: 0
+            },
+
+            title : {
+                text : 'Live random data'
+            },
+
+            exporting: {
+                enabled: false
+            },
+
+            series : [{
+                name : 'Random data',
+                data : []
+                }] 
+              });
+            });
+        }
+
   if (!dataObject) {    
     makeCallRequest(tickerSymbol, function(){
       dataObject = Session.get('dataStore');
