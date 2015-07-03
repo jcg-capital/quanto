@@ -98,8 +98,16 @@ Router.map(function() {
   // Pages
   //****************************************//
 
-  this.route('searchBar', {
-    path: '/'
+  this.route('combinedViews', {
+    path: '/',
+    waitOn: function () {
+      return Meteor.subscribe('allAlgorithms');
+    },
+    data: function () {
+      return {
+        algorithms: Algorithms.find()
+      }
+    }
   });
 
   this.route('siteMap', {
@@ -123,16 +131,7 @@ Router.map(function() {
   this.route('modalTrigger');
   this.route('brand');
 
-  this.route('combinedViews',{
-    waitOn: function () {
-      return Meteor.subscribe('allAlgorithms');
-    },
-    data: function () {
-      return {
-        algorithms: Algorithms.find()
-      };
-    }
-  })
+
   // Users
 
   this.route('login');
