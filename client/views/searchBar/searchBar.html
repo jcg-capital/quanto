@@ -40,7 +40,7 @@
     <div class="col-md-8">
       <div class="text-center">
         <form role="form" class="search" style='display: inline;'>
-          <input type="search" placeholder="search" name='searchQuery' class="form-control">
+          <input type="search" placeholder="search" onblur="$(#search-results).empty()" name='searchQuery' class="form-control">
         </form>
         <div id='search-results'></div>
       </div>

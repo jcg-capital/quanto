@@ -4,7 +4,7 @@ var chartSettings = {
       type: 'area'
   },
   title: {
-      text: '' // title
+      text: 'LOLOLOL' // title
   },
   credits: {
       enabled: false
@@ -75,6 +75,8 @@ Template.searchBar.events({
   'click .search-result': function(e){
     var tickerSymbol = e.target.innerText;
     console.log("LOL THISIS THETHING", tickerSymbol);
+    $('#search-results').html('');
+
     makeCallRequest(tickerSymbol, function(){
       dataObject = Session.get('dataStore');
       var data = dataObject.data;
@@ -220,9 +222,9 @@ Template.searchBar.events({
   }
 });
 
-Template.searchBar.helpers({});
+// Template.searchBar.helpers({});
 
-Template.inner.events({
-  'click': function(event, tpl) {
-  }
-});
+// Template.inner.events({
+//   'click': function(event, tpl) {
+//   }
+// });
