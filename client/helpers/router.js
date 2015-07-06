@@ -115,6 +115,7 @@ Router.map(function() {
   });
 
   this.route('content');
+  this.route('productPage');
 
   this.route('charts');
   this.route('textEditor', {
