@@ -1,3 +1,4 @@
+
 var chartSettings = {      
   chart: {
       type: 'area'
@@ -66,6 +67,10 @@ Template.searchBar.rendered = function () {
 };
 
 Template.searchBar.events({
+  'onblur .form-control': function(e){
+    // $(".search-result").remove();
+    // e.value = "";
+  },
 
   'click .search-result': function(e){
     var tickerSymbol = e.target.innerText;
@@ -194,8 +199,8 @@ Template.searchBar.events({
         $('#search-results').html('');
         r.ResultSet.Result.forEach(function(c,i,a){
           console.log('results from Yahoo', c);
-          var $result = $('<div class="search-result" style="background-color: #999;color: #EEE;margin: 3px">');
-          var $c = $('<div>').text(c.name).append("<p class=" + "symbol" +">" + c.symbol + "</p>");
+          var $result = $('<div class="search-result">');
+          var $c = $('<div class="search-res-inner">').text(c.name).append("<p class=" + "symbol" +">" + c.symbol + "</p>");
           $result.append([$c]);
           $('#search-results').append($result);
         });

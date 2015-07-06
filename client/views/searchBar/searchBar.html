@@ -5,6 +5,22 @@
 
 <template name="searchBar">
   <style>
+    .search-res-inner {
+      background-color: #999;
+      position: relative;
+      z-index: 999;
+    }
+    .search-results {
+      background-color: #999;
+      position: absolute;
+      z-index: 999;
+      margin: 15px;
+    }
+    #search-result {
+      background-color: #999;
+      z-index: 900;
+      margin: 15px;
+    }
     body {
       background-image: url("lowResBlackBckgrnd.jpg");
       z-index: -10;

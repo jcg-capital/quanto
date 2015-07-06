@@ -11,24 +11,13 @@
   <div class='searchBar'>
     {{> searchBar}}
   </div>
-  <div class='col-md-12'>
+  <div class='col-md-12' style="position: fixed">
     <div class='col-md-5' style='display: block'>
       {{> textEditor}}
     </div>
     <div class='col-md-7 chart'>
       {{> charts}}
     </div>
-  </div>
-  <div>
-
-    {{#Scene}}
-      {{#Node size=nodeSize align=nodeAlign mountPoint=nodeMountPoint rotation=reactiveRotation origin=nodeOrigin}}
-        {{#DOMElement class="tealBg" dir="rtl"}}
-          {{>innerNado}}
-        {{/DOMElement}}
-      {{/Node}}
-    {{/Scene}}
-    
   </div>
 </template>
 
