@@ -16,12 +16,32 @@
     .tab-pane {
       height: 400px;
     }
+    #save-algo {
+      margin-right: 5px;
+      background-color: #30ACAC;
+      border-radius: 5px;
+      position: relative;
+      width: auto;
+    }
+    #graph-data {
+      background-color: #30ACAC;
+      border-radius: 5px;
+      position: relative;
+      width: auto;
+    }
+    .tab {
+      background-color: lightgrey;
+      border-color: darkgrey;
+      border-style: solid;
+      border-width: 2px 2px 0px 2px;
+      border-radius: 5px 5px 0px 0px;
+    }
 	</style>
 
 	<ul class="nav nav-tabs nav-justified" role="tablist">
-		<li role="presentation"><a href='#Forge' role="tab" data-toggle="tab" id='algo-tab'>Forge</a></li>
-		<li role="presentation"><a href='#Data' role="tab" data-toggle="tab">Data</a></li>
-		<li role="presentation"><a href='#Algorithms' role="tab" data-toggle="tab" id='algo-tab'>Algos</a></li>
+		<li class="tab" role="presentation"><a href='#Forge' role="tab" data-toggle="tab" id='algo-tab'>Forge</a></li>
+		<li class="tab" role="presentation"><a href='#Data' role="tab" data-toggle="tab">Data</a></li>
+		<li class="tab" role="presentation"><a href='#Algorithms' role="tab" data-toggle="tab" id='algo-tab'>Algos</a></li>
 	</ul>
   <!-- Tab panes -->
 	<div class="tab-content">
@@ -29,8 +49,8 @@
 	    	<div class='col-md-12' id='ace-editor-div'>
 				<pre id='archy'></pre>
 				<div class='col-md-6' style='font'>
-					<div id='save-algo' class='col-md-4 glyphicon glyphicon-floppy-disk btn-primary'></div>
-					<div id='graph-data' class='col-md-4 glyphicon glyphicon-stats btn-primary'></div>
+					<div id='save-algo' class='col-md-4 glyphicon glyphicon-floppy-disk btn-primary'> Save</div>
+					<div id='graph-data' class='col-md-4 glyphicon glyphicon-stats btn-primary'> Graph </div>
 				</div>
 			</div>
 		</div>
