@@ -1,0 +1,133 @@
+<template name='productPage'>
+  <style>
+    /* ============================================================
+      SECTIONS
+    ============================================================ */
+    section {
+      background-color: #EEE;
+    }
+    section.module:last-child {
+      margin-bottom: 0;
+    }
+    section.module h2 {
+      margin-bottom: 40px;
+      font-size: 30px;
+    }
+    section.module h3 {
+      font-size: 20px;
+      color: #333;
+    }
+    section.module p {
+      margin-bottom: 40px;
+      font-size: 16px;
+      font-weight: 300;
+    }
+    section.module p:last-child {
+      margin-bottom: 0;
+    }
+    section.module.content {
+      padding: 40px 0;
+    }
+    section.module.parallax {
+      padding: 240px 0;
+      background-position: 0 0;
+    }
+    section.module.parallax h1 {
+      color: #1e1e1e;
+      font-size: 48px;
+      line-height: 1;
+      font-weight: 700;
+      text-align: center;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px white;
+    }
+    section.module.parallax-1 {
+      background-image: url("product-page/muted-pattern1.jpg");
+    }
+    section.module.parallax-2 {
+      background-image: url("product-page/pattern2.png");
+    }
+    section.module.parallax-3 {
+      background-image: url("product-page/pattern3.png");
+    }
+
+    @media all and (min-width: 600px) {
+      section.module h2 {
+        font-size: 42px;
+      }
+      section.module p {
+        font-size: 20px;
+      }
+      section.module.parallax h1 {
+        font-size: 96px;
+      }
+    }
+    @media all and (min-width: 960px) {
+      section.module.parallax h1 {
+        font-size: 160px;
+      }
+    }
+    .product-image {
+      width: 50%;
+    }
+  </style>
+
+  <main>
+    <section class="module parallax parallax-1">
+      <div class="container">
+        <div class='col-xs-12'>
+          <div class='col-xs-3'></div>
+          <div class='product-image-container'>
+            <img src='Quanto.png' class='product-image col-xs-6'>
+          </div>
+          <div class='col-xs-3'></div>
+        </div>
+        <div class='col-xs-12'>
+          <div class='col-xs-3'></div>
+          <div class='product-image-container col-xs-6'>
+            <center>
+              <h3>An Open Source Trading Platform</h3>
+            </center>
+          </div>
+          <div class='col-xs-3'></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="module content">
+      <div class="container">
+        <h2>Lorem Ipsum Dolor</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequuntur, nesciunt dicta, esse rem ducimus itaque quis. Adipisci ullam nam qui illum debitis sit ad in delectus, repudiandae non dolorum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit veritatis, facere aliquid itaque tempore consequatur nihil sint enim aliquam id saepe magnam totam repellat placeat a fugit nulla molestias voluptas.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque eius harum atque unde nihil aut quam provident sunt, iste error vitae suscipit dolores cupiditate totam, eum quae alias! Dicta, nisi.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate beatae impedit officia quis odit rerum sequi, explicabo commodi illum suscipit, tempore eum doloremque quae obcaecati tempora quidem neque sapiente modi?</p>
+      </div>
+    </section>
+
+    <section class="module parallax parallax-2">
+      <div class="container">
+        <h1>Trade</h1>
+      </div>
+    </section>
+
+    <section class="module content">
+      <div class="container">
+        <h2>Lorem Ipsum Dolor</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequuntur, nesciunt dicta, esse rem ducimus itaque quis. Adipisci ullam nam qui illum debitis sit ad in delectus, repudiandae non dolorum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit veritatis, facere aliquid itaque tempore consequatur nihil sint enim aliquam id saepe magnam totam repellat placeat a fugit nulla molestias voluptas.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum distinctio eum asperiores rem enim fugit eaque voluptas est laboriosam in repudiandae architecto placeat?</p>
+      </div>
+    </section>
+
+    <section class="module parallax parallax-3">
+      <div class="container">
+        <h1>Backtest</h1>
+      </div>
+    </section>
+
+    <section class="module content">
+      <div class="container">
+        <h2>Lorem Ipsum Dolor</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequuntur, nesciunt dicta, esse rem ducimus itaque quis. Adipisci ullam nam qui illum debitis sit ad in delectus, repudiandae non dolorum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit veritatis, facere aliquid itaque tempore consequatur nihil sint enim aliquam id saepe magnam totam repellat placeat a fugit nulla molestias voluptas.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum distinctio eum asperiores rem enim fugit eaque voluptas est laboriosam in repudiandae architecto placeat, illum atque quasi explicabo, culpa, molestias!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit voluptas, aperiam quae provident?</p>
+      </div>
+    </section>
+  </main>
+</template>
