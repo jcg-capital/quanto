@@ -5,20 +5,33 @@
 
 <template name="searchBar">
   <style>
+    .innerptag {
+      z-index: 1;
+    }
     .search-res-inner {
       background-color: #999;
       position: relative;
       z-index: 999;
+      width: 95%;
+      margin: 5px auto;
+      display: table;
+      border-radius: 5px;
     }
-    .search-results {
-      background-color: #999;
-      position: absolute;
-      z-index: 999;
-      margin: 15px;
+    .search-res-inner:hover {
+      cursor: pointer;
+      background-color: lightgrey;
+    }
+    #search-results {
+      background-color: darkgrey;
+      position: relative;
+      z-index: 997;
+      width: 75%;
+      margin: 0 auto;
+      display: table;
+      border-radius: 0px 0px 10px 10px;
     }
     #search-result {
-      background-color: #999;
-      z-index: 900;
+      z-index: 999;
       margin: 15px;
     }
     body {

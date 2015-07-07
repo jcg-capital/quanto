@@ -15,8 +15,6 @@ simple:highlight.js
 markdown
 meteorhacks:npm
 http
-mjn:famous
-gadicohen:famous-views
 jhuenges:highstock
 mrt:handsontable
 joncursi:socket-io-client
