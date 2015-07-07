@@ -73,22 +73,23 @@ live = false;
 
 // });
 
-setInterval(function() {
-  console.log('interval running')
-  live = true;
-  Template.charts.rendered();
-}, 4000);
-
-
-// Streamy.on('hello', function(){
-//   console.log('streamy2');
+// setInterval(function() {
+//   console.log('interval running')
 //   live = true;
 //   Template.charts.rendered();
-// });
+// }, 4000);
+
+
+Streamy.on('hello', function(){
+  console.log('streamy2');
+  live = true;
+  Template.charts.rendered();
+});
 
 
 
 Template.charts.rendered = function() { 
+  console.log('rendered');
   var dataObject = Session.get('dataStore');
   // ticker of initial data to query
   var tickerSymbol = 'GOOG';
@@ -208,8 +209,8 @@ Template.charts.rendered = function() {
   } 
   else if (live) {
         $(function () {
-
-          //need to pass in if symbol is currently choosen
+          console.log('rendering live chart');
+         
 
         Highcharts.setOptions({
             global : {
@@ -218,44 +219,52 @@ Template.charts.rendered = function() {
         });
 
         // Create the chart
-        $('#container').highcharts('StockChart', {
+        $('div#container-area').highcharts('StockChart', {
+           
             chart : {
                 events : {
                     load : function () {
-                          //  Streamy.on('hello', function(d) {
-                          //   console.log('data');
-                          //   var data = JSON.parse(d.data); // Will print 'world!'
+                         console.log('entered load function');
+                          // need to pass in if symbol is currently choosen
+                            Streamy.on('hello', function(d) {
+                            console.log('streamy triggered');
+                            var data = JSON.parse(d.data); // Will print 'world!'
                             
-                          //   if (data.trade) {
-                          //     console.log('trade occured');
-                          //      var trade = data.trade;
-                          //      var lastPrice = data.trade.last;
-                          //      var volume = data.trade.cvol;
-                          //      var timestamp = data.trade.timestamp;
+                            if (data.trade) {
+                              console.log('trade occured');
+                               var trade = data.trade;
+                               var lastPrice = data.trade.last;
+                               var volume = data.trade.cvol;
+                               var timestamp = data.trade.timestamp;
 
-                          //      var tradeData = {
-                          //           'lastPrice': lastPrice,
-                          //           'timestamp': timestamp
-                          //      };
+                               var tradeData = {
+                                    'lastPrice': lastPrice,
+                                    'timestamp': timestamp
+                               };
 
-                          //      Session.set('tradeData', tradeData);
-                          //      console.log('this is tradeData session:', Session.get('tradeData'));
+                               Session.set('tradeData', tradeData);
+                               console.log('this is tradeData session:', Session.get('tradeData'));
                                 
-                          //   }
+                            }
                            
-                          //     if (data.quote) {
-                          //     console.log('quote occured');
-                          //        var quote = data.quote;
-                          //        var bid = data.quote.bid;
-                          //        var ask = data.quote.ask;
-                          //        var timestamp1 = data.quote.timestamp;
+                              if (data.quote) {
+                              console.log('quote occured');
+                                 var quote = data.quote;
+                                 var bid = data.quote.bid;
+                                 var ask = data.quote.ask;
+                                 var timestamp1 = data.quote.timestamp;
 
-                          //     }
-                          // });
+                              }
+                          });
 
-                          //   var series = this.series[0];
-                          //   series.addPoint([timestamp, lastPrice], true, true);
-
+                        
+                          // setInterval(function () {
+                    //     var x = (new Date()).getTime(), // current time
+                    //         y = Math.round(Math.random() * 100);
+                    //     series.addPoint([x, y], true, true);
+                    // }, 1000);
+                               var series = this.series[0];
+                            series.addPoint([timestamp, lastPrice], true, true);
                        
                      
                     }
@@ -289,7 +298,7 @@ Template.charts.rendered = function() {
 
             series : [{
                 name : 'Random data',
-                data : []
+                data : [0,1,2,3]
                 }] 
               });
             });
@@ -297,6 +306,7 @@ Template.charts.rendered = function() {
 
   else {
 
+        console.log('rendering default chart');
         var data = dataObject.data;
         
         var columnNames = dataObject.column_names;
@@ -429,7 +439,7 @@ makeCallRequest = function(ticker, cb) {
         cb();
       }
     });
-}
+};
 
 
 
@@ -447,7 +457,7 @@ Template.charts.events({
 
 Template.charts.created = function () {
   //
-  console.log('ran created')
+  console.log('ran created');
 };
 
 Template.charts.helpers({
