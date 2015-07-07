@@ -136,7 +136,7 @@ Router.map(function() {
   // Users
 
   this.route('login');
-
+  this.route('lastQuote');
   this.route('signup');
 
   this.route('forgot');

@@ -1,0 +1,25 @@
+<template name="lastQuote">
+
+<div>
+<h1> {{> lastPrices }} </h1>
+</div>
+
+</template>
+
+<template name = "lastPrices">
+
+<div class="row">
+  <div class="col-md-2"> Quote</div>
+  <div class="col-md-2"> Bid </div>
+  <div class="col-md-2"> Ask </div>
+</div>
+<div class="row">
+  <div class="col-md-2"> {{ lastPrice }} </div>
+  <div class="col-md-2"> {{ lastBid }} </div>
+  <div class="col-md-2"> {{ lastAsk }} </div>
+</div>
+
+
+
+</template>
+
