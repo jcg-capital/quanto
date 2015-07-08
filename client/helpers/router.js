@@ -118,7 +118,6 @@ Router.map(function() {
   });
 
   this.route('content');
-
   this.route('charts');
   this.route('textEditor', {
     waitOn: function () {

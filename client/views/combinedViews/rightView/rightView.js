@@ -1,1 +1,0 @@
-rightView.js
