@@ -35,7 +35,7 @@ Code related to the charts template
 
 // }
 
-live = false;
+
 
 // Streamy.on('hello', function(d) {
 //     console.log('data');
@@ -79,12 +79,11 @@ live = false;
 //   Template.charts.rendered();
 // }, 4000);
 
+live = false;
 
 Streamy.on('hello', function(){
-  console.log('streamy2');
-  live = true;
-  Template.charts.rendered();
 });
+
 
 
 
@@ -103,7 +102,6 @@ Template.charts.rendered = function() {
     makeCallRequest(tickerSymbol, function(){
       dataObject = Session.get('dataStore');
       var data = dataObject.data;
-      
       var columnNames = dataObject.column_names;
       var ohlc = [];
       var volume = [];
@@ -219,52 +217,78 @@ Template.charts.rendered = function() {
         });
 
         // Create the chart
+         console.log('entered load function');
+            // need to pass in if symbol is currently choosen
+            var historicalData = Session.get('dataStore').data;
+            // console.log('dataStore retrieved:', historicalData);
+        liveResults = [];
+        var volume = [];
+               for (var i = 0; i < historicalData.length; i++) {
+                  var newDate = new Date(historicalData[i][0]); // the date
+                  var dateInMil = newDate.getTime();
+                  liveResults.push([
+                    dateInMil,
+                    historicalData[i][4] // close
+                  ]);
+                  volume.push([
+                    dateInMil, // the date
+                    historicalData[i][5] // the volume
+                  ]);
+                   // console.log('results:', liveResults);
+                }
+
         $('div#container-area').highcharts('StockChart', {
-           
+            
             chart : {
                 events : {
                     load : function () {
-                         console.log('entered load function');
-                          // need to pass in if symbol is currently choosen
-                            Streamy.on('hello', function(d) {
-                            console.log('streamy triggered');
-                            var data = JSON.parse(d.data); // Will print 'world!'
-                            
-                            if (data.trade) {
-                              console.log('trade occured');
-                               var trade = data.trade;
-                               var lastPrice = data.trade.last;
-                               var volume = data.trade.cvol;
-                               var timestamp = data.trade.timestamp;
 
-                               var tradeData = {
-                                    'lastPrice': lastPrice,
-                                    'timestamp': timestamp
-                               };
-
-                               Session.set('tradeData', tradeData);
-                               console.log('this is tradeData session:', Session.get('tradeData'));
-                                
-                            }
-                           
-                              if (data.quote) {
-                              console.log('quote occured');
-                                 var quote = data.quote;
-                                 var bid = data.quote.bid;
-                                 var ask = data.quote.ask;
-                                 var timestamp1 = data.quote.timestamp;
-
-                              }
-                          });
-
-                        
-                          // setInterval(function () {
+                     
+                    //         var series = this.series[0];
+                    // setInterval(function () {
                     //     var x = (new Date()).getTime(), // current time
                     //         y = Math.round(Math.random() * 100);
                     //     series.addPoint([x, y], true, true);
                     // }, 1000);
-                               var series = this.series[0];
-                            series.addPoint([timestamp, lastPrice], true, true);
+                      
+                        var series = this.series[0];
+
+                          Streamy.on('hello', function(d) {
+                          // console.log('streamy triggered');
+                          var data = JSON.parse(d.data); // Will print 'world!'
+                            if (data.trade) {
+                              console.log('trade occured');
+                               var trade = data.trade;
+                               var lastPrice = data.trade.last;
+                               console.log('lastPrice', parseFloat(lastPrice));
+                               var volume = data.trade.cvol;
+                               var timestamp = data.trade.timestamp;
+                               var tradeData = {
+                                    'lastPrice': lastPrice,
+                                    'timestamp': timestamp
+                                };
+                               
+                              // var $chart = $('div#container-area').highcharts();
+                              var x = (new Date()).getTime(); // current time
+                              // y = Math.round(Math.random() * 100);
+                              // console.log('this is Y', y);
+                              series.addPoint([x, parseFloat(lastPrice)], true, true);
+                            }
+                          });
+
+
+                            //    Session.set('tradeData', tradeData);
+                            //    console.log('this is tradeData session:', Session.get('tradeData'));
+                            // }
+                            //   if (data.quote) {
+                            //   console.log('quote occured');
+                            //      var quote = data.quote;
+                            //      var bid = data.quote.bid;
+                            //      var ask = data.quote.ask;
+                            //      var timestamp1 = data.quote.timestamp;
+
+                            //   }
+
                        
                      
                     }
@@ -297,8 +321,7 @@ Template.charts.rendered = function() {
             },
 
             series : [{
-                name : 'Random data',
-                data : [0,1,2,3]
+                data : liveResults,
                 }] 
               });
             });
@@ -448,10 +471,8 @@ makeCallRequest = function(ticker, cb) {
  */
 
 Template.charts.events({
-    'click p.symbol': function (event) {
-        // console.log('triggered renderChart()');
-        
-        // if old Session datastore
+    'click p': function (event) {
+  
     },
 });
 

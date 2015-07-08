@@ -144,7 +144,7 @@ var OAuth = Meteor.npmRequire('oauth').OAuth;
               var symbolRequested;
 
            
-              var TKrequestObject = oa.get("https://stream.tradeking.com/v1/market/quotes.json?symbols=AAPL",
+              var TKrequestObject = oa.get("https://stream.tradeking.com/v1/market/quotes.json?symbols=GOOG",
                   credentials.access_token, 
                   credentials.access_secret);
 
