@@ -254,25 +254,37 @@ Template.charts.rendered = function() {
                         var series = this.series[0];
 
                           Streamy.on('hello', function(d) {
-                          // console.log('streamy triggered');
-                          var data = JSON.parse(d.data); // Will print 'world!'
-                            if (data.trade) {
-                              console.log('trade occured');
-                               var trade = data.trade;
-                               var lastPrice = data.trade.last;
-                               console.log('lastPrice', parseFloat(lastPrice));
-                               var volume = data.trade.cvol;
-                               var timestamp = data.trade.timestamp;
-                               var tradeData = {
-                                    'lastPrice': lastPrice,
-                                    'timestamp': timestamp
+
+                            var data = JSON.parse(d.data); 
+
+                                if (data.quote) {
+                                  var quote = data.quote;
+                                  console.log('lastQuote', parseFloat(quote));
+                                  var bid = data.quote.bid;
+                                  var ask = data.quote.ask;
+                                  var timestamp1 = data.quote.timestamp;
+                                  series.addPoint([timestamp1, parseFloat(quote)], true, true);
+                                }
+
+                        
+                                  
+                                if (data.trade) {
+                                 
+                                   var trade = data.trade;
+                                   var lastPrice = data.trade.last;
+                                   console.log('lastPrice', parseFloat(lastPrice));
+                                   var volume = data.trade.cvol;
+                                   var timestamp = data.trade.timestamp;
+                                   var tradeData = {
+                                        'lastPrice': lastPrice,
+                                        'timestamp': timestamp
                                 };
-                               
+                                 
                               // var $chart = $('div#container-area').highcharts();
                               var x = (new Date()).getTime(); // current time
                               // y = Math.round(Math.random() * 100);
                               // console.log('this is Y', y);
-                              series.addPoint([x, parseFloat(lastPrice)], true, true);
+                              
                             }
                           });
 
@@ -280,14 +292,7 @@ Template.charts.rendered = function() {
                             //    Session.set('tradeData', tradeData);
                             //    console.log('this is tradeData session:', Session.get('tradeData'));
                             // }
-                            //   if (data.quote) {
-                            //   console.log('quote occured');
-                            //      var quote = data.quote;
-                            //      var bid = data.quote.bid;
-                            //      var ask = data.quote.ask;
-                            //      var timestamp1 = data.quote.timestamp;
-
-                            //   }
+                       
 
                        
                      
