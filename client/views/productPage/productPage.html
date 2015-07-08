@@ -1,71 +1,13 @@
 <template name='productPage'>
   <style>
-    /* ============================================================
-      SECTIONS
-    ============================================================ */
-    section {
-      background-color: #EEE;
-    }
-    section.module:last-child {
-      margin-bottom: 0;
-    }
-    section.module h2 {
-      margin-bottom: 40px;
-      font-size: 30px;
-    }
-    section.module h3 {
-      font-size: 20px;
-      color: #333;
-    }
-    section.module p {
-      margin-bottom: 40px;
-      font-size: 16px;
-      font-weight: 300;
-    }
-    section.module p:last-child {
-      margin-bottom: 0;
-    }
-    section.module.content {
-      padding: 40px 0;
-    }
-    section.module.parallax {
-      padding: 240px 0;
-      background-position: 0 0;
-    }
-    section.module.parallax h1 {
-      color: #1e1e1e;
-      font-size: 48px;
-      line-height: 1;
-      font-weight: 700;
-      text-align: center;
-      text-transform: uppercase;
-      text-shadow: 0 0 10px white;
-    }
-    section.module.parallax-1 {
+    body {
+      height: 100%;
       background-image: url("product-page/muted-pattern1.jpg");
     }
-    section.module.parallax-2 {
-      background-image: url("product-page/pattern2.png");
-    }
-    section.module.parallax-3 {
-      background-image: url("product-page/pattern3.png");
-    }
-
-    @media all and (min-width: 600px) {
-      section.module h2 {
-        font-size: 42px;
-      }
-      section.module p {
-        font-size: 20px;
-      }
-      section.module.parallax h1 {
-        font-size: 96px;
-      }
-    }
-    @media all and (min-width: 960px) {
-      section.module.parallax h1 {
-        font-size: 160px;
-      }
+    .product-page-div {
+      margin-top: 20%;
+      height: 100%;
+      
     }
     .product-image {
       width: 50%;
@@ -297,9 +239,7 @@
 
     } 
   </style>
-
-  <main>
-    <section class="module parallax parallax-1">
+    <div class="product-page-div">
       <div class="container">
         <div class='col-xs-12'>
           <div class='col-xs-3'></div>
@@ -323,43 +263,5 @@
           </div>
         </div>
       </div>
-    </section>
-
-    <section class="module content">
-      <div class="container">
-        <h2>Quanto is for humans</h2>
-        <p>Quanto is an open source platform enabling collaborative financial analysis through crowd-sourced algorithms.</p>
-        <p>Our team members love data, reactive visualization, and working on algorithms together. We joined all three subjects to create a public tool.</p>
-        
-        
-      </div>
-    </section>
-
-    <section class="module parallax parallax-2">
-      <div class="container">
-        <h1>Trade</h1>
-      </div>
-    </section>
-
-    <section class="module content">
-      <div class="container">
-        <h2>Tools</h2>
-        <p>Users on Quanto will be able to create, test, and improve upon a public repository of algorithms. Users can also simulate trading strategies, making inferences from back-testing. For example, should we add Apple to our portfolio whenever it reaches a 52-week low? Would it be profitable in the long term?</p>
-        <p>Quanto's tools can help someone answer these questions.</p>       
-      </div>
-    </section>
-
-    <section class="module parallax parallax-3">
-      <div class="container">
-        <h1>Backtest</h1>
-      </div>
-    </section>
-
-    <section class="module content">
-      <div class="container">
-        <h2>Science, Finance, Education</h2>
-        <p>We hope Quanto fosters a community where computer science principles meet financial education and analysis in a novel way.</p>
-      </div>
-    </section>
-  </main>
+    </div>
 </template>
