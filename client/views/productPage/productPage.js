@@ -31,8 +31,10 @@ Template.productPage.rendered = function () {
 
 Template.productPage.events({
 
-  'click': function(e, instance){
-
-  }
-
+  'click .left-arrow': function(e, instance){
+    alert('Left Arrow')
+  },
+  'click .right-arrow': function(e, instance){
+    Router.go('combinedViews')
+  },
 });
