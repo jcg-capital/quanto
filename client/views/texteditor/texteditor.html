@@ -1,4 +1,5 @@
 <template name="textEditor">
+  
 	<style>
     div#ace-editor-div.col-md-12 {
       padding-right: 0px;
@@ -37,28 +38,40 @@
       border-radius: 5px 5px 0px 0px;
     }
 	</style>
-
 	<ul class="nav nav-tabs nav-justified" role="tablist">
-		<li class="tab" role="presentation"><a href='#Forge' role="tab" data-toggle="tab" id='algo-tab'>Forge</a></li>
-		<li class="tab" role="presentation"><a href='#Data' role="tab" data-toggle="tab">Data</a></li>
-		<li class="tab" role="presentation"><a href='#Algorithms' role="tab" data-toggle="tab" id='algo-tab'>Algos</a></li>
+
+		<li class="tab" role="presentation">
+        <a href='#Forge' role="tab" data-toggle="tab" title="This tab contains the code for your data-filtering alogirithm" id='algo-tab'>Forge</a>
+    </li>
+
+		<li class="tab" role="presentation">
+        <a href='#Data' role="tab" data-toggle="tab" title="This tab contains a spreadsheet of the data that you queried">Data</a>
+    </li>
+
+		<li class="tab" role="presentation">
+        <a href='#Algorithms' role="tab" data-toggle="tab" title="This tab contains a list of algorithms that can be loaded into the 'forge' tab" id='algo-tab'>Algos</a>
+    </li>
+
 	</ul>
   <!-- Tab panes -->
 	<div class="tab-content">
-	    <div role="tabpanel" class="tab-pane active" id="Forge">
-	    	<div class='col-md-12' id='ace-editor-div'>
+	  <div role="tabpanel" class="tab-pane active" id="Forge">
+	    <div class='col-md-12' id='ace-editor-div'>
 				<pre id='archy'></pre>
 				<div class='col-md-6' style='font'>
-					<div id='save-algo' class='col-md-4 glyphicon glyphicon-floppy-disk btn-primary'> Save</div>
-					<div id='graph-data' class='col-md-4 glyphicon glyphicon-stats btn-primary'> Graph </div>
+					<div id='save-algo' class='col-md-4 glyphicon glyphicon-floppy-disk btn-primary' title="Save your algorithm to the public repository!"> Save</div>
+					<div id='graph-data' class='col-md-4 glyphicon glyphicon-stats btn-primary' title="Graph your algorithm-filtered data!"> Graph </div>
 				</div>
 			</div>
 		</div>
 		<div role="tabpanel" class="tab-pane" id="Data">
-				{{> spreadsheet}}
+      <div>
+		    {{> spreadsheet}}
+      </div>
 		</div>
 		<div role="tabpanel" class="tab-pane" id="Algorithms">
-			<div>{{> algorithms}}</div>
+      {{> algorithms}}
 		</div>
 	</div>
+  
 </template>
