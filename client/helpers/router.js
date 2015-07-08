@@ -70,23 +70,24 @@ Router.map(function() {
     data: function() {
       return {
         query: HTTP.call("POST", "quandlquery",
-          {data: {
-                    code : {
-                      'source': 'WIKI',
-                      'table': 'AAPL'
-                    },
-                    options : { 
-                      column:'4',
-                      sort_order:'asc',
-                      collapse:'quarterly',
-                      trim_start:'2012-01-01',
-                      trim_end:'2013-12-31'
-                    }
-                } 
+          {
+            data: {
+              code : {
+                'source': 'WIKI',
+                'table': 'AAPL'
+              },
+              options : { 
+                column:'4',
+                sort_order:'asc',
+                collapse:'quarterly',
+                trim_start:'2012-01-01',
+                trim_end:'2013-12-31'
+              }
+            } 
           },
           function (error, result) {
             if (!error) {
-              console.log('WE GOT SOMETHiNG HEREsfsfsafee3',result);
+              console.log('client/helpers/router.js: this.route("server")' + result);
             }
           }
         )
@@ -97,9 +98,11 @@ Router.map(function() {
   //****************************************//
   // Pages
   //****************************************//
+  this.route('productPage',{
+    path: '/',
+  });
 
   this.route('combinedViews', {
-    path: '/',
     waitOn: function () {
       return Meteor.subscribe('allAlgorithms');
     },
@@ -115,7 +118,6 @@ Router.map(function() {
   });
 
   this.route('content');
-  this.route('productPage');
 
   this.route('charts');
   this.route('textEditor', {
