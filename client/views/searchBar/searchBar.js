@@ -3,12 +3,12 @@ Template.searchBar.events({
   
   'click .search-result': function(e){
     var tickerSymbol = e.target.innerText;
-
+    var chart = $('div#container-area').highcharts();
     if (tickerSymbol.length >= 5) {
       tickerSymbol = e.target.childNodes[1].innerText;
     }
+    chart.showLoading();
     $('#search-results').html('');
-
     makeCallRequest(tickerSymbol, function(){
       dataObject = Session.get('dataStore');
       var data = dataObject.data;
@@ -113,6 +113,7 @@ Template.searchBar.events({
 
       // create the chart
       $('div#container-area').highcharts('StockChart', options);
+      chart.hideLoading();
     }); 
   },
 
