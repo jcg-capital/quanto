@@ -6,7 +6,6 @@
 
 meteor-platform
 insecure
-twbs:bootstrap
 iron:router
 arch:ace-editor
 accounts-google
@@ -19,8 +18,6 @@ jhuenges:highstock
 mrt:handsontable
 joncursi:socket-io-client
 yuukan:streamy
-
-
-
-
 npm-container
+twbs:bootstrap
+jquery

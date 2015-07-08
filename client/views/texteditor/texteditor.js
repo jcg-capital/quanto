@@ -1,21 +1,3 @@
-/* ---------------------------------------------------- +/
-
-##  ##
-
-Code related to the textEditor template
-
-/+ ---------------------------------------------------- */
-
-Template.textEditor.created = function () {
-};
-
-Template.textEditor.helpers({
-  
-  myHelper: function () {
-    //
-  }
-
-});
 
 Template.textEditor.rendered = function () {
   var algo = Session.get('clonedAlgo');
@@ -32,6 +14,7 @@ Template.textEditor.rendered = function () {
 };
 
 Template.textEditor.events({
+  
 
   'click #algo-tab': function(e, instance){
     e.preventDefault();
@@ -44,7 +27,7 @@ Template.textEditor.events({
     console.log(e);
     var t = AceEditor.instance('#archy')
     var code = t.getSession().getValue().replace(/\'/g, '\"')
-    eval(code)
+    eval(code);
     // eval()
     // $('#chart-container').addSeries(Session.get('currentDataStore'))
   },
@@ -58,3 +41,4 @@ Template.textEditor.events({
     alert('Saved code: '+code)
   }
 });
+ 
