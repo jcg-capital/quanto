@@ -20,10 +20,4 @@ joncursi:socket-io-client
 yuukan:streamy
 npm-container
 twbs:bootstrap
-lookback:tooltips
-reactive-var
-tracker
-templating
 jquery
-meteor
-coffeescript
