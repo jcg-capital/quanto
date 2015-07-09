@@ -23,7 +23,7 @@
     }
     #search-results {
       background-color: darkgrey;
-      position: relative;
+      position: absolute;
       z-index: 997;
       width: 75%;
       margin: 0 auto;
@@ -39,29 +39,27 @@
       z-index: -10;
     }
     .searchbar {
-      margin-top: 0px;
       float: none;
       margin-left: auto;
       margin-right: auto;
+      padding: 0px 0px 0px 0px;
+      margin: 0px 0px 0px 0px;
+      z-index:3;
     }
     .tealBg {
       text-align:center;
     }
   </style>
-  <div class="searchbar">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
+  <div class="searchbar col-md-12">
       <div class="text-center">
         <form role="form" class="search" style='display: inline;'>
           <input type="search" placeholder="search" name='searchQuery' class="form-control">
         </form>
         <div id='search-results'></div>
       </div>
-    </div>
-    <div class="col-md-2"></div>
   </div>
-  <button type="button" class="btn-xlarge" aria-label="Center Align">
+<!--   <button type="button" class="btn-xlarge" aria-label="Center Align">
         <span class="glyphicon glyphicon-th" aria-hidden="true" data-toggle="modal" data-target="#myModal"> </span>
-  </button>
+  </button> -->
  </template>
 

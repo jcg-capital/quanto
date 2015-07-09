@@ -1,19 +1,18 @@
 <template name='combinedViews'>
-<!--   <style type="text/css">
-    .searchBar{
-      text-align: right;
-      margin: 20px;
+  <style type="text/css">
+    .left-view {
+      padding: 0px 0px 0px 0px;
     }
-    .chart{
-      margin-top: 46px;
+    .right-view {
+      padding: 0px 0px 0px 0px;
     }
   </style>
-   -->
+  
   <div class='col-md-12' style="position: fixed">
-    <div class='col-md-5'>
+    <div class='col-md-5 left-view'>
       {{>leftView}}
     </div>
-    <div class='col-md-7'>
+    <div class='col-md-7 right-view'>
       {{>rightView}}
     </div>
   </div>
