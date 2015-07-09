@@ -11,7 +11,10 @@ Template.productPage.helpers({
 });
 
 Template.productPage.rendered = function () {
-
+    $('#product-page-carousel').carousel({
+        interval: 3000
+    });
+    $('#product-page-carousel').carousel('cycle');
 };
 
 Template.productPage.events({
