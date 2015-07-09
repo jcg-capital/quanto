@@ -6,7 +6,7 @@ Template.textEditor.rendered = function () {
       mode:"javascript",
   };
   
-  var ace = AceEditor.instance("archy", options, function(editor){
+  var ace = AceEditor.instance("text-editor-id", options, function(editor){
     console.log(editor);
     editor.insert(algo);
   });
@@ -25,7 +25,7 @@ Template.textEditor.events({
   'click #graph-data': function(e, instance){
     e.preventDefault();
     console.log(e);
-    var t = AceEditor.instance('#archy')
+    var t = AceEditor.instance('#text-editor-id')
     var code = t.getSession().getValue().replace(/\'/g, '\"')
     eval(code);
     // eval()
@@ -35,7 +35,7 @@ Template.textEditor.events({
     e.preventDefault();
     console.log(e)
     var title = prompt('Name of new algo')
-    var t = AceEditor.instance('#archy')
+    var t = AceEditor.instance('#text-editor-id')
     var code = t.getSession().getValue().replace(/\'/g, '\"')
     Algorithms.insert({title: title, body: code })
     alert('Saved code: '+code)
