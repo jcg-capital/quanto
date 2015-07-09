@@ -82,6 +82,7 @@ Code related to the charts template
 live = false;
 
 Streamy.on('hello', function(){
+  live = true;
 });
 
 
@@ -258,6 +259,7 @@ Template.charts.rendered = function() {
                             var data = JSON.parse(d.data); 
 
                                 if (data.quote) {
+                                  console.log('quote', data.quote)
                                   var quote = data.quote;
                                   console.log('lastQuote', parseFloat(quote));
                                   var bid = data.quote.bid;
@@ -269,7 +271,7 @@ Template.charts.rendered = function() {
                         
                                   
                                 if (data.trade) {
-                                 
+                                 console.log('quote', data.trade)
                                    var trade = data.trade;
                                    var lastPrice = data.trade.last;
                                    console.log('lastPrice', parseFloat(lastPrice));
