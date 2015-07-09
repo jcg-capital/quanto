@@ -3,16 +3,20 @@
 
 <style>
 
-    
+    @font-face {
+    font-family: DeliciousRoman;
+    src: url(GOODTIME.ttf);
+    font-weight:400;
+    }
 
     .quantoLogo {
-         font-family: 'Gravitas One', cursive;
-      src: url('http://fonts.googleapis.com/css?family=Gravitas+One')
+      font-family: DeliciousRoman;
+      
     }
 
     body {
       height: 100%;
-      background-image: url("product-page/muted-pattern1.jpg");
+      background-color: black;
 
     }
     .product-page-div {
@@ -253,6 +257,33 @@
       font-size:22px;
     }
 
+    img.product-image.col-xs-6 {
+        width: 100%;
+        bottom: 200px;
+        margin-left: 25px;
+    }
+
+    .product-image-container {
+      
+    }
+
+    h3 {
+      bottom: 50px;
+      color: #888;
+      position: relative;
+    }
+
+    h1.quantoLogo {
+      text-shadow: 8px 8px 8px white;
+      position: relative;
+      text-align: center;
+      left: 0px;
+      top: 0px;
+      font-size: 125px;
+      margin-bottom: 0px;
+      margin-left: 0px;
+      z-index: 10;
+    }
 
   </style>
 
@@ -267,12 +298,13 @@
         <div class='col-xs-12'>
           <div class='col-xs-3'></div>
           <div class='product-image-container'>
-            <img src='Quanto.png' class='product-image col-xs-6'>
+                <h1 class="quantoLogo"> Quanto </h1>
+            <img src='quanto_extra_wide.gif' class='product-image col-xs-6'>
           </div>
           <div class='col-xs-3'></div>
         </div>
         <div class='col-xs-12'>
-          <h1 class="quantoLogo"> QUANNTOOOOOO </h1>
+        
           <div class='col-xs-3'>
             <div class='left-arrow glyphicon glyphicon-menu-left'></div>
           </div>
