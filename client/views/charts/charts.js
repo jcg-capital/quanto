@@ -9,38 +9,12 @@ Code related to the charts template
  * Function to draw the area chart
  */
 
-//  function builtStockLocal() {
+live = false;
 
-
-
-//     $('div#container-area').highcharts('StockChart', {
-
-
-//         rangeSelector: {
-//             selected: 1
-//         },
-
-//         title: {
-//             text: 'AAPL Stock Price'
-//         },
-
-//         series: [{
-//             name: 'AAPL',
-//             data: data,
-//             tooltip: {
-//                 valueDecimals: 2
-//             }
-//             }]
-//     });
-
-// }
-
-Streamy.on('hello', function(d) {
-    console.log('data');
-  console.log(d.data); // Will print 'world!'
-
-
+Streamy.on('hello', function(data){
+  console.log('received hello', data);
 });
+
 
 Template.charts.rendered = function() {
 /**
@@ -264,12 +238,17 @@ Template.charts.rendered = function() {
 
   var dataObject = Session.get('dataStore');
   // ticker of initial data to query
-  var tickerSymbol = 'GOOG';
-  if (!dataObject) {    
+  var tickerSymbol = dataObject.code;
+
+  // If no data object, load default chart
+  // If live, load symbol and stream
+  // If not live and data object, load dataobject
+
+ 
+  if (!dataObject && !live) {    
     makeCallRequest(tickerSymbol, function(){
       dataObject = Session.get('dataStore');
       var data = dataObject.data;
-      
       var columnNames = dataObject.column_names;
       var ohlc = [];
       var volume = [];
@@ -372,112 +351,201 @@ Template.charts.rendered = function() {
       // create the chart
       $('div#container-area').highcharts('StockChart', options);
     }); 
+  } 
+  else if (live) {
+        $(function () {
+          console.log('rendering live chart');
+         
+
+        Highcharts.setOptions({
+            global : {
+                useUTC : false
+            }
+        });
+
+        // Create the chart
+         console.log('entered load function');
+            // need to pass in if symbol is currently choosen
+            var historicalData = Session.get('dataStore').data;
+            // console.log('dataStore retrieved:', historicalData);
+        liveResults = [];
+        var volume = [];
+               for (var i = historicalData.length-5; i < historicalData.length; i++) {
+                  var newDate = new Date(historicalData[i][0]); // the date
+                  var dateInMil = newDate.getTime();
+                  liveResults.push([
+                    dateInMil,
+                    historicalData[i][4] // close
+                  ]);
+                  volume.push([
+                    dateInMil, // the date
+                    historicalData[i][5] // the volume
+                  ]);
+                   
+                }
+
+        $('div#container-area').highcharts('StockChart', {
+            
+            chart : {
+                events : {
+                    load : function () {
+                      
+                        var series = this.series[0];
+
+                          Streamy.on('hello', function(d) {
+                          // console.log('streamy triggered');
+                          var data = JSON.parse(d.data); // Will print 'world!'
+                            if (data.trade) {
+                              console.log('trade occured');
+                               var trade = data.trade;
+                               var lastPrice = data.trade.last;
+                               console.log('lastPrice', parseFloat(lastPrice));
+                               var volume = data.trade.cvol;
+                               var timestamp = data.trade.timestamp;
+                               var tradeData = {
+                                    'lastPrice': lastPrice,
+                                    'timestamp': timestamp
+                                };
+                              var x = (new Date()).getTime(); // current time
+                              series.addPoint([x, parseFloat(lastPrice)], true);
+                            }
+                          });
+                     
+                    }
+                }
+            },
+
+            rangeSelector: {
+                allButtonsEnabled: true,
+                selected: 2,
+                inputEnabled: false,
+            },
+
+            title : {
+                text : Session.get('dataStore').code
+            },
+
+            exporting: {
+                enabled: false
+            },
+
+            series : [{
+
+                data : liveResults,
+                }] 
+              });
+            });
+        }
+
+  else {
+
+        console.log('rendering default chart');
+        var data = dataObject.data;
+        
+        var columnNames = dataObject.column_names;
+        var ohlc = [];
+        var volume = [];
+        var dataLength = data.length;
+          // set the allowed units for data grouping
+        var groupingUnits = [[
+            'millisecond', // unit name
+            [1, 2, 5, 10, 20, 25, 50, 100, 200, 500] // allowed multiples
+          ], [
+            'second',
+            [1, 2, 5, 10, 15, 30]
+          ], [
+            'minute',
+            [1, 2, 5, 10, 15, 30]
+          ], [
+            'hour',
+            [1, 2, 3, 4, 6, 8, 12]
+          ], [
+            'day',
+            [1]
+          ], [
+            'week',
+            [1]
+          ], [
+            'month',
+            [1, 3, 6]
+          ], [
+            'year',
+            null
+          ]];
+
+        i = 0;
+
+        for (i; i < dataLength; i += 1) {
+          // start of data in milliseconds
+          var newDate = new Date(data[i][0]); // the date
+          var dateInMil = newDate.getTime();
+          ohlc.push([
+            dateInMil,
+            data[i][1], // open
+            data[i][2], // high
+            data[i][3], // low
+            data[i][4] // close
+          ]);
+          volume.push([
+            dateInMil, // the date
+            data[i][5] // the volume
+          ]);
+        }
+
+        // frequency of data - daily, monthly, 
+        var frequency = dataObject.frequency;
+        if (frequency === 'daily') {
+        }
+
+        var options = {
+          rangeSelector: {
+            allButtonsEnabled: true,
+            selected: 2
+          },
+          title: {
+            text: dataObject.name
+          },
+          yAxis: [{
+            labels: {
+              align: 'right',
+              x: -3
+            },
+            title: {
+              text: 'OHLC'
+            },
+            height: '60%',
+            lineWidth: 2
+          }, { 
+            labels: {
+              align: 'right',
+              x: -3
+            },
+            title: {
+              text: 'Volume'
+            },
+            top: '65%',
+            height: '35%',
+            offset: 0,
+            lineWidth: 2
+          }],
+          series: [{
+            type: 'candlestick',
+            data: ohlc,
+            dataGrouping: {
+              units: groupingUnits
+            }
+          }, {
+            type: 'column',
+            name: 'Volume',
+            data: volume,
+            yAxis: 1,
+          }]
+        };
+
+        // create the chart
+        $('div#container-area').highcharts('StockChart', options);
   }
 
-  var data = dataObject.data;
-  
-  var columnNames = dataObject.column_names;
-  var ohlc = [];
-  var volume = [];
-  var dataLength = data.length;
-    // set the allowed units for data grouping
-  var groupingUnits = [[
-      'millisecond', // unit name
-      [1, 2, 5, 10, 20, 25, 50, 100, 200, 500] // allowed multiples
-    ], [
-      'second',
-      [1, 2, 5, 10, 15, 30]
-    ], [
-      'minute',
-      [1, 2, 5, 10, 15, 30]
-    ], [
-      'hour',
-      [1, 2, 3, 4, 6, 8, 12]
-    ], [
-      'day',
-      [1]
-    ], [
-      'week',
-      [1]
-    ], [
-      'month',
-      [1, 3, 6]
-    ], [
-      'year',
-      null
-    ]];
-
-  i = 0;
-
-  for (i; i < dataLength; i += 1) {
-    // start of data in milliseconds
-    var newDate = new Date(data[i][0]); // the date
-    var dateInMil = newDate.getTime();
-    ohlc.push([
-      dateInMil,
-      data[i][1], // open
-      data[i][2], // high
-      data[i][3], // low
-      data[i][4] // close
-    ]);
-    volume.push([
-      dateInMil, // the date
-      data[i][5] // the volume
-    ]);
-  }
-
-  // frequency of data - daily, monthly, 
-  var frequency = dataObject.frequency;
-  if (frequency === 'daily') {
-  }
-
-  var options = {
-    rangeSelector: {
-      allButtonsEnabled: true,
-      selected: 2
-    },
-    title: {
-      text: dataObject.name
-    },
-    yAxis: [{
-      labels: {
-        align: 'right',
-        x: -3
-      },
-      title: {
-        text: 'OHLC'
-      },
-      height: '60%',
-      lineWidth: 2
-    }, { 
-      labels: {
-        align: 'right',
-        x: -3
-      },
-      title: {
-        text: 'Volume'
-      },
-      top: '65%',
-      height: '35%',
-      offset: 0,
-      lineWidth: 2
-    }],
-    series: [{
-      type: 'candlestick',
-      data: ohlc,
-      dataGrouping: {
-        units: groupingUnits
-      }
-    }, {
-      type: 'column',
-      name: 'Volume',
-      data: volume,
-      yAxis: 1,
-    }]
-  };
-
-  // create the chart
-  $('div#container-area').highcharts('StockChart', options);
 };
 
 makeCallRequest = function(ticker, cb) {
@@ -504,7 +572,7 @@ makeCallRequest = function(ticker, cb) {
         cb();
       }
     });
-}
+};
 
 
 
@@ -513,16 +581,29 @@ makeCallRequest = function(ticker, cb) {
  */
 
 Template.charts.events({
-    'click p.symbol': function (event) {
-        // console.log('triggered renderChart()');
-        
-        // if old Session datastore
-    },
+  'click button.off.btn-xlarge': function (event) {
+    live = false;
+    Streamy.emit('goodbye', { data: 'goodbye for realz' } );
+    Template.charts.rendered();
+  },
+  'click button.on.btn-xlarge': function (event) {
+    console.log('triggered Live Data');
+    live = true;
+    HTTP.call("GET", "liveQuery", null, function (error, result) {
+      if (error) {
+       console.log('ERROR client/searchBar', error);
+      }
+      if (!error) {
+       console.log('Live Query Result', result);
+      }
+    });
+    Template.charts.rendered();
+  }
 });
 
 Template.charts.created = function () {
   //
-  console.log('ran created')
+  console.log('ran created');
 };
 
 Template.charts.helpers({

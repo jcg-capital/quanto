@@ -11,7 +11,13 @@ Server-side Router.
 //     limit: "100mb"
 //   }));
 
+var TKrequestObject;
 
+          Streamy.on('goodbye', function(data) {         
+             console.log('saying goodbye');
+             // console.log('tk request', TKrequestObject);
+             TKrequestObject.destroy();                            
+          });
 
 
 Router.map(function() {
@@ -86,7 +92,6 @@ this.route('yahooQuery', {
             if(err){
               console.log('quandlStock : ERROR',err);
             }
-            console.log('DATA IS HERE', data);
             response.end(data);
           });
         }
@@ -122,6 +127,7 @@ var OAuth = Meteor.npmRequire('oauth').OAuth;
 
 
 
+
         this.route('liveQuery', {
           where: 'server',
           action: function() {
@@ -132,52 +138,44 @@ var OAuth = Meteor.npmRequire('oauth').OAuth;
                     access_secret: "y4KmDsJOWpYTOYk3xHT5YEfeevOOJxw6ui54DLUa"
                 };
 
-                var oa = new OAuth(null, null, credentials.consumer_key, credentials.consumer_secret, "1.0", null, "HMAC-SHA1");
-
+              var oa = new OAuth(null, null, credentials.consumer_key, credentials.consumer_secret, "1.0", null, "HMAC-SHA1");
               var clientRequestMethod = this.request.method;
               // Data from a POST request
               var clientRequestData = this.request.body;
               console.log('clientrequestdata', clientRequestData);
               var clientResponse = this.response;
               // var liveDataURI = 'https://stream.tradeking.com/v1/market/quotes.json??symbols=AAPL';
-
               var symbolRequested;
-
-           
-              var TKrequestObject = oa.get("https://stream.tradeking.com/v1/market/quotes.json?symbols=AAPL",
+              TKrequestObject = oa.get("https://stream.tradeking.com/v1/market/quotes.json?symbols=AAPL",
                   credentials.access_token, 
                   credentials.access_secret);
 
-              // var TKrequestObject = "https://stream.tradeking.com/v1/market/quotes?symbols=AAPL";
-
-              // console.log('tk', TKrequestObject);
-
-
-
-// request.on('response', function (response) {
-//   console.log('streaming has begun');
-//     response.setEncoding('utf8');
-//     response.on('data', function(data) {
-//         console.log(data);
-//     });
-// });
-// request.end();
-
 
                       TKrequestObject.on('response', function (response) {
+
                           console.log('streaming has begun');
                           response.setEncoding('utf8');
                           response.on('data', function(data) {
                             // socketConnection.pipe(data)
                             Streamy.broadcast('hello', {'data' : data} );
                             console.log(data);
-                            });
-                        });
-                      console.log('ending');
-                      TKrequestObject.end();
-                  }
 
-      });
+                            });
+
+                    
+                          });
+
+
+
+                      TKrequestObject.end();
+
+                        
+                      
+
+
+       
+    }
+  });
 
 
             // HTTP.call("GET", TKrequestObject, null,
