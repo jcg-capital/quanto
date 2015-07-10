@@ -472,7 +472,13 @@ makeCallRequest = function(ticker, cb) {
  */
 
 Template.charts.events({
-    'click p': function (event) {
+    'click button.off.btn-xlarge': function (event) {
+      live = false;
+      Template.charts.rendered();
+
+      Streamy.broadcast('goodbye', function() {
+        console.log('turning off live connection');
+      });
   
     },
 });
