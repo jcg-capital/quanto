@@ -9,76 +9,6 @@ Code related to the charts template
  * Function to draw the area chart
  */
 
-//  function builtStockLocal() {
-
-
-
-//     $('div#container-area').highcharts('StockChart', {
-
-
-//         rangeSelector: {
-//             selected: 1
-//         },
-
-//         title: {
-//             text: 'AAPL Stock Price'
-//         },
-
-//         series: [{
-//             name: 'AAPL',
-//             data: data,
-//             tooltip: {
-//                 valueDecimals: 2
-//             }
-//             }]
-//     });
-
-// }
-
-
-
-// Streamy.on('hello', function(d) {
-//     console.log('data');
-//   var data = JSON.parse(d.data); // Will print 'world!'
-  
-//   if (data.trade) {
-//     console.log('trade occured');
-//      var trade = data.trade;
-//      var lastPrice = data.trade.last;
-//      var volume = data.trade.cvol;
-//      var timestamp = data.trade.timestamp;
-
-//      var tradeData = {
-//           'lastPrice': lastPrice,
-//           'timestamp': timestamp
-//      };
-
-//      Session.set('tradeData', tradeData);
-//      console.log('this is tradeData session:', Session.get('tradeData'));
-      
-//   }
- 
-//     if (data.quote) {
-//     console.log('quote occured');
-//        var quote = data.quote;
-//        var bid = data.quote.bid;
-//        var ask = data.quote.ask;
-//        var timestamp1 = data.quote.timestamp;
-
-//     }
- 
- 
-
-//     //call rendered charts
-
-// });
-
-// setInterval(function() {
-//   console.log('interval running')
-//   live = true;
-//   Template.charts.rendered();
-// }, 4000);
-
 live = false;
 
 Streamy.on('hello', function(data){
@@ -306,10 +236,9 @@ Template.charts.rendered = function() {
 
 
 
->>>>>>> ced1b9a65ef0e537551ec4a3b548d7e33c3474a7
   var dataObject = Session.get('dataStore');
   // ticker of initial data to query
-  var tickerSymbol = 'GOOG';
+  var tickerSymbol = dataObject.code;
 
   // If no data object, load default chart
   // If live, load symbol and stream
@@ -460,14 +389,6 @@ Template.charts.rendered = function() {
             chart : {
                 events : {
                     load : function () {
-
-                     
-                    //         var series = this.series[0];
-                    // setInterval(function () {
-                    //     var x = (new Date()).getTime(), // current time
-                    //         y = Math.round(Math.random() * 100);
-                    //     series.addPoint([x, y], true, true);
-                    // }, 1000);
                       
                         var series = this.series[0];
 
@@ -485,53 +406,23 @@ Template.charts.rendered = function() {
                                     'lastPrice': lastPrice,
                                     'timestamp': timestamp
                                 };
-                               
-                              // var $chart = $('div#container-area').highcharts();
                               var x = (new Date()).getTime(); // current time
-                              // y = Math.round(Math.random() * 100);
-                              // console.log('this is Y', y);
-                              series.addPoint([x, parseFloat(lastPrice)], true, true);
+                              series.addPoint([x, parseFloat(lastPrice)], true);
                             }
                           });
-
-
-                            //    Session.set('tradeData', tradeData);
-                            //    console.log('this is tradeData session:', Session.get('tradeData'));
-                            // }
-                            //   if (data.quote) {
-                            //   console.log('quote occured');
-                            //      var quote = data.quote;
-                            //      var bid = data.quote.bid;
-                            //      var ask = data.quote.ask;
-                            //      var timestamp1 = data.quote.timestamp;
-
-                            //   }
-
-                       
                      
                     }
                 }
             },
 
             rangeSelector: {
-                buttons: [{
-                    count: 1,
-                    type: 'minute',
-                    text: '1M'
-                }, {
-                    count: 5,
-                    type: 'minute',
-                    text: '5M'
-                }, {
-                    type: 'all',
-                    text: 'All'
-                }],
+                allButtonsEnabled: true,
+                selected: 2,
                 inputEnabled: false,
-                selected: 0
             },
 
             title : {
-                text : 'Live random data'
+                text : Session.get('dataStore').code
             },
 
             exporting: {
@@ -690,15 +581,24 @@ makeCallRequest = function(ticker, cb) {
  */
 
 Template.charts.events({
-    'click button.off.btn-xlarge': function (event) {
-      live = false;
-         Streamy.emit('goodbye', { data: 'goodbye for realz' } );
-      
-      Template.charts.rendered();
-
-   
-  
-    },
+  'click button.off.btn-xlarge': function (event) {
+    live = false;
+    Streamy.emit('goodbye', { data: 'goodbye for realz' } );
+    Template.charts.rendered();
+  },
+  'click button.on.btn-xlarge': function (event) {
+    console.log('triggered Live Data');
+    live = true;
+    HTTP.call("GET", "liveQuery", null, function (error, result) {
+      if (error) {
+       console.log('ERROR client/searchBar', error);
+      }
+      if (!error) {
+       console.log('Live Query Result', result);
+      }
+    });
+    Template.charts.rendered();
+  }
 });
 
 Template.charts.created = function () {
