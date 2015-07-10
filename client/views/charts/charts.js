@@ -81,7 +81,8 @@ Code related to the charts template
 
 live = false;
 
-Streamy.on('hello', function(){
+Streamy.on('hello', function(data){
+  console.log('received hello', data);
 });
 
 
@@ -474,11 +475,11 @@ makeCallRequest = function(ticker, cb) {
 Template.charts.events({
     'click button.off.btn-xlarge': function (event) {
       live = false;
+         Streamy.emit('goodbye', { data: 'goodbye for realz' } );
+      
       Template.charts.rendered();
 
-      Streamy.broadcast('goodbye', function() {
-        console.log('turning off live connection');
-      });
+   
   
     },
 });

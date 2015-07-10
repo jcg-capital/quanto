@@ -86,7 +86,6 @@ this.route('yahooQuery', {
             if(err){
               console.log('quandlStock : ERROR',err);
             }
-            console.log('DATA IS HERE', data);
             response.end(data);
           });
         }
@@ -122,6 +121,7 @@ var OAuth = Meteor.npmRequire('oauth').OAuth;
 
 
 
+
         this.route('liveQuery', {
           where: 'server',
           action: function() {
@@ -148,21 +148,6 @@ var OAuth = Meteor.npmRequire('oauth').OAuth;
                   credentials.access_token, 
                   credentials.access_secret);
 
-              // var TKrequestObject = "https://stream.tradeking.com/v1/market/quotes?symbols=AAPL";
-
-              // console.log('tk', TKrequestObject);
-
-
-
-// request.on('response', function (response) {
-//   console.log('streaming has begun');
-//     response.setEncoding('utf8');
-//     response.on('data', function(data) {
-//         console.log(data);
-//     });
-// });
-// request.end();
-
 
                       TKrequestObject.on('response', function (response) {
                           console.log('streaming has begun');
@@ -171,8 +156,17 @@ var OAuth = Meteor.npmRequire('oauth').OAuth;
                             // socketConnection.pipe(data)
                             Streamy.broadcast('hello', {'data' : data} );
                             console.log(data);
+
+                            Streamy.on('goodbye', function(data, socket) {
+                            console.log('in the server');
+                            console.log('received goodbye from client', data);
+                            console.log(data.data);
+                            console.log(data.msg);
+                            
+                            });
                             });
                         });
+
                       console.log('ending');
                       TKrequestObject.end();
                   }
