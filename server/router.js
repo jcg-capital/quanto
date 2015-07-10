@@ -99,35 +99,6 @@ this.route('yahooQuery', {
 
 var OAuth = Meteor.npmRequire('oauth').OAuth;
 
-
-//             // Consumer Key:  inpVE8MyjzoBIXJggdJzQFUrxhF1chCuB3jKdmVV  
-//             // Consumer Secret:  Vu1hXwpw2bJYiVF0hEUrNqbNRkJPDXRm00ePV5E8  
-//             // OAuth Token:  QveHaer95pgNTlwG3kGxLVEZwAobPH3LbN06sUWW  
-//             // OAuth Token Secret: y4KmDsJOWpYTOYk3xHT5YEfeevOOJxw6ui54DLUa 
-
-// var credentials = {
-//     consumer_key: "inpVE8MyjzoBIXJggdJzQFUrxhF1chCuB3jKdmVV",
-//     consumer_secret: "Vu1hXwpw2bJYiVF0hEUrNqbNRkJPDXRm00ePV5E8",
-//     access_token: "QveHaer95pgNTlwG3kGxLVEZwAobPH3LbN06sUWW",
-//     access_secret: "y4KmDsJOWpYTOYk3xHT5YEfeevOOJxw6ui54DLUa"
-// };
-
-// var request = oa.get("https://stream.tradeking.com/v1/market/quotes?symbols=AAPL", 
-// credentials.access_token, 
-// credentials.access_secret);
-
-// request.on('response', function (response) {
-//   console.log('streaming has begun');
-//     response.setEncoding('utf8');
-//     response.on('data', function(data) {
-//         console.log(data);
-//     });
-// });
-// request.end();
-
-
-
-
         this.route('liveQuery', {
           where: 'server',
           action: function() {
@@ -146,7 +117,8 @@ var OAuth = Meteor.npmRequire('oauth').OAuth;
               var clientResponse = this.response;
               // var liveDataURI = 'https://stream.tradeking.com/v1/market/quotes.json??symbols=AAPL';
               var symbolRequested;
-              TKrequestObject = oa.get("https://stream.tradeking.com/v1/market/quotes.json?symbols=AAPL",
+              var tickerSymbol = Session.get('dataStore').code
+              TKrequestObject = oa.get("https://stream.tradeking.com/v1/market/quotes.json?symbols=" + "" + tickerSymbol + "",
                   credentials.access_token, 
                   credentials.access_secret);
 

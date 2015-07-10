@@ -238,7 +238,6 @@ Template.charts.rendered = function() {
 
   var dataObject = Session.get('dataStore');
   // ticker of initial data to query
-  var tickerSymbol = dataObject.code;
 
   // If no data object, load default chart
   // If live, load symbol and stream
@@ -246,6 +245,7 @@ Template.charts.rendered = function() {
 
  
   if (!dataObject && !live) {    
+    tickerSymbol = 'NFLX';
     makeCallRequest(tickerSymbol, function(){
       dataObject = Session.get('dataStore');
       var data = dataObject.data;
@@ -305,11 +305,11 @@ Template.charts.rendered = function() {
 
       var options = {
         rangeSelector: {
-          allButtonsEnabled: true,
+          allButtonsEnabled: false,
           selected: 2
         },
         title: {
-          text: data.name
+          text: tickerSymbol
         },
         yAxis: [{
           labels: {
@@ -389,9 +389,7 @@ Template.charts.rendered = function() {
             chart : {
                 events : {
                     load : function () {
-                      
-                        var series = this.series[0];
-
+                          var series = this.series[0];
                           Streamy.on('hello', function(d) {
                           // console.log('streamy triggered');
                           var data = JSON.parse(d.data); // Will print 'world!'
@@ -414,23 +412,18 @@ Template.charts.rendered = function() {
                     }
                 }
             },
-
             rangeSelector: {
                 allButtonsEnabled: true,
                 selected: 2,
                 inputEnabled: false,
             },
-
             title : {
                 text : Session.get('dataStore').code
             },
-
             exporting: {
                 enabled: false
             },
-
             series : [{
-
                 data : liveResults,
                 }] 
               });
@@ -499,11 +492,11 @@ Template.charts.rendered = function() {
 
         var options = {
           rangeSelector: {
-            allButtonsEnabled: true,
+            allButtonsEnabled: false,
             selected: 2
           },
           title: {
-            text: dataObject.name
+            text: 'hello'
           },
           yAxis: [{
             labels: {
