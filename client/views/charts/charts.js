@@ -223,7 +223,7 @@ Template.charts.rendered = function() {
             // console.log('dataStore retrieved:', historicalData);
         liveResults = [];
         var volume = [];
-               for (var i = 0; i < historicalData.length; i++) {
+               for (var i = historicalData.length-5; i < historicalData.length; i++) {
                   var newDate = new Date(historicalData[i][0]); // the date
                   var dateInMil = newDate.getTime();
                   liveResults.push([
@@ -234,7 +234,7 @@ Template.charts.rendered = function() {
                     dateInMil, // the date
                     historicalData[i][5] // the volume
                   ]);
-                   // console.log('results:', liveResults);
+                   
                 }
 
         $('div#container-area').highcharts('StockChart', {
@@ -321,6 +321,7 @@ Template.charts.rendered = function() {
             },
 
             series : [{
+
                 data : liveResults,
                 }] 
               });
