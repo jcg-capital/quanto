@@ -1,11 +1,12 @@
 <template name="textEditor">
+  
 	<style>
     div#ace-editor-div.col-md-12 {
       padding-right: 0px;
       padding-left: 0px;
     }
-    #archy {
-      height: 400px;
+    #text-editor-id {
+      height: 89vh;
     }
     .glyphicon {
       background-color: #000;
@@ -16,29 +17,66 @@
     .tab-pane {
       height: 400px;
     }
+    #save-algo {
+      margin-right: 5px;
+      background-color: #30ACAC;
+      border-radius: 5px;
+      position: relative;
+      width: auto;
+    }
+    #graph-data {
+      background-color: #30ACAC;
+      border-radius: 5px;
+      position: relative;
+      width: auto;
+    }
+    .tab {
+      background-color: #272822;
+      border-color: white;
+      border-style: solid;
+      border-width: 2px 2px 0px 2px;
+      border-radius: 5px 5px 0px 0px;
+    }
+    .inner-tab {
+      color: #A6E22E;
+      padding: 4px !important;
+    }
 	</style>
 
 	<ul class="nav nav-tabs nav-justified" role="tablist">
-		<li role="presentation"><a href='#Forge' role="tab" data-toggle="tab" id='algo-tab'>Forge</a></li>
-		<li role="presentation"><a href='#Data' role="tab" data-toggle="tab">Data</a></li>
-		<li role="presentation"><a href='#Algorithms' role="tab" data-toggle="tab" id='algo-tab'>Algos</a></li>
+
+		<li class="tab active" role="presentation">
+        <a class='inner-tab' href='#Forge' data-toggle="tab" title="This tab contains the code for your data-filtering alogirithm" id='forge-tab'>Forge</a>
+    </li>
+
+		<li class="tab" role="presentation">
+        <a class='inner-tab' href='#Data' data-toggle="tab" title="This tab contains a spreadsheet of the data that you queried" id='data-tab'>Data</a>
+    </li>
+
+		<li class="tab" role="presentation">
+        <a class='inner-tab' href='#Algorithms' data-toggle="tab" title="This tab contains a list of algorithms that can be loaded into the 'forge' tab" id='algo-tab'>Algos</a>
+    </li>
+
 	</ul>
   <!-- Tab panes -->
 	<div class="tab-content">
-	    <div role="tabpanel" class="tab-pane active" id="Forge">
-	    	<div class='col-md-12' id='ace-editor-div'>
-				<pre id='archy'></pre>
+	  <div role="tabpanel" class="tab-pane active" id="Forge">
+	    <div class='col-md-12' id='ace-editor-div'>
+				<pre id='text-editor-id'></pre>
 				<div class='col-md-6' style='font'>
-					<div id='save-algo' class='col-md-4 glyphicon glyphicon-floppy-disk btn-primary'></div>
-					<div id='graph-data' class='col-md-4 glyphicon glyphicon-stats btn-primary'></div>
+					<div id='save-algo' class='col-md-4 glyphicon glyphicon-floppy-disk btn-primary' title="Save your algorithm to the public repository!"> Save</div>
+					<div id='graph-data' class='col-md-4 glyphicon glyphicon-stats btn-primary' title="Graph your algorithm-filtered data!"> Graph </div>
 				</div>
 			</div>
 		</div>
 		<div role="tabpanel" class="tab-pane" id="Data">
-				{{> spreadsheet}}
+      <div>
+		    {{> spreadsheet}}
+      </div>
 		</div>
 		<div role="tabpanel" class="tab-pane" id="Algorithms">
-			<div>{{> algorithms}}</div>
+      {{> algorithms}}
 		</div>
 	</div>
+  
 </template>

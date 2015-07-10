@@ -1,79 +1,17 @@
-var chartSettings = {      
-  chart: {
-      type: 'area'
-  },
-  title: {
-      text: '' // title
-  },
-  credits: {
-      enabled: false
-  },
-  subtitle: {
-      text: '' // Source information
-  },
-  xAxis: {
-      labels: {
-          formatter: function () {
-            // Convert UTC epoch seconds to local time
-            return new Date(this.value);
-          }
-      },
-  },
-  yAxis: {
-      type: 'datetime',
-      title: {
-          text: ''
-      },
-      labels: {
-          formatter: function () {
-              return this.value;
-          }
-      }
-  },
-  tooltip: {
-      pointFormat: '{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
-  },
-  plotOptions: {
-    area: {
-      pointStart: 1940,
-      pointInterval: 24 * 3600 * 1000, // one day
-      marker: {
-        enabled: false,
-        symbol: 'circle',
-        radius: 2,
-        states: {
-          hover: {
-            enabled: true
-          }
-        }
-      }
-    }
-  },        
-  series: []
-};
-
-
-Template.searchBar.created = function () {
-  //
-};
-
-// Here is the positioning data for the node in the searchBar template
-
-
-
-Template.searchBar.rendered = function () {
-  //
-};
 
 Template.searchBar.events({
-
+  
   'click .search-result': function(e){
     var tickerSymbol = e.target.innerText;
-    console.log("LOL THISIS THETHING", tickerSymbol);
+    var chart = $('div#container-area').highcharts();
+    if (tickerSymbol.length >= 5) {
+      tickerSymbol = e.target.childNodes[1].innerText;
+    }
+    chart.showLoading();
+    $('#search-results').html('');
     makeCallRequest(tickerSymbol, function(){
       dataObject = Session.get('dataStore');
       var data = dataObject.data;
-      
       var columnNames = dataObject.column_names;
       var ohlc = [];
       var volume = [];
@@ -125,7 +63,7 @@ Template.searchBar.events({
       // frequency of data - daily, monthly, 
       var frequency = data.frequency;
       if (frequency === 'daily') {
-        // ?
+        // 
       }
 
       var options = {
@@ -175,6 +113,7 @@ Template.searchBar.events({
 
       // create the chart
       $('div#container-area').highcharts('StockChart', options);
+      chart.hideLoading();
     }); 
   },
 
@@ -193,9 +132,9 @@ Template.searchBar.events({
         r = JSON.parse(r);
         $('#search-results').html('');
         r.ResultSet.Result.forEach(function(c,i,a){
-          console.log('results from Yahoo', c);
-          var $result = $('<div class="search-result" style="background-color: #999;color: #EEE;margin: 3px">');
-          var $c = $('<div>').text(c.name).append("<p class=" + "symbol" +">" + c.symbol + "</p>");
+          // console.log('results from Yahoo', c);
+          var $result = $('<div class="search-result">');
+          var $c = $('<div class="search-res-inner">').text(c.name).append('<p class="symbol">' + c.symbol + '</p>');
           $result.append([$c]);
           $('#search-results').append($result);
         });
@@ -215,12 +154,5 @@ Template.searchBar.events({
     });
 
     Template.charts.rendered();
-  }
-});
-
-Template.searchBar.helpers({});
-
-Template.inner.events({
-  'click': function(event, tpl) {
   }
 });

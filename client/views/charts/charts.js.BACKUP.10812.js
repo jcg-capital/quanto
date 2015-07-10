@@ -85,7 +85,13 @@ Streamy.on('hello', function(data){
   console.log('received hello', data);
 });
 
+<<<<<<< HEAD
 
+
+
+Template.charts.rendered = function() { 
+  console.log('rendered');
+=======
 Template.charts.rendered = function() {
 /**
  * Dark theme for Highcharts JS
