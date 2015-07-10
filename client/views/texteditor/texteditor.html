@@ -6,29 +6,20 @@
       padding-left: 0px;
     }
     #text-editor-id {
-      height: 89vh;
+      height: 85vh;
+      margin: 0px;
     }
     .glyphicon {
-      background-color: #000;
+      color: #f92572;
+      background-color: #272822;
       cursor: pointer;
-      height:20px;
-      padding-top: 3px;
+      margin: 0px;
+      padding: 10px;
+      position: relative;
+      border-radius: 0px 0px 5px 5px;
     }
     .tab-pane {
       height: 400px;
-    }
-    #save-algo {
-      margin-right: 5px;
-      background-color: #30ACAC;
-      border-radius: 5px;
-      position: relative;
-      width: auto;
-    }
-    #graph-data {
-      background-color: #30ACAC;
-      border-radius: 5px;
-      position: relative;
-      width: auto;
     }
     .tab {
       background-color: #272822;
@@ -46,7 +37,7 @@
 	<ul class="nav nav-tabs nav-justified" role="tablist">
 
 		<li class="tab active" role="presentation">
-        <a class='inner-tab' href='#Forge' data-toggle="tab" title="This tab contains the code for your data-filtering alogirithm" id='forge-tab'>Forge</a>
+        <a class='inner-tab active' href='#Forge' data-toggle="tab" title="This tab contains the code for your data-filtering alogirithm" id='forge-tab'>Forge</a>
     </li>
 
 		<li class="tab" role="presentation">
@@ -63,10 +54,8 @@
 	  <div role="tabpanel" class="tab-pane active" id="Forge">
 	    <div class='col-md-12' id='ace-editor-div'>
 				<pre id='text-editor-id'></pre>
-				<div class='col-md-6' style='font'>
-					<div id='save-algo' class='col-md-4 glyphicon glyphicon-floppy-disk btn-primary' title="Save your algorithm to the public repository!"> Save</div>
-					<div id='graph-data' class='col-md-4 glyphicon glyphicon-stats btn-primary' title="Graph your algorithm-filtered data!"> Graph </div>
-				</div>
+				<div id='save-algo' class='glyphicon glyphicon-floppy-disk btn-primary' title="Save your algorithm to the public repository!"> Save</div>
+				<div id='graph-data' class='glyphicon glyphicon-stats btn-primary' title="Graph your algorithm-filtered data!"> Graph </div>
 			</div>
 		</div>
 		<div role="tabpanel" class="tab-pane" id="Data">
