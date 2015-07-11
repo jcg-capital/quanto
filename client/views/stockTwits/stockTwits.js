@@ -1,4 +1,6 @@
 Template.stockTwits.rendered = function() {
+    var k;
+	  var messages = [];
     var symbol;
     if (Session.get('dataStore')) {
       symbol = Session.get('dataStore').code;
@@ -20,22 +22,31 @@ Template.stockTwits.rendered = function() {
       else if (!error) {
         var counter = 1;
         var array = JSON.parse(result.content);
-        var messages = array.data.messages;
-        var authorName = messages[counter].user.username;
-        var twitBody = messages[counter].body;
-        var timePosted = moment(messages[counter].created_at).fromNow();
-        var k = setInterval(function(){
-          Session.set('authorName', messages[counter].user.username);
-          Session.set('authorName', messages[counter].user.username);
-          Session.set('twitBody', messages[counter].body);
-          Session.set('timePosted', timePosted);
+        messages = array.data.messages;
+
+      loop = function() {
+        for (var i = 0; i < messages.length; i++) {
+
+          setTimeout( function() {
+            console.log('in timeout');
+            var authorName = messages[i].user.username;
+            var twitBody = messages[i].body;
+            var timePosted = moment(messages[i].created_at).fromNow();
+            Session.set('authorName', messages[i].user.username);
+            Session.set('authorName', messages[i].user.username);
+            Session.set('twitBody', messages[i].body);
+            Session.set('timePosted', timePosted);
+          }, 2000);
+        }
+      };
+         
           var $twit = $('<li class="list-group-item">').text(messages[counter].body + "" + timePosted);
           $('.list-group').append($twit);
           counter++;
           if(counter === 30) {
             clearInterval(k);
           }
-        }, 4000);
+        
       }
     }
   );
