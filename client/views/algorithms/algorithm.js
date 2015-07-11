@@ -18,7 +18,6 @@ Template.algorithm.helpers({
   myHelper: function () {
     //
   },
-
 });
 
 Template.algorithm.rendered = function () {
@@ -26,7 +25,9 @@ Template.algorithm.rendered = function () {
 };
 
 Template.algorithm.events({
-
+  //*************************************//
+  // delete algo button event
+  //*************************************//
   'click .delete': function(e, instance){
     var algorithm = this;
     e.preventDefault();
@@ -35,6 +36,9 @@ Template.algorithm.events({
       Router.go('/algorithms');
     });
   },
+  //*************************************//
+  // Clone Algorithm Button Event
+  //*************************************//
   'click #clone-algo': function(e, instance){
     var algorithm = this;
     e.preventDefault();

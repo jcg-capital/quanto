@@ -1,0 +1,244 @@
+    body {
+      height: 100%;
+      background-image: url("product-page/muted-pattern1.jpg");
+    }
+    .product-page-div {
+      margin-top: 15%;
+      height: 100%;
+      
+    }
+    .product-image {
+      width: 50%;
+    }
+    .right-arrow {
+      font-size: 5vh;
+      text-shadow: 8px 0px 6px #a518eb;
+      -webkit-animation: rightmove 5s infinite;
+      animation: rightmove 2s infinite;
+    }
+    .right-arrow:hover {
+      /*text-shadow: 2px 2px 12px #a518eb;*/
+      animation: rightmove .5s infinite;
+    }
+    @-webkit-keyframes rightmove {
+      1% {text-shadow: 8px 0px 6px #a518eb;}
+      2% {text-shadow: 8px 0px 6px #a518eb;}
+      3% {text-shadow: 8px 0px 6px #a518eb;}
+      4% {text-shadow: 8px 0px 6px #a518eb;}
+      5% {text-shadow: 8px 0px 6px #a518eb;}
+      6% {text-shadow: 8px 0px 6px #a518eb;}
+      7% {text-shadow: 9px 0px 6px #a518eb;}
+      8% {text-shadow: 9px 0px 6px #a518eb;}
+      9% {text-shadow: 9px 0px 6px #a518eb;}
+      10% {text-shadow: 9px 0px 6px #a518eb;}
+      11% {text-shadow: 9px 0px 6px #a518eb;}
+      12% {text-shadow: 9px 0px 6px #a518eb;}
+      13% {text-shadow: 10px 0px 6px #a518eb;}
+      14% {text-shadow: 10px 0px 6px #a518eb;}
+      15% {text-shadow: 10px 0px 6px #a518eb;}
+      16% {text-shadow: 10px 0px 6px #a518eb;}
+      17% {text-shadow: 10px 0px 6px #a518eb;}
+      18% {text-shadow: 10px 0px 6px #a518eb;}
+      19% {text-shadow: 11px 0px 6px #a518eb;}
+      20% {text-shadow: 11px 0px 6px #a518eb;}
+      21% {text-shadow: 11px 0px 6px #a518eb;}
+      22% {text-shadow: 11px 0px 6px #a518eb;}
+      23% {text-shadow: 11px 0px 6px #a518eb;}
+      24% {text-shadow: 11px 0px 6px #a518eb;}
+      25% {text-shadow: 12px 0px 6px #a518eb;}
+      26% {text-shadow: 12px 0px 6px #a518eb;}
+      27% {text-shadow: 12px 0px 6px #a518eb;}
+      28% {text-shadow: 12px 0px 6px #a518eb;}
+      29% {text-shadow: 12px 0px 6px #a518eb;}
+      30% {text-shadow: 12px 0px 6px #a518eb;}
+      31% {text-shadow: 12px 0px 6px #a518eb;}
+      32% {text-shadow: 13px 0px 6px #a518eb;}
+      33% {text-shadow: 13px 0px 6px #a518eb;}
+      34% {text-shadow: 13px 0px 6px #a518eb;}
+      35% {text-shadow: 13px 0px 6px #a518eb;}
+      36% {text-shadow: 13px 0px 6px #a518eb;}
+      37% {text-shadow: 13px 0px 6px #a518eb;}
+      38% {text-shadow: 14px 0px 6px #a518eb;}
+      39% {text-shadow: 14px 0px 6px #a518eb;}
+      40% {text-shadow: 14px 0px 6px #a518eb;}
+      41% {text-shadow: 14px 0px 6px #a518eb;}
+      42% {text-shadow: 14px 0px 6px #a518eb;}
+      43% {text-shadow: 14px 0px 6px #a518eb;}
+      44% {text-shadow: 15px 0px 6px #a518eb;}
+      45% {text-shadow: 15px 0px 6px #a518eb;}
+      46% {text-shadow: 15px 0px 6px #a518eb;}
+      47% {text-shadow: 15px 0px 6px #a518eb;}
+      48% {text-shadow: 15px 0px 6px #a518eb;}
+      49% {text-shadow: 15px 0px 6px #a518eb;}
+      50% {text-shadow: 16px 0px 6px #a518eb;}
+      51% {text-shadow: 16px 0px 6px #a518eb;}
+      52% {text-shadow: 15px 0px 6px #a518eb;}
+      53% {text-shadow: 15px 0px 6px #a518eb;}
+      54% {text-shadow: 15px 0px 6px #a518eb;}
+      55% {text-shadow: 15px 0px 6px #a518eb;}
+      56% {text-shadow: 15px 0px 6px #a518eb;}
+      57% {text-shadow: 15px 0px 6px #a518eb;}
+      58% {text-shadow: 14px 0px 6px #a518eb;}
+      59% {text-shadow: 14px 0px 6px #a518eb;}
+      60% {text-shadow: 14px 0px 6px #a518eb;}
+      61% {text-shadow: 14px 0px 6px #a518eb;}
+      62% {text-shadow: 14px 0px 6px #a518eb;}
+      63% {text-shadow: 14px 0px 6px #a518eb;}
+      64% {text-shadow: 13px 0px 6px #a518eb;}
+      65% {text-shadow: 13px 0px 6px #a518eb;}
+      66% {text-shadow: 13px 0px 6px #a518eb;}
+      67% {text-shadow: 13px 0px 6px #a518eb;}
+      68% {text-shadow: 13px 0px 6px #a518eb;}
+      69% {text-shadow: 13px 0px 6px #a518eb;}
+      70% {text-shadow: 12px 0px 6px #a518eb;}
+      71% {text-shadow: 12px 0px 6px #a518eb;}
+      72% {text-shadow: 12px 0px 6px #a518eb;}
+      73% {text-shadow: 12px 0px 6px #a518eb;}
+      74% {text-shadow: 12px 0px 6px #a518eb;}
+      75% {text-shadow: 12px 0px 6px #a518eb;}
+      76% {text-shadow: 12px 0px 6px #a518eb;}
+      77% {text-shadow: 11px 0px 6px #a518eb;}
+      78% {text-shadow: 11px 0px 6px #a518eb;}
+      79% {text-shadow: 11px 0px 6px #a518eb;}
+      80% {text-shadow: 11px 0px 6px #a518eb;}
+      81% {text-shadow: 11px 0px 6px #a518eb;}
+      82% {text-shadow: 11px 0px 6px #a518eb;}
+      83% {text-shadow: 10px 0px 6px #a518eb;}
+      84% {text-shadow: 10px 0px 6px #a518eb;}
+      85% {text-shadow: 10px 0px 6px #a518eb;}
+      86% {text-shadow: 10px 0px 6px #a518eb;}
+      87% {text-shadow: 10px 0px 6px #a518eb;}
+      88% {text-shadow: 10px 0px 6px #a518eb;}
+      89% {text-shadow: 9px 0px 6px #a518eb;}
+      90% {text-shadow: 9px 0px 6px #a518eb;}
+      91% {text-shadow: 9px 0px 6px #a518eb;}
+      92% {text-shadow: 9px 0px 6px #a518eb;}
+      93% {text-shadow: 9px 0px 6px #a518eb;}
+      94% {text-shadow: 9px 0px 6px #a518eb;}
+      95% {text-shadow: 8px 0px 6px #a518eb;}
+      96% {text-shadow: 8px 0px 6px #a518eb;}
+      97% {text-shadow: 8px 0px 6px #a518eb;}
+      98% {text-shadow: 8px 0px 6px #a518eb;}
+      99% {text-shadow: 8px 0px 6px #a518eb;}
+      100% {text-shadow: 8px 0px 6px #a518eb;}
+
+    }
+    .left-arrow {
+      font-size: 5vh;
+      text-shadow: -8px 0px 6px #a518eb;
+      -webkit-animation: leftmove 5s infinite;
+      animation: leftmove 2s infinite;
+    }
+    .left-arrow:hover {
+      /*text-shadow: -8px 0px 6px #a518eb;*/
+      animation: leftmove .5s infinite;
+    }
+    @-webkit-keyframes leftmove {
+      1% {text-shadow: -8px 0px 6px #a518eb;}
+      2% {text-shadow: -8px 0px 6px #a518eb;}
+      3% {text-shadow: -8px 0px 6px #a518eb;}
+      4% {text-shadow: -8px 0px 6px #a518eb;}
+      5% {text-shadow: -8px 0px 6px #a518eb;}
+      6% {text-shadow: -8px 0px 6px #a518eb;}
+      7% {text-shadow: -9px 0px 6px #a518eb;}
+      8% {text-shadow: -9px 0px 6px #a518eb;}
+      9% {text-shadow: -9px 0px 6px #a518eb;}
+      10% {text-shadow: -9px 0px 6px #a518eb;}
+      11% {text-shadow: -9px 0px 6px #a518eb;}
+      12% {text-shadow: -9px 0px 6px #a518eb;}
+      13% {text-shadow: -10px 0px 6px #a518eb;}
+      14% {text-shadow: -10px 0px 6px #a518eb;}
+      15% {text-shadow: -10px 0px 6px #a518eb;}
+      16% {text-shadow: -10px 0px 6px #a518eb;}
+      17% {text-shadow: -10px 0px 6px #a518eb;}
+      18% {text-shadow: -10px 0px 6px #a518eb;}
+      19% {text-shadow: -11px 0px 6px #a518eb;}
+      20% {text-shadow: -11px 0px 6px #a518eb;}
+      21% {text-shadow: -11px 0px 6px #a518eb;}
+      22% {text-shadow: -11px 0px 6px #a518eb;}
+      23% {text-shadow: -11px 0px 6px #a518eb;}
+      24% {text-shadow: -11px 0px 6px #a518eb;}
+      25% {text-shadow: -12px 0px 6px #a518eb;}
+      26% {text-shadow: -12px 0px 6px #a518eb;}
+      27% {text-shadow: -12px 0px 6px #a518eb;}
+      28% {text-shadow: -12px 0px 6px #a518eb;}
+      29% {text-shadow: -12px 0px 6px #a518eb;}
+      30% {text-shadow: -12px 0px 6px #a518eb;}
+      31% {text-shadow: -12px 0px 6px #a518eb;}
+      32% {text-shadow: -13px 0px 6px #a518eb;}
+      33% {text-shadow: -13px 0px 6px #a518eb;}
+      34% {text-shadow: -13px 0px 6px #a518eb;}
+      35% {text-shadow: -13px 0px 6px #a518eb;}
+      36% {text-shadow: -13px 0px 6px #a518eb;}
+      37% {text-shadow: -13px 0px 6px #a518eb;}
+      38% {text-shadow: -14px 0px 6px #a518eb;}
+      39% {text-shadow: -14px 0px 6px #a518eb;}
+      40% {text-shadow: -14px 0px 6px #a518eb;}
+      41% {text-shadow: -14px 0px 6px #a518eb;}
+      42% {text-shadow: -14px 0px 6px #a518eb;}
+      43% {text-shadow: -14px 0px 6px #a518eb;}
+      44% {text-shadow: -15px 0px 6px #a518eb;}
+      45% {text-shadow: -15px 0px 6px #a518eb;}
+      46% {text-shadow: -15px 0px 6px #a518eb;}
+      47% {text-shadow: -15px 0px 6px #a518eb;}
+      48% {text-shadow: -15px 0px 6px #a518eb;}
+      49% {text-shadow: -15px 0px 6px #a518eb;}
+      50% {text-shadow: -16px 0px 6px #a518eb;}
+      51% {text-shadow: -16px 0px 6px #a518eb;}
+      52% {text-shadow: -15px 0px 6px #a518eb;}
+      53% {text-shadow: -15px 0px 6px #a518eb;}
+      54% {text-shadow: -15px 0px 6px #a518eb;}
+      55% {text-shadow: -15px 0px 6px #a518eb;}
+      56% {text-shadow: -15px 0px 6px #a518eb;}
+      57% {text-shadow: -15px 0px 6px #a518eb;}
+      58% {text-shadow: -14px 0px 6px #a518eb;}
+      59% {text-shadow: -14px 0px 6px #a518eb;}
+      60% {text-shadow: -14px 0px 6px #a518eb;}
+      61% {text-shadow: -14px 0px 6px #a518eb;}
+      62% {text-shadow: -14px 0px 6px #a518eb;}
+      63% {text-shadow: -14px 0px 6px #a518eb;}
+      64% {text-shadow: -13px 0px 6px #a518eb;}
+      65% {text-shadow: -13px 0px 6px #a518eb;}
+      66% {text-shadow: -13px 0px 6px #a518eb;}
+      67% {text-shadow: -13px 0px 6px #a518eb;}
+      68% {text-shadow: -13px 0px 6px #a518eb;}
+      69% {text-shadow: -13px 0px 6px #a518eb;}
+      70% {text-shadow: -12px 0px 6px #a518eb;}
+      71% {text-shadow: -12px 0px 6px #a518eb;}
+      72% {text-shadow: -12px 0px 6px #a518eb;}
+      73% {text-shadow: -12px 0px 6px #a518eb;}
+      74% {text-shadow: -12px 0px 6px #a518eb;}
+      75% {text-shadow: -12px 0px 6px #a518eb;}
+      76% {text-shadow: -12px 0px 6px #a518eb;}
+      77% {text-shadow: -11px 0px 6px #a518eb;}
+      78% {text-shadow: -11px 0px 6px #a518eb;}
+      79% {text-shadow: -11px 0px 6px #a518eb;}
+      80% {text-shadow: -11px 0px 6px #a518eb;}
+      81% {text-shadow: -11px 0px 6px #a518eb;}
+      82% {text-shadow: -11px 0px 6px #a518eb;}
+      83% {text-shadow: -10px 0px 6px #a518eb;}
+      84% {text-shadow: -10px 0px 6px #a518eb;}
+      85% {text-shadow: -10px 0px 6px #a518eb;}
+      86% {text-shadow: -10px 0px 6px #a518eb;}
+      87% {text-shadow: -10px 0px 6px #a518eb;}
+      88% {text-shadow: -10px 0px 6px #a518eb;}
+      89% {text-shadow: -9px 0px 6px #a518eb;}
+      90% {text-shadow: -9px 0px 6px #a518eb;}
+      91% {text-shadow: -9px 0px 6px #a518eb;}
+      92% {text-shadow: -9px 0px 6px #a518eb;}
+      93% {text-shadow: -9px 0px 6px #a518eb;}
+      94% {text-shadow: -9px 0px 6px #a518eb;}
+      95% {text-shadow: -8px 0px 6px #a518eb;}
+      96% {text-shadow: -8px 0px 6px #a518eb;}
+      97% {text-shadow: -8px 0px 6px #a518eb;}
+      98% {text-shadow: -8px 0px 6px #a518eb;}
+      99% {text-shadow: -8px 0px 6px #a518eb;}
+      100% {text-shadow: -8px 0px 6px #a518eb;}
+
+    }
+    p {
+      font-size:22px;
+    }
+    .carousel-text {
+      text-align: center;
+    }
