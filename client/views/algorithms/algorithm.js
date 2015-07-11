@@ -44,6 +44,6 @@ Template.algorithm.events({
     e.preventDefault();
     Session.set('clonedAlgo', algorithm.body)
     Router.go('combinedViews')
-  }  
+  }
 
 });
