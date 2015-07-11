@@ -19,6 +19,7 @@
     .right-arrow:hover {
       /*text-shadow: 2px 2px 12px #a518eb;*/
       animation: rightmove .5s infinite;
+      cursor: pointer;
     }
     @-webkit-keyframes rightmove {
       1% {text-shadow: 8px 0px 6px #a518eb;}
@@ -132,6 +133,7 @@
     .left-arrow:hover {
       /*text-shadow: -8px 0px 6px #a518eb;*/
       animation: leftmove .5s infinite;
+      cursor: pointer;
     }
     @-webkit-keyframes leftmove {
       1% {text-shadow: -8px 0px 6px #a518eb;}

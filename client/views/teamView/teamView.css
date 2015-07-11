@@ -1,0 +1,17 @@
+
+#team-right-arrow {
+  margin-top: 100%;
+}
+#team-right-arrow:hover {
+  cursor: pointer;
+}
+.teamMember {
+  display: table;
+}
+.headshot {
+  display:block;
+  margin:auto;
+}
+.teamContainer {
+  text-align: center;
+}

@@ -100,7 +100,7 @@ Router.map(function() {
   this.route('productPage',{
     path: '/',
   });
-
+  this.route('teamView');
   this.route('combinedViews', {
     waitOn: function () {
       return Meteor.subscribe('allAlgorithms');
