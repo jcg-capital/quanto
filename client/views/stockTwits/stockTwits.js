@@ -1,6 +1,7 @@
 Template.stockTwits.rendered = function() {
 // Set default symbol to NFLX if dataStore does not exist
-
+    var k;
+	  var messages = [];
     var symbol;
     if (Session.get('dataStore')) {
       symbol = Session.get('dataStore').code;
@@ -22,7 +23,6 @@ Template.stockTwits.rendered = function() {
       }
       else if (!error) {
 // Set appropriate session variables for use in reactive template
-
         var counter = 1;
         var array = JSON.parse(result.content);
         var messages = array.data.messages;
@@ -38,13 +38,12 @@ Template.stockTwits.rendered = function() {
           counter++;
           if(counter === 30) {
             clearInterval(k);
-          }
+          }        
         }, 4000);
       }
     }
   );
 };
-
 
 Template.stockTwits.events({
 });
