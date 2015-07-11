@@ -3,12 +3,12 @@
   <style>
   	.algo-card {
   		background-color: #EEE;
-		margin:1.2em 1.2em 1.2em 1.2em;
-		width: 200px;
-		height: 200px;
-		display: inline-block;
-		overflow-y: scroll;
-		overflow-x: hidden;
+  		margin:1.2em 1.2em 1.2em 1.2em;
+  		width: 200px;
+  		height: 200px;
+  		display: inline-block;
+  		overflow-y: scroll;
+  		overflow-x: hidden;
   	}
   	.hljs {
   		background-color:#EEE;
@@ -21,8 +21,7 @@
   	}
    	.algo-card:hover {
   		background-color:#DDD;
-
-		transform: scale(1.4); 
+		  transform: scale(1.4); 
   	}
 	.grow { transition: all .03s ease-in; }
 	.grow:hover {
@@ -37,14 +36,14 @@
     	<!-- {{rowMaker title}} -->
     {{#each algorithms}}
       <a href="{{pathFor 'algorithm'}}">
-	      <div class='algo-card grow'>
-	      	<a href="{{pathFor 'algorithm'}}">{{title}}</a>
-	      {{#markdown}}
+        <div class='algo-card grow'>
+  	      <a href="{{pathFor 'algorithm'}}">{{title}}</a>
+          {{#markdown}}
 ```js
 {{body}}
 ```
-	      {{/markdown}}
-	      </div>
+  	      {{/markdown}}
+        </div>
       </a>
     {{/each}}
    </div>
