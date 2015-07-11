@@ -119,7 +119,16 @@ Template.stockTwits.helpers({
 	  },
 	timePosted: function () {
 	    return Session.get('timePosted');
-	  }
+	  },
+	rerender: function () {
+		Template.stockTwits.rendered();
+		return Session.get('dataStore');
+	
+	}
+});
+
+Template.stockTwits.events({
+
 });
 
 
