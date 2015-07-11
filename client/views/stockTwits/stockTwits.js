@@ -49,6 +49,24 @@ Template.stockTwits.rendered = function() {
 Template.stockTwits.events({
 });
 
+Template.stockTwits.helpers({
+	authorName: function () {
+	    return Session.get('authorName');
+	  },
+	twitBody: function () {
+	    return Session.get('twitBody');
+	  },
+	timePosted: function () {
+	    return Session.get('timePosted');
+	  },
+	rerender: function () {
+		Template.stockTwits.rendered();
+		return Session.get('dataStore');
+	
+	}
+});
+
+
 
 Template.stockTwits.helpers({
   authorName: function () {
