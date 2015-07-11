@@ -112,6 +112,10 @@ Router.map(function() {
     }
   });
 
+  this.route('siteMap', {
+    path: 'siteMap'
+  });
+
   this.route('content');
   this.route('charts');
   this.route('textEditor', {
