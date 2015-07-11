@@ -8,7 +8,7 @@
 
     .set-font {
       font-family: DeliciousRoman;
-      color: #A6E22E;
+      color: #90ee7e;
    /*   border-color: white;
       border-style: solid;*/
    /*   border-width: 2px 2px 0px 2px;
@@ -31,17 +31,22 @@
 
 <div class="set-font">
 	  <ul class="nav nav-tabs nav-justified" role="tablist">
+	   
+	   	 {{> lastQuote }}
+
   		<li class="tab" role="presentation">
           <a class='inner-tab' href='' data-toggle="tab" title="This tab will display real time market data" id='live-tab'> Live </a>
-      </li>
+        </li>
 
   		<li class="tab" role="presentation">
           <a class='inner-tab' href='' data-toggle="tab" title="This tab presents historical data" id='historical-tab'>Historical </a>
-      </li>
+        </li>
 
-  		<li class="tab" role="presentation">
+
+
+  		<!-- <li class="tab" role="presentation">
           <a class='inner-tab' href='' data-toggle="tab" title="This tab will change your chart type" id='algo-tab'>Chart Type </a>
-      </li>
+      </li> -->
     </ul>
 </div>
 

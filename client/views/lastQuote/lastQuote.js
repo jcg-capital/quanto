@@ -5,6 +5,16 @@
                             var ask;
 
 
+
+                   setInterval(function () {
+                          var x = (new Date()).getTime(), // current time
+                          y = Math.round(Math.random() * 20);
+                              Session.set('lastAsk', y);
+                          z = y+.50
+
+                      }, 1000);
+
+
    Streamy.on('hello', function(d) {
                             console.log('streamy triggered');
                             var data = JSON.parse(d.data); // Will print 'world!'
