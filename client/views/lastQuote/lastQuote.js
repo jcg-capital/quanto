@@ -5,14 +5,14 @@
                             var ask;
 
 
+                // Function for testing reactivity
+                   // setInterval(function () {
+                   //        var x = (new Date()).getTime(), // current time
+                   //        y = Math.round(Math.random() * 20);
+                   //            Session.set('lastPrice', y);
+                          
 
-                   setInterval(function () {
-                          var x = (new Date()).getTime(), // current time
-                          y = Math.round(Math.random() * 20);
-                              Session.set('lastAsk', y);
-                          z = y+.50
-
-                      }, 1000);
+                   //    }, 1000);
 
 
    Streamy.on('hello', function(d) {
