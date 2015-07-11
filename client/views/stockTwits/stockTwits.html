@@ -1,12 +1,21 @@
 <template name = "stockTwits">
+<style>
+  @font-face {
+      font-family: DeliciousRoman;
+      src: url(neuropolxfree.ttf);
+      font-weight: 0;
+      }
+
+    .set-font {
+        font-family: DeliciousRoman;
+      }
 
 
-<button type="button" class="twits btn btn-primary">Get Twits</button>
+</style>
 
-<div class="col-md-4 col-s-4">
-<ul class="list-group">
-</ul>
-</div>
+
+<span class='set-font'> {{ authorName }}: {{ twitBody }} {{ timePosted }} </span>
+
 
 
 </template>

@@ -20,17 +20,16 @@ var filters = {
 
   myFilter: function () {
     // do something
-    this.next()
+    this.next();
   },
 
   isLoggedIn: function() {
     if (!(Meteor.loggingIn() || Meteor.user())) {
-      alert('Please Log In First.')
+      alert('Please Log In First.');
       this.stop();
     }
   }
-
-}
+};
 
 Router.onBeforeAction(filters.myFilter, {only: ['algorithms']});
 
@@ -109,7 +108,7 @@ Router.map(function() {
     data: function () {
       return {
         algorithms: Algorithms.find()
-      }
+      };
     }
   });
 
@@ -139,7 +138,7 @@ Router.map(function() {
   this.route('login');
   this.route('lastQuote');
   this.route('signup');
-
+  this.route('stockTwits');
   this.route('forgot');
 
 });

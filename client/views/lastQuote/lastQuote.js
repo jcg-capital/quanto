@@ -1,8 +1,13 @@
-       						var lastPrice1;
-                            var timestamp1;
-                            var dateTime;
-                            var bid;
-                            var ask;
+    var lastPrice1;
+    var timestamp1;
+    var dateTime;
+    var bid;
+    var ask;
+    var historicalData = Session.get('dataStore').data;
+    var length = historicalData.length-1;
+    var lastHistoricalPrice = historicalData[length][1];
+
+    Session.set('lastPrice', lastHistoricalPrice);
 
 
                 // Function for testing reactivity
