@@ -1,18 +1,14 @@
 <template name="textEditor">
-  
+
 	<style>
     @font-face {
     font-family: DeliciousRoman;
     src: url(neuropolxfree.ttf);
     font-weight:400;
     }
-
     .set-font {
       font-family: DeliciousRoman;
     }
-
-
-  
     div#ace-editor-div.col-md-12 {
       padding-right: 0px;
       padding-left: 0px;
@@ -46,7 +42,7 @@
     }
 	</style>
 
-<div class="set-font">
+  <div class="set-font">
 	  <ul class="nav nav-tabs nav-justified" role="tablist">
   		<li class="tab active" role="presentation">
           <a class='inner-tab active' href='#Forge' data-toggle="tab" title="This tab contains the code for your data-filtering alogirithm" id='forge-tab'>Editor</a>
@@ -60,52 +56,40 @@
           <a class='inner-tab' href='#Algorithms' data-toggle="tab" title="This tab contains a list of algorithms that can be loaded into the 'forge' tab" id='algo-tab'>Algorithms</a>
       </li>
     </ul>
-</div>
-
+  </div>
   <!-- Tab panes -->
 	<div class="tab-content">
-	  <div role="tabpanel" class="tab-pane active" id="Forge">
-	    <div class='col-md-12' id='ace-editor-div'>
-				  <pre id='text-editor-id'></pre>          
-              <div class="set-font">
-                <ul class="nav nav-tabs nav-justified" role="tablist">
-                  <li class="tab" role="presentation">
-                      <a class='inner-tab' data-toggle="tab" title="This tab contains the code for your data-filtering alogirithm" id='save-algo'>
-                       <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>  Save </a>
-                  </li>
-
-                  <li class="tab" role="presentation">
-                      <a class='inner-tab' data-toggle="tab" title="This tab contains a spreadsheet of the data that you queried" id='graph-data'> <span class="glyphicon glyphicon-stats" aria-hidden="true"> </span> Graph</a>
-                  </li>
-
-                  <li class="tab" role="presentation">
-                      <a class='inner-tab' data-toggle="tab" title="This tab contains a list of algorithms that can be loaded into the 'forge' tab" id='social-data'> <span class="glyphicon glyphicon-cloud" aria-hidden="true"> </span> Social</a>
-                  </li> 
-              </ul>
-</div>
- <!--              <div class='col-md-4'>
-    				    <div id='save-algo' class='glyphicon glyphicon-floppy-disk btn-primary' title="Save your algorithm to the public repository!"> <span class='set-font'> Save </span> </div> 
-              </div>
-
-    				   
-                <div class='col-md-4'>
-                  <div id='graph-data' class='glyphicon glyphicon-stats btn-primary' title="Graph your algorithm-filtered data!"> <span class='set-font'> Graph </span> </div>
-                </div>
-
-                <div class='col-md-4'>
-                  <div id='graph-data' class='glyphicon glyphicon-cloud btn-primary' title="Graph your algorithm-filtered data!"> <span class='set-font'> Social </span> </div>
-                </div> -->
-              
-			</div>
-		</div>
-		<div role="tabpanel" class="tab-pane" id="Data">
-      <div>
-		    {{> spreadsheet}}
+    <!-- texteditor panel -->
+    <div role="tabpanel" class="tab-pane active" id="Forge">
+      <div class='col-md-12' id='ace-editor-div'>
+          <!-- text editor gets mounted here -->
+          <pre id='text-editor-id'></pre>
+          <!-- Buttons to run / save code inside of ace editor -->
+          <div class="set-font">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li class="tab" role="presentation">
+                  <a class='inner-tab' data-toggle="tab" title="This tab contains the code for your data-filtering alogirithm" id='save-algo'>
+                   <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>  Save </a>
+              </li>
+              <li class="tab" role="presentation">
+                  <a class='inner-tab' data-toggle="tab" title="This tab contains a spreadsheet of the data that you queried" id='graph-data'> <span class="glyphicon glyphicon-stats" aria-hidden="true"> </span> Graph</a>
+              </li>
+              <li class="tab" role="presentation">
+                  <a class='inner-tab' data-toggle="tab" title="This tab contains a list of algorithms that can be loaded into the 'forge' tab" id='social-data'> <span class="glyphicon glyphicon-cloud" aria-hidden="true"> </span> Social</a>
+              </li>
+          </ul>
+        </div>
       </div>
-		</div>
-		<div role="tabpanel" class="tab-pane" id="Algorithms">
+    </div>
+    <!-- spreadsheet panel -->
+    <div role="tabpanel" class="tab-pane" id="Data">
+      <div>
+        {{> spreadsheet}}
+      </div>
+    </div>
+    <!-- algorithm panel -->
+  	<div role="tabpanel" class="tab-pane" id="Algorithms">
       {{> algorithms}}
-		</div>
-	</div>
-  
+  	</div>
+  </div>
 </template>
