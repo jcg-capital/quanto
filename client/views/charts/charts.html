@@ -1,10 +1,49 @@
 <template name="charts">
-<button type="button" class="off btn-xlarge" aria-label="Center Align">
-        Turn Off Live
-  </button>
-  <button type="button" class="on btn-xlarge" aria-label="Center Align">
-        Go Live
-  </button>
+<style>
+    @font-face {
+      font-family: DeliciousRoman;
+      src: url(neuropolxfree.ttf);
+      font-weight:400;
+      }
+
+    .set-font {
+      font-family: DeliciousRoman;
+      color: #A6E22E;
+   /*   border-color: white;
+      border-style: solid;*/
+   /*   border-width: 2px 2px 0px 2px;
+      border-radius: 5px 5px 0px 0px;*/
+      background-color: #272822;
+    }
+
+</style>
+
+<!-- <div class="text-center">
+	<div class="btn-group" role="group" aria-label="Center Align">
+		<button type="button" class="off btn-default" aria-label="Center Align">
+	        <span class="set-font"> Turn Off Live </span>
+	  	</button>
+	  	<button type="button" class="on btn-default" aria-label="Center Align">
+	        <span class='set-font'> Go Live </span>
+	  	</button>
+	</div>
+</div> -->
+
+<div class="set-font">
+	  <ul class="nav nav-tabs nav-justified" role="tablist">
+  		<li class="tab" role="presentation">
+          <a class='inner-tab' href='' data-toggle="tab" title="This tab will display real time market data" id='live-tab'> Live </a>
+      </li>
+
+  		<li class="tab" role="presentation">
+          <a class='inner-tab' href='' data-toggle="tab" title="This tab presents historical data" id='historical-tab'>Historical </a>
+      </li>
+
+  		<li class="tab" role="presentation">
+          <a class='inner-tab' href='' data-toggle="tab" title="This tab will change your chart type" id='algo-tab'>Chart Type </a>
+      </li>
+    </ul>
+</div>
 
   <script src="http://code.highcharts.com/stock/highstock.js"></script>
   <script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
