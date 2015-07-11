@@ -74,6 +74,29 @@ this.route('yahooQuery', {
   }
 });
 
+ this.route('stockTwitsquery', {
+    where: 'server',
+    action: function() {
+      var requestMethod = this.request.method;
+      // Data from a POST request
+      var requestData = this.request.body;
+      var response = this.response;
+      var symbolLookup = 'https://api.stocktwits.com/api/2/streams/symbol/' + requestData.stockTwit + '.json?limit=6';
+      HTTP.call("GET", symbolLookup, null,
+        function (error, result) {
+          if (error) {
+            console.log('error from stockTwit query', error);
+          }
+          if (!error) {
+            console.log('StockTwit lookup results', JSON.stringify(result));
+            response.end(JSON.stringify(result));
+          }
+        }
+      );
+    }
+});
+
+
     this.route('quandlquery', {
         where: 'server',
         action: function() {

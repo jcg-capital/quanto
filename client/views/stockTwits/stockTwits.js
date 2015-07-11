@@ -25,11 +25,11 @@ Template.stockTwits.rendered = function() {
 				        	console.log(error);
 				      		} 
 				      		else if (!error) {
+				      		var counter = 1;
 				        	var array = JSON.parse(result.content);
 				        	var messages = array.data.messages;
 				        	var authorName = messages[counter].user.username;
 				        	var twitBody = messages[counter].body;
-				        	var counter = 1;
 				        	var timePosted = moment(messages[counter].created_at).fromNow();
 
 				        	var k = setInterval(function(){
