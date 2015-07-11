@@ -34,14 +34,17 @@ Template.stockTwits.rendered = function() {
 
 				        	var k = setInterval(function(){
 				        		Session.set('authorName', messages[counter].user.username);
+				        		Session.set('authorName', messages[counter].user.username);
+				        		Session.set('twitBody', messages[counter].body);
+				        		Session.set('timePosted', timePosted);
 				        		
-								var $twit = $('<li class="list-group-item">').text(messages[counter].body + "" + timePoste);
+								var $twit = $('<li class="list-group-item">').text(messages[counter].body + "" + timePosted);
 								    $('.list-group').append($twit);
 								    counter++;
-								    if(counter === 6) {
+								    if(counter === 30) {
 								        clearInterval(k);
 								    }
-								}, 3000);
+								}, 4000);
 
 			        		console.log('last twit id', lastTwitId);					        		
 			        		console.log('message', messages[counter]);
@@ -86,8 +89,10 @@ Template.stockTwits.events({
 
 				        	var k = setInterval(function(){
 				        		Session.set('authorName', messages[counter].user.username);
+				        		Session.set('twitBody', messages[counter].body);
+				        		Session.set('timePosted', timePosted);
 
-								var $twit = $('<li class="list-group-item">').text(messages[counter].body + "" + timePoste);
+								var $twit = $('<li class="list-group-item">').text(messages[counter].body + "" + timePosted);
 								    $('.list-group').append($twit);
 								    counter++;
 								    if(counter === 6) {
