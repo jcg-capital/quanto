@@ -1,31 +1,47 @@
     @font-face {
       font-family: DeliciousRoman;
-      src: url(neuropolxfree.ttf);
+      src: url(Audiowide-Regular.ttf);
       font-weight:400;
     }
-    h1 {
+    .set-font {
+      font-family: DeliciousRoman;
+    }
+    .quantoLogo {
       position: absolute;
       font-family: DeliciousRoman;
-      font-size: 24px;
-      font-weight: bold;
-      width: 300px;
-      height: 50px;
+      text-shadow: 8px 8px 8px grey;
+      font-size: 150px;
+      font-weight: 450;
+      left: 450px;
       z-index: 100;
-      color: white;
+      color: #2b908f;
+      margin-top: 100px;
+    }
+    .subtitle {
+      color: #2b908f;
+      text-align: center;
+      text-shadow: 8px 8px 8px grey;
+    }
+    h2 {
+      color: #2b908f;
+      text-align: center;
+      text-shadow: 8px 8px 8px grey;
+    }
+    p {
+      color: #2b908f;
     }
     body {
       height: 100%;
       background-color: #272822;
     }
-
     #splash-container {
       margin-top: 3%;
       position: relative;
+      
     }
     .product-page-div {
       margin-top: 1%;
-      height: 100%;
-      
+      height: 100%; 
     }
     .product-image {
       width: 50%;
@@ -145,6 +161,7 @@
 
     }
     .left-arrow {
+
       font-size: 5vh;
       text-shadow: -8px 0px 6px #a518eb;
       -webkit-animation: leftmove 5s infinite;

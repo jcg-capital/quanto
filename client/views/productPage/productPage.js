@@ -251,8 +251,15 @@ Template.productPage.rendered = function () {
                     setInterval(function () {
                         var x = (new Date()).getTime(), // current time
                             y = Math.round(Math.random() * 100);
-                        series.addPoint([x, y], true, true);
+                        series.addPoint([x, y]);
                     }, 1000);
+
+                    var series2 = this.series[1];
+                    setInterval(function () {
+                        var x = (new Date()).getTime(), // current time
+                            y = Math.round(Math.random() * 25);
+                        series2.addPoint([x, y]);
+                    }, 500);
                 }
             }
         },
@@ -276,7 +283,7 @@ Template.productPage.rendered = function () {
                 // generate an array of random data
                 var data = [], time = (new Date()).getTime(), i;
 
-                for (i = -999; i <= 0; i += 1) {
+                for (i = -50; i <= 0; i += 1) {
                     data.push([
                         time + i * 10000,
                         Math.round(Math.random() * 100)
@@ -291,7 +298,7 @@ Template.productPage.rendered = function () {
                 // generate an array of random data
                 var data = [], time = (new Date()).getTime(), i;
 
-                for (i = -999; i <= 0; i += 1) {
+                for (i = -50; i <= 0; i += 1) {
                     data.push([
                         time + i * 10000,
                         Math.round(Math.random() * 25)

@@ -1,4 +1,4 @@
-    var lastPrice1;
+var lastPrice1;
     var timestamp1;
     var dateTime;
     var bid;
@@ -41,7 +41,7 @@
                             }
                      
                             Session.set('lastPrice', lastPrice1);
-   						   
+                 
                            
                                if (data.quote) {
                               console.log('quote occured');
@@ -50,12 +50,12 @@
                                  ask = data.quote.ask;
                                  timestamp1 = data.quote.timestamp;
 
-                              	}
+                                }
 
                             Session.set('lastBid', bid);
                             Session.set('lastAsk', ask);
 
-                     	});
+                      });
                    
 
 // var getPrice = function () {
@@ -69,18 +69,18 @@
 // });
 
 Template.lastPrices.helpers({
-	lastPrice: function () {
-	    console.log('getting lastPrice:');
+  lastPrice: function () {
+      console.log('getting lastPrice:');
 
-	    return Session.get('lastPrice');
-	  },
-	lastAsk: function () {
-	    console.log('getting kastAsk:');
-	    return Session.get('lastAsk');
-	  },
-	lastBid: function () {
-	    console.log('getting lastBid:');
-	    return Session.get('lastBid');
-	  }
+      return Session.get('lastPrice');
+    },
+  lastAsk: function () {
+      console.log('getting kastAsk:');
+      return Session.get('lastAsk');
+    },
+  lastBid: function () {
+      console.log('getting lastBid:');
+      return Session.get('lastBid');
+    }
 });
                     
