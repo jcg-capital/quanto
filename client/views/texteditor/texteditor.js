@@ -16,22 +16,22 @@ Template.textEditor.events({
   'click #algo-tab': function(e, instance){
     // render the algo tab
     e.preventDefault();
-    Template.textEditor.rendered()
+    Template.textEditor.rendered();
   },
   'click #graph-data': function(e, instance){
     e.preventDefault();
-    var t = AceEditor.instance('#text-editor-id')
+    var t = AceEditor.instance('#text-editor-id');
     // Run code client side in webworker. TODO: #82
-    var code = t.getSession().getValue().replace(/\'/g, '\"')
+    var code = t.getSession().getValue().replace(/\'/g, '\"');
     eval(code);
   },
   'click #save-algo': function(e, instance){
     e.preventDefault();
-    var title = prompt('Name of new algo')
-    var t = AceEditor.instance('#text-editor-id')
-    var code = t.getSession().getValue().replace(/\'/g, '\"')
-    Algorithms.insert({title: title, body: code })
-    alert('Saved code: '+code)
+    var title = prompt('Name of new algo');
+    var t = AceEditor.instance('#text-editor-id');
+    var code = t.getSession().getValue().replace(/\'/g, '\"');
+    Algorithms.insert({title: title, body: code });
+    alert('Saved code: '+code);
   }
 });
 
