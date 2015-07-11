@@ -20,7 +20,7 @@ Template.productPage.rendered = function () {
 Template.productPage.events({
 
   'click .left-arrow': function(e, instance){
-    alert('Left Arrow')
+    Router.go('teamView')
   },
   'click .right-arrow': function(e, instance){
     Router.go('combinedViews')

@@ -132,6 +132,7 @@
     .left-arrow:hover {
       /*text-shadow: -8px 0px 6px #a518eb;*/
       animation: leftmove .5s infinite;
+      cursor: pointer;
     }
     @-webkit-keyframes leftmove {
       1% {text-shadow: -8px 0px 6px #a518eb;}
