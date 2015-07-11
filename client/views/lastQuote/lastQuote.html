@@ -1,23 +1,39 @@
 <template name="lastQuote">
+ <style>
+ 	@font-face {
+      font-family: DeliciousRoman;
+      src: url(neuropolxfree.ttf);
+      font-weight:400;
+    }
 
-<div>
-<h1> {{> lastPrices }} </h1>
-</div>
+    .set-font {
+      font-family: DeliciousRoman;
+      color: #90ee7e;
+   /*   border-color: white;
+      border-style: solid;*/
+   /*   border-width: 2px 2px 0px 2px;
+      border-radius: 5px 5px 0px 0px;*/
+      background-color: #272822;
+    }
+
+ </style>
+
+<li class="tab" role="presentation">
+    <a class='inner-tab' href='' data-toggle="tab" title="This tab will change your chart type" id='algo-tab'> {{> lastPrices }}  </a>
+</li>
+
 
 </template>
 
 <template name = "lastPrices">
 
-<div class="row">
-  <div class="col-md-2"> Quote</div>
-  <div class="col-md-2"> Bid </div>
-  <div class="col-md-2"> Ask </div>
-</div>
-<div class="row">
+<span> Last Quote: {{ lastPrice }}} </span>
+
+<!-- <div class="row">
   <div class="col-md-2"> {{ lastPrice }} </div>
   <div class="col-md-2"> {{ lastBid }} </div>
   <div class="col-md-2"> {{ lastAsk }} </div>
-</div>
+</div> -->
 
 
 

@@ -496,7 +496,7 @@ Template.charts.rendered = function() {
             selected: 2
           },
           title: {
-            text: 'hello'
+            text: Session.get('dataStore').code
           },
           yAxis: [{
             labels: {
@@ -574,12 +574,12 @@ makeCallRequest = function(ticker, cb) {
  */
 
 Template.charts.events({
-  'click button.off.btn-xlarge': function (event) {
+  'click a#data-tab.inner-tab': function (event) {
     live = false;
     Streamy.emit('goodbye', { data: 'goodbye for realz' } );
     Template.charts.rendered();
   },
-  'click button.on.btn-xlarge': function (event) {
+  'click a#forge-tab.inner-tab.active': function (event) {
     console.log('triggered Live Data');
     live = true;
     HTTP.call("GET", "liveQuery", null, function (error, result) {
