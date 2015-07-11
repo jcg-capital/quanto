@@ -1,9 +1,29 @@
+    @font-face {
+      font-family: DeliciousRoman;
+      src: url(neuropolxfree.ttf);
+      font-weight:400;
+    }
+    h1 {
+      position: absolute;
+      font-family: DeliciousRoman;
+      font-size: 24px;
+      font-weight: bold;
+      width: 300px;
+      height: 50px;
+      z-index: 100;
+      color: white;
+    }
     body {
       height: 100%;
-      background-image: url("product-page/muted-pattern1.jpg");
+      background-color: #272822;
+    }
+
+    #splash-container {
+      margin-top: 3%;
+      position: relative;
     }
     .product-page-div {
-      margin-top: 15%;
+      margin-top: 1%;
       height: 100%;
       
     }
