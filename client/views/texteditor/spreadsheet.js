@@ -14,7 +14,6 @@ Template.spreadsheet.helpers({
   myHelper: function () {
     //
   }
-
 });
 
 Template.spreadsheet.rendered = function () {
@@ -32,12 +31,11 @@ Template.spreadsheet.rendered = function () {
   //   ];
   // var data = Session.set('dataStore', tmp);
   // var data = Session.get('dataStore')
-
   // Instead of creating a new Handsontable instance
   // with the container element passed as an argument,
   // you can simply call .handsontable method on a jQuery DOM object.
   var $container = $("#spreadsheet-div");
-  
+
   $container.handsontable({
     data: Session.get('dataStore'),
     height: 396,
@@ -54,16 +52,12 @@ Template.spreadsheet.rendered = function () {
   $container.style.height = $('#Data').height() + 'px';
   // This way, you can access Handsontable api methods by passing their names as an argument, e.g.:
   var hotInstance = $("#spreadsheet-div").handsontable('getInstance');
-  
   function bindDumpButton() {
       if (typeof Handsontable === "undefined") {
         return;
       }
-  
       Handsontable.Dom.addEvent(document.body, 'click', function (e) {
-  
         var element = e.target || e.srcElement;
-  
         if (element.nodeName == "BUTTON" && element.name == 'dump') {
           var name = element.getAttribute('data-dump');
           var instance = element.getAttribute('data-instance');
@@ -76,9 +70,6 @@ Template.spreadsheet.rendered = function () {
 };
 
 Template.spreadsheet.events({
-
   'click #data-tab': function(e, instance){
-
   }
-
 });
