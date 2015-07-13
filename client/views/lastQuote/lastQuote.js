@@ -6,13 +6,13 @@
 
   //Set a timeout to wait until the dataStore is fetched
 
-  Streamy.on('createLastQuote', function(d) {
+  // Streamy.on('createLastQuote', function(d) {
   var historicalData = Session.get('dataStore').data;
   var length = historicalData.length-1;
   var lastHistoricalPrice = historicalData[length][1];
-  console.log('last historical price', lastHistoricalPrice)
+  console.log('last historical price', d.lastPrice)
   Session.set('lastPrice', lastHistoricalPrice);
-  });
+  // });
 
   // When live data is received, update the last qouted price
 
@@ -54,7 +54,7 @@ Template.lastPrices.helpers({
     }, 3000);
     },
   lastAsk: function () {
-      console.log('getting kastAsk:');
+      console.log('getting lastAsk:');
       return Session.get('lastAsk');
     },
   lastBid: function () {

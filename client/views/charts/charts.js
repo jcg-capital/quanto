@@ -234,8 +234,9 @@ Template.charts.rendered = function() {
    
   tickerSymbol = 'NFLX';
 
+
   if (!dataObject && !live) {    
-    Streamy.emit('createLastQuote');
+ 
     Streamy.emit('setCurrentTickerSymbol', { data: tickerSymbol});
     makeCallRequest(tickerSymbol, function(){
       dataObject = Session.get('dataStore');
@@ -287,6 +288,8 @@ Template.charts.rendered = function() {
           data[i][5] // the volume
         ]);
       }
+
+
 
       // frequency of data - daily, monthly, 
       var frequency = data.frequency;
@@ -342,6 +345,7 @@ Template.charts.rendered = function() {
       // create the chart
       $('div#container-area').highcharts('StockChart', options);
     }); 
+Streamy.emit('createLastQuote', { lastPrice: ohlc[dataLength] });
   } 
   else if (live) {
         $(function () {
