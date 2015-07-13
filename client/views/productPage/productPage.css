@@ -9,26 +9,26 @@
     .quantoLogo {
       position: absolute;
       font-family: DeliciousRoman;
-      text-shadow: 8px 8px 8px grey;
+      text-shadow: 8px 8px 8px black;
       font-size: 150px;
       font-weight: 450;
       left: 450px;
       z-index: 100;
-      color: #2b908f;
+      color: grey;
       margin-top: 100px;
     }
     .subtitle {
-      color: #2b908f;
+      color: grey;
       text-align: center;
-      text-shadow: 8px 8px 8px grey;
+      text-shadow: 8px 8px 8px black;
     }
     h2 {
-      color: #2b908f;
+      color: grey;
       text-align: center;
-      text-shadow: 8px 8px 8px grey;
+      text-shadow: 8px 8px 8px black;
     }
     p {
-      color: #2b908f;
+      color: grey;
     }
     body {
       height: 100%;
