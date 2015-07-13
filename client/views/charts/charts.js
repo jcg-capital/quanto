@@ -553,6 +553,7 @@ makeCallRequest = function(ticker, cb) {
       else if (!error) {
         var r = JSON.parse(result.content);
         Session.set('dataStore', r);
+        historicalData = Session.get('dataStore').data;
         cb();
       }
     });

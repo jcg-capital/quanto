@@ -3,10 +3,11 @@
   var dateTime;
   var bid;
   var ask;
-
+  console.log('in last quote');
   //Set a timeout to wait until the dataStore is fetched
 
   // Streamy.on('createLastQuote', function(d) {
+
   var historicalData = Session.get('dataStore').data;
   var length = historicalData.length-1;
   var lastHistoricalPrice = historicalData[length][1];
