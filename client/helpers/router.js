@@ -14,15 +14,14 @@ Router.configure({
   notFoundTemplate: 'notFound',
 });
 
+//****************************************//
 // Filters
-
+//****************************************//
 var filters = {
-
   myFilter: function () {
     // do something
     this.next();
   },
-
   isLoggedIn: function() {
     if (!(Meteor.loggingIn() || Meteor.user())) {
       alert('Please Log In First.');
@@ -33,13 +32,10 @@ var filters = {
 
 Router.onBeforeAction(filters.myFilter, {only: ['algorithms']});
 
-// Routes
-
 Router.map(function() {
   //****************************************//
   // Algorithms
   //****************************************//
-
   this.route('algorithms', {
     waitOn: function () {
       return Meteor.subscribe('allAlgorithms');
@@ -50,7 +46,6 @@ Router.map(function() {
       };
     }
   });
-
   this.route('algorithm', {
     path: '/algorithms/:_id',
     waitOn: function () {
@@ -63,7 +58,7 @@ Router.map(function() {
     }
   });
   //****************************************//
-  // Quandl
+  // Quandl Test example
   //****************************************//
   this.route('server', {
     data: function() {
@@ -93,7 +88,6 @@ Router.map(function() {
       };
     }
   });
-
   //****************************************//
   // Pages
   //****************************************//
@@ -111,13 +105,14 @@ Router.map(function() {
       };
     }
   });
-
-  this.route('siteMap', {
-    path: 'siteMap'
-  });
-
+  //****************************************//
+  // Layout
+  //****************************************//
   this.route('content');
-  this.route('charts');
+
+  //****************************************//
+  // Left View
+  //****************************************//
   this.route('textEditor', {
     waitOn: function () {
       return Meteor.subscribe('allAlgorithms');
@@ -128,17 +123,15 @@ Router.map(function() {
       };
     }
   });
-  this.route('buttonRow');
-  this.route('modalTrigger');
-  this.route('brand');
-
+  //****************************************//
+  // Right View
+  //****************************************//
+  this.route('charts');
+  this.route('lastQuote');
+  this.route('stockTwits');
 
   // Users
-
   this.route('login');
-  this.route('lastQuote');
   this.route('signup');
-  this.route('stockTwits');
   this.route('forgot');
-
 });
