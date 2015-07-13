@@ -7,7 +7,7 @@ Template.textEditor.rendered = function () {
       mode:"javascript",
   };
   var ace = AceEditor.instance("text-editor-id", options, function(editor){
-    console.log(editor);
+    // console.log(editor);
     editor.insert(algo);
   });
 };
