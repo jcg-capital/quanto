@@ -111,6 +111,7 @@ Template.searchBar.events({
         }]
       };
 
+      Template.stockTwits.rendered();
       // create the chart
       $('div#container-area').highcharts('StockChart', options);
       chart.hideLoading();

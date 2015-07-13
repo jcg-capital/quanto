@@ -81,7 +81,7 @@ this.route('yahooQuery', {
       // Data from a POST request
       var requestData = this.request.body;
       var response = this.response;
-      var symbolLookup = 'https://api.stocktwits.com/api/2/streams/symbol/' + requestData.stockTwit + '.json?limit=30';
+      var symbolLookup = 'https://api.stocktwits.com/api/2/streams/symbol/' + requestData.stockTwit + '.json?limit=10';
       HTTP.call("GET", symbolLookup, null,
         function (error, result) {
           if (error) {

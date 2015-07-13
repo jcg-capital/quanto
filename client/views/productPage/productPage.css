@@ -1,11 +1,47 @@
+    @font-face {
+      font-family: DeliciousRoman;
+      src: url(Audiowide-Regular.ttf);
+      font-weight:400;
+    }
+    .set-font {
+      font-family: DeliciousRoman;
+    }
+    .quantoLogo {
+      position: absolute;
+      font-family: DeliciousRoman;
+      text-shadow: 8px 8px 8px black;
+      font-size: 150px;
+      font-weight: 450;
+      left: 450px;
+      z-index: 100;
+      color: grey;
+      margin-top: 100px;
+    }
+    .subtitle {
+      color: grey;
+      text-align: center;
+      text-shadow: 8px 8px 8px black;
+    }
+    h2 {
+      color: grey;
+      text-align: center;
+      text-shadow: 8px 8px 8px black;
+    }
+    p {
+      color: grey;
+    }
     body {
       height: 100%;
-      background-image: url("product-page/muted-pattern1.jpg");
+      background-color: #272822;
+    }
+    #splash-container {
+      margin-top: 3%;
+      position: relative;
+      
     }
     .product-page-div {
-      margin-top: 15%;
-      height: 100%;
-      
+      margin-top: 1%;
+      height: 100%; 
     }
     .product-image {
       width: 50%;
@@ -125,6 +161,7 @@
 
     }
     .left-arrow {
+
       font-size: 5vh;
       text-shadow: -8px 0px 6px #a518eb;
       -webkit-animation: leftmove 5s infinite;

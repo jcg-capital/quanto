@@ -2,9 +2,9 @@
 
 	<style>
     @font-face {
-    font-family: DeliciousRoman;
-    src: url(neuropolxfree.ttf);
-    font-weight:400;
+      font-family: DeliciousRoman;
+      src: url(Audiowide-Regular.ttf);
+      font-weight:400;
     }
     .set-font {
       font-family: DeliciousRoman;
@@ -19,7 +19,7 @@
     }
     .glyphicon {
       background-color: #272822;
-      color: #90ee7e;
+      color: #2b908f;
       cursor: pointer;
       margin: 0px;
       padding: 10px;
@@ -37,7 +37,7 @@
       border-radius: 5px 5px 0px 0px;
     }
     .inner-tab {
-      color: #90ee7e;
+      color: #2b908f;
       padding: 4px !important;
     }
 	</style>
@@ -45,15 +45,15 @@
   <div class="set-font">
 	  <ul class="nav nav-tabs nav-justified" role="tablist">
   		<li class="tab active" role="presentation">
-          <a class='inner-tab active' href='#Forge' data-toggle="tab" title="This tab contains the code for your data-filtering alogirithm" id='forge-tab'>Editor</a>
+          <a class='inner-tab active' href='#Forge' data-toggle="tab" title="This tab contains the code for your data-filtering alogirithm" id='forge-tab'><span class='set-font'> Editor </span> </a>
       </li>
 
   		<li class="tab" role="presentation">
-          <a class='inner-tab' href='#Data' data-toggle="tab" title="This tab contains a spreadsheet of the data that you queried" id='data-tab'>Data</a>
+          <a class='inner-tab' href='#Data' data-toggle="tab" title="This tab contains a spreadsheet of the data that you queried" id='data-tab'> <span class='set-font'>Data</span></a>
       </li>
 
   		<li class="tab" role="presentation">
-          <a class='inner-tab' href='#Algorithms' data-toggle="tab" title="This tab contains a list of algorithms that can be loaded into the 'forge' tab" id='algo-tab'>Algorithms</a>
+          <a class='inner-tab' href='#Algorithms' data-toggle="tab" title="This tab contains a list of algorithms that can be loaded into the 'forge' tab" id='algo-tab'><span class='set-font'>Algorithms</span></a>
       </li>
     </ul>
   </div>
@@ -91,5 +91,5 @@
   	<div role="tabpanel" class="tab-pane" id="Algorithms">
       {{> algorithms}}
   	</div>
-  </div>
+</div>
 </template>
