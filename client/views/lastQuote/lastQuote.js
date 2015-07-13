@@ -1,78 +1,57 @@
-var lastPrice1;
-    var timestamp1;
-    var dateTime;
-    var bid;
-    var ask;
-    var historicalData = Session.get('dataStore').data;
-    var length = historicalData.length-1;
-    var lastHistoricalPrice = historicalData[length][1];
+  var lastPrice1;
+  var timestamp1;
+  var dateTime;
+  var bid;
+  var ask;
 
-    Session.set('lastPrice', lastHistoricalPrice);
+  //Set a timeout to wait until the dataStore is fetched
 
+  Streamy.on('createLastQuote', function(d) {
+  var historicalData = Session.get('dataStore').data;
+  var length = historicalData.length-1;
+  var lastHistoricalPrice = historicalData[length][1];
+  console.log('last historical price', lastHistoricalPrice)
+  Session.set('lastPrice', lastHistoricalPrice);
+  });
 
-                // Function for testing reactivity
-                   // setInterval(function () {
-                   //        var x = (new Date()).getTime(), // current time
-                   //        y = Math.round(Math.random() * 20);
-                   //            Session.set('lastPrice', y);
-                          
+  // When live data is received, update the last qouted price
 
-                   //    }, 1000);
+  Streamy.on('liveDataInitiated', function(d) {
+    console.log('streamy triggered');
+    var data = JSON.parse(d.data); // Will print 'world!'
 
+    if (data.trade) {
+      console.log('trade occured');
+       var trade = data.trade;
+       lastPrice1 = data.trade.last;
+       var volume = data.trade.cvol;
+       timestamp1 = data.trade.timestamp;
+       dateTime = data.trade.datatime;
 
-   Streamy.on('hello', function(d) {
-                            console.log('streamy triggered');
-                            var data = JSON.parse(d.data); // Will print 'world!'
-                            
-                       
+       var tradeData = {
+            'lastPrice': lastPrice1,
+            'timestamp': timestamp1
+       };
+    }
 
-                            if (data.trade) {
-                              console.log('trade occured');
-                               var trade = data.trade;
-                               lastPrice1 = data.trade.last;
-                               var volume = data.trade.cvol;
-                               timestamp1 = data.trade.timestamp;
-                               dateTime = data.trade.datatime;
-
-                               var tradeData = {
-                                    'lastPrice': lastPrice1,
-                                    'timestamp': timestamp1
-                               };
-                            }
-                     
-                            Session.set('lastPrice', lastPrice1);
-                 
-                           
-                               if (data.quote) {
-                              console.log('quote occured');
-                                 var quote = data.quote;
-                                 bid = data.quote.bid;
-                                 ask = data.quote.ask;
-                                 timestamp1 = data.quote.timestamp;
-
-                                }
-
-                            Session.set('lastBid', bid);
-                            Session.set('lastAsk', ask);
-
-                      });
+  Session.set('lastPrice', lastPrice1);
+      if (data.quote) {
+        console.log('quote occured');
+        var quote = data.quote;
+        bid = data.quote.bid;
+        ask = data.quote.ask;
+        timestamp1 = data.quote.timestamp;
+      }
+        Session.set('lastBid', bid);
+        Session.set('lastAsk', ask);
+});
                    
-
-// var getPrice = function () {
-//   return Session.get('lastPrice');
-// };
-
-// Tracker.autorun(function () {
-//   var count = Session.get('lastPrice');
-//   console.log('Autorun is auto-running!');
-//   console.log(count);
-// });
-
 Template.lastPrices.helpers({
   lastPrice: function () {
+    setTimeout(function(){
       console.log('getting lastPrice:');
-
       return Session.get('lastPrice');
+    }, 3000);
     },
   lastAsk: function () {
       console.log('getting kastAsk:');

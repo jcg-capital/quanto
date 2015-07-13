@@ -11,10 +11,6 @@ Code related to the charts template
 
 live = false;
 
-Streamy.on('hello', function(data){
-  console.log('received hello', data);
-});
-
 Template.charts.rendered = function() {
 /**
  * Dark theme for Highcharts JS
@@ -230,21 +226,16 @@ Template.charts.rendered = function() {
   // Apply the theme
   Highcharts.setOptions(Highcharts.theme);
 
-
-
-
-
-
   var dataObject = Session.get('dataStore');
-  // ticker of initial data to query
 
   // If no data object, load default chart
   // If live, load symbol and stream
   // If not live and data object, load dataobject
+   
+  tickerSymbol = 'NFLX';
 
- 
   if (!dataObject && !live) {    
-    tickerSymbol = 'NFLX';
+    Streamy.emit('createLastQuote');
     Streamy.emit('setCurrentTickerSymbol', { data: tickerSymbol});
     makeCallRequest(tickerSymbol, function(){
       dataObject = Session.get('dataStore');
@@ -354,23 +345,22 @@ Template.charts.rendered = function() {
   } 
   else if (live) {
         $(function () {
-          console.log('rendering live chart');
-         
-
+        console.log('rendering live chart');        
         Highcharts.setOptions({
             global : {
                 useUTC : false
             }
         });
 
+        // Streamy.emit('setCurrentTickerSymbol', { data: Session.get('dataStore').code});
         // Create the chart
          console.log('entered load function');
-            // need to pass in if symbol is currently choosen
-            var historicalData = Session.get('dataStore').data;
-            // console.log('dataStore retrieved:', historicalData);
+        // need to pass in if symbol is currently choosen
+        var historicalData = Session.get('dataStore').data;
+        // console.log('dataStore retrieved:', historicalData);
         liveResults = [];
         var volume = [];
-               for (var i = historicalData.length-5; i < historicalData.length; i++) {
+               for (var i = historicalData.length-3; i < historicalData.length; i++) {
                   var newDate = new Date(historicalData[i][0]); // the date
                   var dateInMil = newDate.getTime();
                   liveResults.push([
@@ -380,12 +370,10 @@ Template.charts.rendered = function() {
                   volume.push([
                     dateInMil, // the date
                     historicalData[i][5] // the volume
-                  ]);
-                   
+                  ]);                 
                 }
 
-        $('div#container-area').highcharts('StockChart', {
-            
+        $('div#container-area').highcharts('StockChart', {   
             chart : {
                 events : {
                     load : function () {
@@ -407,8 +395,7 @@ Template.charts.rendered = function() {
                               var x = (new Date()).getTime(); // current time
                               series.addPoint([x, parseFloat(lastPrice)], true);
                             }
-                          });
-                     
+                          });         
                     }
                 }
             },
@@ -574,13 +561,14 @@ makeCallRequest = function(ticker, cb) {
  */
 
 Template.charts.events({
-  'click a#historical-tab-inner.tab': function (event) {
+  'click a#historical-tab.inner-tab': function (event) {
     live = false;
-    Streamy.emit('goodbye', { data: 'goodbye for realz' } );
+    Streamy.emit('stop live feed');
     Template.charts.rendered();
   },
   'click a#live-tab.inner-tab': function (event) {
     console.log('triggered Live Data');
+    Streamy.emit('setCurrentTickerSymbol', { data: Session.get('dataStore').data});
     live = true;
     HTTP.call("GET", "liveQuery", null, function (error, result) {
       if (error) {
