@@ -15,7 +15,6 @@ Streamy.on('hello', function(data){
   console.log('received hello', data);
 });
 
-
 Template.charts.rendered = function() {
 /**
  * Dark theme for Highcharts JS
@@ -246,6 +245,7 @@ Template.charts.rendered = function() {
  
   if (!dataObject && !live) {    
     tickerSymbol = 'NFLX';
+    Streamy.emit('setCurrentTickerSymbol', { data: tickerSymbol});
     makeCallRequest(tickerSymbol, function(){
       dataObject = Session.get('dataStore');
       var data = dataObject.data;
@@ -574,12 +574,12 @@ makeCallRequest = function(ticker, cb) {
  */
 
 Template.charts.events({
-  'click a#data-tab.inner-tab': function (event) {
+  'click a#historical-tab-inner.tab': function (event) {
     live = false;
     Streamy.emit('goodbye', { data: 'goodbye for realz' } );
     Template.charts.rendered();
   },
-  'click a#forge-tab.inner-tab.active': function (event) {
+  'click a#live-tab.inner-tab': function (event) {
     console.log('triggered Live Data');
     live = true;
     HTTP.call("GET", "liveQuery", null, function (error, result) {
