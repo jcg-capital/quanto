@@ -1,6 +1,9 @@
 <template name="textEditor">
 
 	<style>
+    /*
+      This brings in a custom font from an outside source, the .set-font class will apply the font to any child elements
+    */
     @font-face {
       font-family: DeliciousRoman;
       src: url(Audiowide-Regular.ttf);
@@ -14,17 +17,16 @@
       padding-left: 0px;
     }
     #text-editor-id {
-      height: 85vh;
+      height: 84vh;
       margin: 0px;
     }
     .glyphicon {
-      background-color: #272822;
+      background-color: transparent;
       color: #2b908f;
       cursor: pointer;
       margin: 0px;
       padding: 10px;
       position: relative;
-      border-radius: 0px 0px 5px 5px;
     }
     .tab-pane {
       height: 400px;
@@ -39,24 +41,45 @@
     .inner-tab {
       color: #2b908f;
       padding: 4px !important;
+      cursor: pointer;
+    }
+    .bottomTab {
+      background-color: #272822;
+      border-radius: 0px 0px 5px 5px;
+      border-style: solid;
+      border-width: 0px 2px 2px 2px;
+    }
+    .bottomTab:hover {
+      background-color: red !important;
+    }
+
+    /* 
+       Need the following so that small white-space doesn't appear below bottom tabs (native bootstrap thing)
+    */
+    .nav-tabs.nav-justified > li > a{
+      border-bottom: 0px;
     }
 	</style>
 
+  <!-- Three tabs at the top of the left view -->
   <div class="set-font">
 	  <ul class="nav nav-tabs nav-justified" role="tablist">
+
   		<li class="tab active" role="presentation">
-          <a class='inner-tab active' href='#Forge' data-toggle="tab" title="This tab contains the code for your data-filtering alogirithm" id='forge-tab'><span class='set-font'> Editor </span> </a>
+          <a class='inner-tab active' href='#Forge' data-toggle="tab" title="This tab contains the code for your data-filtering alogirithm" id='forge-tab'> Editor </a>
       </li>
 
   		<li class="tab" role="presentation">
-          <a class='inner-tab' href='#Data' data-toggle="tab" title="This tab contains a spreadsheet of the data that you queried" id='data-tab'> <span class='set-font'>Data</span></a>
+          <a class='inner-tab' href='#Data' data-toggle="tab" title="This tab contains a spreadsheet of the data that you queried" id='data-tab'> Data </a>
       </li>
 
   		<li class="tab" role="presentation">
-          <a class='inner-tab' href='#Algorithms' data-toggle="tab" title="This tab contains a list of algorithms that can be loaded into the 'forge' tab" id='algo-tab'><span class='set-font'>Algorithms</span></a>
+          <a class='inner-tab' href='#Algorithms' data-toggle="tab" title="This tab contains a list of algorithms that can be loaded into the 'forge' tab" id='algo-tab'> Algorithms </a>
       </li>
+
     </ul>
   </div>
+
   <!-- Tab panes -->
 	<div class="tab-content">
     <!-- texteditor panel -->
@@ -66,30 +89,42 @@
           <pre id='text-editor-id'></pre>
           <!-- Buttons to run / save code inside of ace editor -->
           <div class="set-font">
-            <ul class="nav nav-tabs nav-justified" role="tablist">
-              <li class="tab" role="presentation">
-                  <a class='inner-tab' data-toggle="tab" title="This tab contains the code for your data-filtering alogirithm" id='save-algo'>
-                   <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>  Save </a>
+            <ul class="nav nav-justified" role="tablist">
+
+              <!-- Bottom Tabs -->
+              <li class="bottomTab">
+                  <a class='inner-tab' data-toggle="tab" title="Save your algorithm!" id='save-algo'>
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"> </span>  Save 
+                  </a>
               </li>
-              <li class="tab" role="presentation">
-                  <a class='inner-tab' data-toggle="tab" title="This tab contains a spreadsheet of the data that you queried" id='graph-data'> <span class="glyphicon glyphicon-stats" aria-hidden="true"> </span> Graph</a>
+
+              <li class="bottomTab" role="presentation">
+                  <a class='inner-tab' data-toggle="tab" title="Graph your strategy!" id='graph-data'>
+                    <span class="glyphicon glyphicon-stats" aria-hidden="true"> </span> Graph
+                  </a>
               </li>
-              <li class="tab" role="presentation">
-                  <a class='inner-tab' data-toggle="tab" title="This tab contains a list of algorithms that can be loaded into the 'forge' tab" id='social-data'> <span class="glyphicon glyphicon-cloud" aria-hidden="true"> </span> Social</a>
+
+              <li class="bottomTab" role="presentation">
+                  <a class='inner-tab' data-toggle="tab" id='social-data'>
+                    <span class="glyphicon glyphicon-cloud" aria-hidden="true"> </span> Social
+                  </a>
               </li>
+
           </ul>
         </div>
       </div>
     </div>
+    
     <!-- spreadsheet panel -->
     <div role="tabpanel" class="tab-pane" id="Data">
       <div>
         {{> spreadsheet}}
       </div>
     </div>
+
     <!-- algorithm panel -->
   	<div role="tabpanel" class="tab-pane" id="Algorithms">
       {{> algorithms}}
   	</div>
-</div>
+  </div>
 </template>
