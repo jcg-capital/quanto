@@ -345,7 +345,6 @@ Template.charts.rendered = function() {
       // create the chart
       $('div#container-area').highcharts('StockChart', options);
     }); 
-Streamy.emit('createLastQuote', { lastPrice: ohlc[dataLength] });
   } 
   else if (live) {
         $(function () {
@@ -361,6 +360,7 @@ Streamy.emit('createLastQuote', { lastPrice: ohlc[dataLength] });
          console.log('entered load function');
         // need to pass in if symbol is currently choosen
         var historicalData = Session.get('dataStore').data;
+        Streamy.emit('historicalData', {data: historicalData});
         // console.log('dataStore retrieved:', historicalData);
         liveResults = [];
         var volume = [];
@@ -382,7 +382,7 @@ Streamy.emit('createLastQuote', { lastPrice: ohlc[dataLength] });
                 events : {
                     load : function () {
                           var series = this.series[0];
-                          Streamy.on('hello', function(d) {
+                          Streamy.on('liveDataInitiated', function(d) {
                           // console.log('streamy triggered');
                           var data = JSON.parse(d.data); // Will print 'world!'
                             if (data.trade) {
@@ -475,6 +475,8 @@ Streamy.emit('createLastQuote', { lastPrice: ohlc[dataLength] });
             data[i][5] // the volume
           ]);
         }
+
+      Streamy.broadcast('historicalData')
 
         // frequency of data - daily, monthly, 
         var frequency = dataObject.frequency;
@@ -581,9 +583,10 @@ Template.charts.events({
       }
       if (!error) {
        console.log('Live Query Result', result);
+       Template.charts.rendered();
       }
     });
-    Template.charts.rendered();
+    
   }
 });
 
