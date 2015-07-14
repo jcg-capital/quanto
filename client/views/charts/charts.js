@@ -236,7 +236,8 @@ Template.charts.rendered = function() {
 
 
   if (!dataObject && !live) {    
-    console.log('no dataobject/not live, rendering default NFLX chart')
+    console.log('no dataobject/not live, rendering default NFLX chart');
+
     Streamy.emit('setCurrentTickerSymbol', { data: tickerSymbol});
     makeCallRequest(tickerSymbol, function(){
       dataObject = Session.get('dataStore');
@@ -290,6 +291,10 @@ Template.charts.rendered = function() {
       }
 
 
+  var historicalData = Session.get('dataStore').data;
+  var length = ohlc.length-1;
+  var lastHistoricalPrice = ohlc[length][1];
+  Session.set('lastPrice', lastHistoricalPrice);
 
       // frequency of data - daily, monthly, 
       var frequency = data.frequency;
@@ -345,6 +350,7 @@ Template.charts.rendered = function() {
       // create the chart
       $('div#container-area').highcharts('StockChart', options);
     }); 
+    // Session.set('lastPrice', lastPrice);
   } 
   else if (live) {
         $(function () {
@@ -364,7 +370,7 @@ Template.charts.rendered = function() {
         // console.log('dataStore retrieved:', historicalData);
         liveResults = [];
         var volume = [];
-               for (var i = historicalData.length-3; i < historicalData.length; i++) {
+               for (var i = historicalData.length-1; i < historicalData.length; i++) {
                   var newDate = new Date(historicalData[i][0]); // the date
                   var dateInMil = newDate.getTime();
                   liveResults.push([
