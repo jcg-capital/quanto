@@ -236,7 +236,7 @@ Template.charts.rendered = function() {
 
 
   if (!dataObject && !live) {    
- 
+    console.log('no dataobject/not live, rendering default NFLX chart')
     Streamy.emit('setCurrentTickerSymbol', { data: tickerSymbol});
     makeCallRequest(tickerSymbol, function(){
       dataObject = Session.get('dataStore');
@@ -390,6 +390,7 @@ Template.charts.rendered = function() {
                                var trade = data.trade;
                                var lastPrice = data.trade.last;
                                console.log('lastPrice', parseFloat(lastPrice));
+                               Session.set('lastPrice', lastPrice);
                                var volume = data.trade.cvol;
                                var timestamp = data.trade.timestamp;
                                var tradeData = {
@@ -583,10 +584,10 @@ Template.charts.events({
       }
       if (!error) {
        console.log('Live Query Result', result);
-       Template.charts.rendered();
+      
       }
     });
-    
+     Template.charts.rendered();
   }
 });
 

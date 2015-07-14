@@ -31,6 +31,7 @@
     }
 
   Session.set('lastPrice', lastPrice1);
+  
       if (data.quote) {
         console.log('quote occured');
         var quote = data.quote;
