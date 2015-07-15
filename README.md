@@ -1,4 +1,4 @@
-<img src="logo.png">
+<img src="https://s3.amazonaws.com/quanto-logo/quanto_720.png">
 
 # Quanto
 
