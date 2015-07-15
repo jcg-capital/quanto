@@ -2,7 +2,7 @@
 
 # Quanto
 
-> An open source stock algorithm testing platform
+> An open source stock algorithmic trading platform.
 
 ## Team
 
@@ -24,11 +24,11 @@
 
 > Clicking on the right arrow on the home page will load the main view of the app. From here the user can do the following:
   
-  - Search for the stocker ticker that they are interested in viewing
-  - Clicking a result will load that stock's historical data into the chart
-  - The user can then adjust the range slider to view a particular date range, select from the preset range buttons in the top left, or manually enter a date range in the top right
-  - The user can then look over, edit, and hit graph to see how well the algorithm in the text editor performed via the equity graph that appears
-  - The user also has the option to view live trade data by toggling the live feed on or off
+  - Load financial data by utilizing the search bar and entering in a company name.
+  - Clicking a result will load that stock's historical data into the chart.
+  - The user can then adjust the range slider to view a particular date range, select from the preset range buttons in the top left, or manually enter a date range in the top right.
+  - The user can build an algorithm to test an investment hypothesis in the left-hand view. An example algorithm is available on default.
+  - The user also has the option to view live trade data by toggling the live feed on or off.
 
 ## Requirements
 
